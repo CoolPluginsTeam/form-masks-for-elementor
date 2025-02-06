@@ -90,7 +90,7 @@ This plugin is developed and maintained by **Cool Plugins**, a team of expert Wo
 
 🚀 **[More Plugins by Cool Plugins](https://coolplugins.net/products/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=all-plugins&utm_content=more-plugins)**
 
-**DISCLAIMER:** This plugin is not affiliated with or developed by the official Elementor team. Some of the links in this content may be affiliate links, meaning we may earn a commission at no extra cost to you if you make a purchase through these links. This plugin uses the advanced [Inputmask JavaScript library by Robin Herbots](https://github.com/RobinHerbots/Inputmask) for input field masking.
+**DISCLAIMER:** This plugin is not affiliated with or developed by the official Elementor team. Some of the links in this content may be affiliate links, meaning we may earn a commission at no extra cost to you if you make a purchase through these links.
 
 — —————————————- —
 **Get [Cool FormKit for Elementor](https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=get-pro-cfk&utm_content=footer)**
@@ -121,8 +121,11 @@ We will continue to expand the list of supported input masks in future updates b
 
 == Screenshots ==
 
-1. Add input mask in Elementor form.
-2. Different input masks examples for form text field.
+1. Phone number input mask.
+2. Date and time input mask.
+3. Credit card number input mask.
+4. Money mask.
+5. Brazilian format masks.
 
 == Installation ==
 
