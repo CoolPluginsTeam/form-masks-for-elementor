@@ -4,7 +4,7 @@ Tags: elementor form, mask, input masks, elementor, form builder
 Requires at least: 5.0
 Tested up to: 6.7.1
 Requires PHP: 7.2
-Stable tag: 2.4.0
+Stable tag: 2.4.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Elementor tested up to: 3.27.2
@@ -142,6 +142,9 @@ We will continue to expand the list of supported input masks in future updates b
 
 == Changelog ==
 
+### Version 2.4.1
+- Tweak: Minor Changes.
+
 ### Version 2.4.0
 - Changed: Plugin Ownership changed - plugin acquired by [Cool Plugins](https://coolplugins.net/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=plugin_readme&utm_content=company_redirect)
 - Added: New dashboard.
@@ -230,4 +233,3 @@ We will continue to expand the list of supported input masks in future updates b
 
 ### Version 1.0
 - Initial release of the plugin with core input mask functionalities.
-

@@ -29,6 +29,28 @@ class FME_Elementor_Page {
     // Output the content of the settings page
     public function settings_page_content() {
         $plugin_list = get_plugins();
+
+        $form_mask_installed_date = get_option( 'fme-installDate' );
+        $conditional_fields_installed_date = get_option( 'cfef-installDate' );
+        $conditional_fields_pro_installed_date = get_option( 'cfefp-installDate' );
+        $country_code_installed_date = get_option( 'ccfef-installDate' );
+
+        $plugins_dates = [
+            'fim_plugin'  => $form_mask_installed_date,
+            'cfef_plugin' => $conditional_fields_installed_date,
+            'cfefp_plugin' => $conditional_fields_pro_installed_date,
+            'ccfef_plugin' => $country_code_installed_date,
+        ];
+
+        $plugins_dates = array_filter($plugins_dates);
+
+        if (!empty($plugins_dates)) {
+            asort($plugins_dates);
+            $first_plugin = key($plugins_dates);
+        } else {
+            $first_plugin = 'fim_plugin';
+        }
+
         ?>
         <div class="cfk-wrapper">
             <div class="cfk-header">
@@ -37,7 +59,7 @@ class FME_Elementor_Page {
                 </div>
                 <div class="cfk-buttons">
                     <p>Upgrade your form with advanced features and maximum possibilities.</p>
-                    <a href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=get-cfkef#pricing" class="button" target="_blank">Get Cool FormKit</a>
+                    <a href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=get-pro&utm_content=get-cfkef#pricing" class="button" target="_blank">Get Cool FormKit</a>
                 </div>
             </div>
     
@@ -58,7 +80,7 @@ class FME_Elementor_Page {
                             <a target="_blank" class="button" href="https://coolplugins.net/video/form-input-masks/">
                                 Video Tutorial
                             </a>
-                            <a target="_blank" class="button button-secondary" href="https://coolplugins.net/add-input-masks-elementor-form/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=blog&utm_content=setting-page-fim-docs">
+                            <a target="_blank" class="button button-secondary" href="https://coolplugins.net/add-input-masks-elementor-form/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=blog&utm_content=setting-page-fim-docs">
                                 Check Documentation
                             </a>
                         </div>
@@ -94,7 +116,7 @@ class FME_Elementor_Page {
                         </div>
                         <div class="cfk-buttons">
                             <p>You will get more advanced fields inside:</p>
-                            <a class="button button-secondary" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=get-cfkef" target="_blank">Cool FormKit</a>
+                            <a class="button button-secondary" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=get-pro&utm_content=get-cfkef" target="_blank">Cool FormKit</a>
                         </div>
                     </div>
 
@@ -144,7 +166,7 @@ class FME_Elementor_Page {
                                             <?php
                                     }
                             ?></a>
-                            <a target="_blank" class="button button-secondary" href="https://coolplugins.net/conditional-fields-for-elementor-form/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=blog&utm_content=setting-page-cfef-docs">
+                            <a target="_blank" class="button button-secondary" href="https://coolplugins.net/conditional-fields-for-elementor-form/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=blog&utm_content=setting-page-cfef-docs">
                                 Check Documentation
                             </a>
                         </div>
@@ -184,9 +206,9 @@ class FME_Elementor_Page {
                         </div>
                         <div class="cfk-buttons">
                             <p>You will get pro features inside.</p>
-                            <a class="button" href="https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=get-cfefp" target="_blank">Conditional Fields Pro</a>
+                            <a class="button" href="https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=get-pro&utm_content=get-cfefp" target="_blank">Conditional Fields Pro</a>
                             <span>or</span>
-                            <a class="button button-secondary" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=get-cfkef" target="_blank">Cool FormKit</a>
+                            <a class="button button-secondary" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=get-pro&utm_content=get-cfkef" target="_blank">Cool FormKit</a>
                         </div>
                     </div>
 
@@ -231,7 +253,7 @@ class FME_Elementor_Page {
                                         }
                                 ?>
                             </a>
-                            <a target="_blank" class="button button-secondary" href="https://docs.coolplugins.net/docs/cool-formkit/add-country-code-dropdown-to-tel-field-in-elementor-forms/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=docs&utm_content=setting-page-ccfef-docs">
+                            <a target="_blank" class="button button-secondary" href="https://docs.coolplugins.net/docs/cool-formkit/add-country-code-dropdown-to-tel-field-in-elementor-forms/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=docs&utm_content=setting-page-ccfef-docs">
                                 Check Documentation
                             </a>
                         </div>
@@ -260,7 +282,7 @@ class FME_Elementor_Page {
                         <div class="cfk-buttons">
                             <p>You will get pro features inside.</p>
                             <br>
-                            <a class="button button-secondary" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=setting-page-ccfef-get-coolformkit" target="_blank"> Cool FormKit</a>
+                            <a class="button button-secondary" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=get-pro&utm_content=setting-page-ccfef-get-coolformkit" target="_blank"> Cool FormKit</a>
                         </div>
                     </div>
                 </div>
@@ -272,77 +294,77 @@ class FME_Elementor_Page {
                             <p>All-in-one plugin, An addon for Elementor Pro forms that provides many extra features and advanced fields to extend your form-building experience using Elementor form widget.</p>
                         </div>
                         <div class="cfk-features">
-                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=cfkef-feature&utm_content=feature-list#conditional-fields" target="_blank">
+                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=cfkef-feature&utm_content=feature-list#conditional-fields" target="_blank">
                                 <img src="<?php echo FME_PLUGIN_URL . 'assets/images/conditional-fields.png'; ?>" alt="Conditional Logic Feature Icon">
                                 <div class="cfk-f-info">
                                     <h4>Conditional Logic for Fields</h4>
                                     <p>Apply conditional logic on form fields to show or hide fields based on other fields' values.</p>
                                 </div>
                             </a>
-                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=cfkef-feature&utm_content=feature-list#country-code" target="_blank">
+                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=cfkef-feature&utm_content=feature-list#country-code" target="_blank">
                                 <img src="<?php echo FME_PLUGIN_URL . 'assets/images/country-code-field.png'; ?>" alt="Country Code Field Feature Icon">
                                 <div class="cfk-f-info">
                                     <h4>Country Code for Tel Field</h4>
                                     <p>Add a country code dropdown selector inside your form's telephone field using Cool FormKit.</p>
                                 </div>
                             </a>
-                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=cfkef-feature&utm_content=feature-list#range-field" target="_blank">
+                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=cfkef-feature&utm_content=feature-list#range-field" target="_blank">
                                 <img src="<?php echo FME_PLUGIN_URL . 'assets/images/range-slider-field.png'; ?>" alt="Range Slider Feature Icon">
                                 <div class="cfk-f-info">
                                     <h4>Range Slider Field</h4>
                                     <p>Add a cool range slider field in your form so that your users can easily select from a range of numbers.</p>
                                 </div>
                             </a>
-                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=cfkef-feature&utm_content=feature-list#rating-field" target="_blank">
+                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=cfkef-feature&utm_content=feature-list#rating-field" target="_blank">
                                 <img src="<?php echo FME_PLUGIN_URL . 'assets/images/rating-field.png'; ?>" alt="Rating / Review Field Feature Icon">
                                 <div class="cfk-f-info">
                                     <h4>Rating / Review Field</h4>
                                     <p>Show a star rating field inside your form to easily get reviews and feedback from your users.</p>
                                 </div>
                             </a>
-                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=cfkef-feature&utm_content=feature-list#signature-field" target="_blank">
+                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=cfkef-feature&utm_content=feature-list#signature-field" target="_blank">
                                 <img src="<?php echo FME_PLUGIN_URL . 'assets/images/signature-field.png'; ?>" alt="Signature Field Feature Icon">
                                 <div class="cfk-f-info">
                                     <h4>Signature Field</h4>
                                     <p>Let your website users add their signature while submitting a form on your website using signature field.</p>
                                 </div>
                             </a>
-                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=cfkef-feature&utm_content=feature-list#calculator-field" target="_blank">
+                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=cfkef-feature&utm_content=feature-list#calculator-field" target="_blank">
                                 <img src="<?php echo FME_PLUGIN_URL . 'assets/images/calculator-field.png'; ?>" alt="Calculator Field Feature Icon">
                                 <div class="cfk-f-info">
                                     <h4>Calculator Field</h4>
                                     <p>Using Cool FormKit, you can add a calculator field that will show calculations based on form entries.</p>
                                 </div>
                             </a>
-                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=cfkef-feature&utm_content=feature-list#image-radio-checkbox" target="_blank">
+                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=cfkef-feature&utm_content=feature-list#image-radio-checkbox" target="_blank">
                                 <img src="<?php echo FME_PLUGIN_URL . 'assets/images/image-radio-checkbox.png'; ?>" alt="Image Radio & Checkbox Styles Feature Icon">
                                 <div class="cfk-f-info">
                                     <h4>Image Radio & Checkbox Styles</h4>
                                     <p>Customize your forms by adding images and icons into your options, making selections more visually engaging.</p>
                                 </div>
                             </a>
-                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=cfkef-feature&utm_content=feature-list#button-radio-checkbox" target="_blank">
+                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=cfkef-feature&utm_content=feature-list#button-radio-checkbox" target="_blank">
                                 <img src="<?php echo FME_PLUGIN_URL . 'assets/images/checkbox-radio-styles.png'; ?>" alt="Checkbox & Radio Button Styler Feature Icon">
                                 <div class="cfk-f-info">
                                     <h4>Checkbox & Radio Styles</h4>
                                     <p>Style your checkbox and radio button fields in your Elementor form using the Cool FormKit addon.</p>
                                 </div>
                             </a>
-                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=cfkef-feature&utm_content=feature-list#label-styler" target="_blank">
+                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=cfkef-feature&utm_content=feature-list#label-styler" target="_blank">
                                 <img src="<?php echo FME_PLUGIN_URL . 'assets/images/form-label-styles.png'; ?>" alt="Form Labels Styles Feature Icon">
                                 <div class="cfk-f-info">
                                     <h4>Form Labels Styles</h4>
                                     <p>Make your form cool by adding styles to the labels' visibility inside your Elementor form using the Cool FormKit addon for Elementor.</p>
                                 </div>
                             </a>
-                            <a class="cfk-feature coming-soon" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=cfkef-feature&utm_content=feature-list#plugin-features" target="_blank">
+                            <a class="cfk-feature coming-soon" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=cfkef-feature&utm_content=feature-list#plugin-features" target="_blank">
                                 <img src="<?php echo FME_PLUGIN_URL . 'assets/images/fields-divider.png'; ?>" alt="Fields Divider or Spacer Feature Icon">
                                 <div class="cfk-f-info">
                                     <h4>Fields Divider or Spacer</h4>
                                     <p>Divide your form fields with lines or spacers. It is helpful to create multi-section forms inside Elementor.</p>
                                 </div>
                             </a>
-                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=cfkef-feature&utm_content=feature-list#plugin-features" target="_blank">
+                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=cfkef-feature&utm_content=feature-list#plugin-features" target="_blank">
                                 <img src="<?php echo FME_PLUGIN_URL . 'assets/images/select2-field.png'; ?>" alt="Select2 Field Feature Icon">
                                 <div class="cfk-f-info">
                                     <h4>Select2 Field</h4>
@@ -351,7 +373,7 @@ class FME_Elementor_Page {
                             </a>
                         </div>
                         <div class="cfk-buttons">
-                            <a class="button" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=setting-page-footer#pricing" target="_blank">Get Cool FormKit (Lifetime License)</a>
+                            <a class="button" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=get-pro&utm_content=setting-page-footer#pricing" target="_blank">Get Cool FormKit (Lifetime License)</a>
                             <p>More features & fields coming in regular upcoming updates...</p>
                         </div> 
                     </div>
@@ -364,8 +386,8 @@ class FME_Elementor_Page {
                         <div class="cfk-box">
                             <h3>Links</h3>
                             <div class="cfk-buttons">
-                                <a href="https://my.coolplugins.net/account/support-tickets/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=support&utm_content=important-links" class="button button-secondary" target="_blank">Contact Support</a>
-                                <a href="https://coolplugins.net/about-us/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=about-us&utm_content=important-links" class="button" target="_blank">Meet Cool Plugins Developers</a>
+                                <a href="https://my.coolplugins.net/account/support-tickets/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=support&utm_content=important-links" class="button button-secondary" target="_blank">Contact Support</a>
+                                <a href="https://coolplugins.net/about-us/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=about-us&utm_content=important-links" class="button" target="_blank">Meet Cool Plugins Developers</a>
                                 <a href="https://x.com/cool_plugins" class="button" target="_blank">Follow On X</a>
                             </div>
                         </div>
