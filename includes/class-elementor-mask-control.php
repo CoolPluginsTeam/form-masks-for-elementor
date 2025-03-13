@@ -53,17 +53,7 @@ class FME_Elementor_Forms_Mask {
 					'ev-time' => esc_html__( 'Date & Time', 'form-masks-for-elementor' ),
 					'ev-money' => esc_html__( 'Money', 'form-masks-for-elementor' ),
 					'ev-ccard' => esc_html__( 'Credit Card', 'form-masks-for-elementor' ),
-					// 'ev-tel' => esc_html__( 'Phone (8 dig)', 'form-masks-for-elementor' ),
-					// 'ev-tel-ddd' => esc_html__( 'Phone (8 dig) + DDD', 'form-masks-for-elementor' ),
-					// 'ev-tel-ddd9' => esc_html__( 'Phone (9 dig) + DDD', 'form-masks-for-elementor' ),
-					// 'ev-tel-us' => esc_html__( 'Phone USA', 'form-masks-for-elementor' ),
 					'ev-br_fr' => esc_html__( 'Brazilian Formats', 'form-masks-for-elementor' ),
-					// 'ev-cpf' => esc_html__( 'CPF', 'form-masks-for-elementor' ),
-					// 'ev-cnpj' => esc_html__( 'CNPJ', 'form-masks-for-elementor' ),
-					// 'ev-ccard-valid' => esc_html__( 'Credit Card Date', 'form-masks-for-elementor' ),
-					// 'ev-cep' => esc_html__( 'CEP', 'form-masks-for-elementor' ),
-					// 'ev-date' => esc_html__( 'Date', 'form-masks-for-elementor' ),
-					// 'ev-date_time' => esc_html__( 'Date and Time', 'form-masks-for-elementor' ),
 					'ev-ip-address' => esc_html__( 'IP Address', 'form-masks-for-elementor' ),
 				],
 				'conditions' => [
@@ -92,6 +82,11 @@ class FME_Elementor_Forms_Mask {
 							'operator' => 'in',
 							'value' => ['ev-phone','ev-cpf','ev-cnpj','ev-money','ev-ccard','ev-cep','ev-time','ev-ip-address','ev-br_fr'],
 						],
+						[
+							'name' => 'field_type',
+							'operator' => 'in',
+							'value' => $this->allowed_fields,
+						],
 					],
 				],
 			],
@@ -113,6 +108,11 @@ class FME_Elementor_Forms_Mask {
 								'operator' => 'in',
 								'value' => ['ev-money'],
 						],
+						[
+							'name' => 'field_type',
+							'operator' => 'in',
+							'value' => $this->allowed_fields,
+						],
 					],
 				],
 			],
@@ -133,6 +133,11 @@ class FME_Elementor_Forms_Mask {
 								'operator' => 'in',
 								'value' => ['ev-money'],
 						],
+						[
+							'name' => 'field_type',
+							'operator' => 'in',
+							'value' => $this->allowed_fields,
+						],
 					],
 				],
 			],
@@ -152,6 +157,11 @@ class FME_Elementor_Forms_Mask {
 								'name' => 'fme_mask_control',
 								'operator' => 'in',
 								'value' => ['ev-money'],
+						],
+						[
+							'name' => 'field_type',
+							'operator' => 'in',
+							'value' => $this->allowed_fields,
 						],
 					],
 				],
@@ -179,6 +189,11 @@ class FME_Elementor_Forms_Mask {
 								'operator' => 'in',
 								'value' => ['ev-time'],
 						],
+						[
+							'name' => 'field_type',
+							'operator' => 'in',
+							'value' => $this->allowed_fields,
+						],
 					],
 				],
 			],
@@ -200,6 +215,11 @@ class FME_Elementor_Forms_Mask {
 								'name' => 'fme_mask_control',
 								'operator' => 'in',
 								'value' => ['ev-br_fr'],
+						],
+						[
+							'name' => 'field_type',
+							'operator' => 'in',
+							'value' => $this->allowed_fields,
 						],
 					],
 				],
@@ -224,6 +244,11 @@ class FME_Elementor_Forms_Mask {
 								'operator' => 'in',
 								'value' => ['ev-ccard'],
 						],
+						[
+							'name' => 'field_type',
+							'operator' => 'in',
+							'value' => $this->allowed_fields,
+						],
 					],
 				],
 			],
@@ -247,13 +272,18 @@ class FME_Elementor_Forms_Mask {
 								'operator' => 'in',
 								'value' => ['ev-phone'],
 						],
+						[
+							'name' => 'field_type',
+							'operator' => 'in',
+							'value' => $this->allowed_fields,
+						],
 					],
 				],
 			],
 			'fme_mask_alert_pro_version' => [
 				'type' => \Elementor\Controls_Manager::ALERT,
 				'alert_type' => 'info',
-				'content' => esc_html__( '🚀 ', 'form-masks-for-elementor' ) . ' <a href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=get_cool_formkit" target="_blank">' . esc_html__( 'Get Cool FormKit For Advanced Fields.', 'form-masks-for-elementor' ) . '</a>',
+				'content' => esc_html__( '🚀 ', 'form-masks-for-elementor' ) . ' <a href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=get_cool_formkit" target="_blank">' . 'Get Cool FormKit For Advanced Fields.'. '</a>',
 				'tab' => 'content',
 				'tabs_wrapper' => 'form_fields_tabs',
 				'inner_tab' => 'form_fields_advanced_tab',
@@ -264,38 +294,55 @@ class FME_Elementor_Forms_Mask {
 							'operator' => 'in',
 							'value' => $this->allowed_fields,
 						],
+						[
+							'name' => 'fme_mask_control',
+							'operator' => 'in',
+							'value' => ['ev-phone','ev-cpf','ev-cnpj','ev-money','ev-ccard','ev-cep','ev-time','ev-ip-address','ev-br_fr'],
+						],
 					],
 				],
 			],
 		];
 
 		if ( ! get_option( 'fme_elementor_notice_dismiss' ) ) {
-			$review_nonce = wp_create_nonce( 'cfef_elementor_review' );
-			$url          = admin_url( 'admin-ajax.php' );
-			$html         = '<div class="cfef_elementor_review_wrapper">';
-			$html        .= '<div id="cfef_elementor_review_dismiss" data-url="' . esc_url( $url ) . '" data-nonce="' . esc_attr( $review_nonce ) . '">Close Notice X</div>
-							<div class="cfef_elementor_review_msg">' . __( 'Hope this addon solved your problem!', 'cfef' ) . '<br><a href="https://wordpress.org/support/plugin/form-masks-for-elementor/reviews/#new-post" target="_blank"">Share the love with a ⭐⭐⭐⭐⭐ rating.</a><br><br></div>
-							<div class="cfef_elementor_demo_btn"><a href="https://wordpress.org/support/plugin/form-masks-for-elementor/reviews/#new-post" target="_blank">Submit Review</a></div>
-							</div>';
+			$install_date = get_option( 'fme-installDate' ); // Get stored install date
+			$current_date = gmdate( 'Y-m-d h:i:s' ); // Get current date
+			$date_diff = strtotime( $current_date ) - strtotime( $install_date ); // Calculate difference in seconds
+			$days_passed = $date_diff / (60 * 60 * 24); // Convert to days
 
-			$controls_to_register['fme_pro_image'] = array(
-				'name'            => 'fme_pro_image',
-				'type'            => Controls_Manager::RAW_HTML,
-				'raw'             => $html,
-				'content_classes' => 'cfef_elementor_review_notice',
-				'tab'             => 'content',
-				'conditions' => [
-					'terms' => [
-						[
-							'name' => 'field_type',
-							'operator' => 'in',
-							'value' => $this->allowed_fields,
+			if ( $days_passed >= 3 ) {
+				$review_nonce = wp_create_nonce( 'cfef_elementor_review' );
+				$url          = admin_url( 'admin-ajax.php' );
+				$html         = '<div class="cfef_elementor_review_wrapper">';
+				$html        .= '<div id="cfef_elementor_review_dismiss" data-url="' . esc_url( $url ) . '" data-nonce="' . esc_attr( $review_nonce ) . '">Close Notice X</div>
+								<div class="cfef_elementor_review_msg">' . __( 'Hope this addon solved your problem!', 'cfef' ) . '<br><a href="https://wordpress.org/support/plugin/form-masks-for-elementor/reviews/#new-post" target="_blank"">Share the love with a ⭐⭐⭐⭐⭐ rating.</a><br><br></div>
+								<div class="cfef_elementor_demo_btn"><a href="https://wordpress.org/support/plugin/form-masks-for-elementor/reviews/#new-post" target="_blank">Submit Review</a></div>
+								</div>';
+
+				$controls_to_register['fme_pro_image'] = array(
+					'name'            => 'fme_pro_image',
+					'type'            => Controls_Manager::RAW_HTML,
+					'raw'             => $html,
+					'content_classes' => 'cfef_elementor_review_notice',
+					'tab'             => 'content',
+					'conditions' => [
+						'terms' => [
+							[
+								'name' => 'field_type',
+								'operator' => 'in',
+								'value' => $this->allowed_fields,
+							],
+							[
+								'name' => 'fme_mask_control',
+								'operator' => 'in',
+								'value' => ['ev-phone','ev-cpf','ev-cnpj','ev-money','ev-ccard','ev-cep','ev-time','ev-ip-address','ev-br_fr'],
+							],
 						],
 					],
-				],
-				'tabs_wrapper' => 'form_fields_tabs',
-				'inner_tab' => 'form_fields_advanced_tab',
-			);
+					'tabs_wrapper' => 'form_fields_tabs',
+					'inner_tab' => 'form_fields_advanced_tab',
+				);
+			}
 		}
 
 		if ( !is_plugin_active( 'country-code-field-for-elementor-form/country-code-field-for-elementor-form.php' ) && !is_plugin_active( 'conditional-fields-for-elementor-form/class-conditional-fields-for-elementor-form.php' ) && !is_plugin_active( 'conditional-fields-for-elementor-form-pro/class-conditional-fields-for-elementor-form-pro.php' )) {

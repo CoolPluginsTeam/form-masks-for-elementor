@@ -4,7 +4,7 @@ Tags: elementor form, mask, input masks, elementor, form builder
 Requires at least: 5.0
 Tested up to: 6.7.1
 Requires PHP: 7.2
-Stable tag: 2.4.1
+Stable tag: 2.4.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Elementor tested up to: 3.27.2
@@ -141,6 +141,10 @@ We will continue to expand the list of supported input masks in future updates b
 — —————————————- —
 
 == Changelog ==
+
+### Version 2.4.2 | 13/03/2025
+- Fixed: - CPF mask issue.
+- Fixed: - Form submission issue.
 
 ### Version 2.4.1
 - Tweak: Minor Changes.

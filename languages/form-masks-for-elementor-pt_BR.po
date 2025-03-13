@@ -1,0 +1,350 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Form Input Masks for Elementor Form\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-13 11:15+0000\n"
+"PO-Revision-Date: 2025-03-13 11:15+0000\n"
+"Last-Translator: \n"
+"Language-Team: Português do Brasil\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.7.1; wp-6.7.1\n"
+"X-Domain: form-masks-for-elementor"
+
+#. %1$s replace with Conditional Fields for Elementor Form & %2$s replace with Elementor Pro.
+#: form-masks-for-elementor.php:125
+#, php-format
+msgid "%1$s requires %2$s to be installed and activated."
+msgstr "%1$s requer que %2$s esteja instalado e ativado."
+
+#: form-masks-for-elementor.php:157
+#, php-format
+msgid "%1$s requires PHP version %2$s or greater."
+msgstr "%1$s requer a versão do PHP %2$s ou superior."
+
+#: form-masks-for-elementor.php:171
+#, php-format
+msgid "%1$s requires WordPress version %2$s or greater."
+msgstr "%1$s requer a versão do WordPress %2$s ou superior."
+
+#: includes/class-elementor-mask-control.php:56
+msgid "Brazilian Formats"
+msgstr "Formatos Brasileiros"
+
+#: includes/class-elementor-mask-control.php:210
+msgid "CEP"
+msgstr "CEP"
+
+#: includes/class-elementor-mask-control.php:209
+msgid "CNPJ"
+msgstr "CNPJ"
+
+#: includes/class-elementor-mask-control.php:102
+msgid "Comma (,)"
+msgstr "Vírgula (,)"
+
+#. Author of the plugin
+msgid "Cool Plugins"
+msgstr "Plugins Legais"
+
+#: includes/class-elementor-mask-control.php:208
+msgid "CPF"
+msgstr "CPF"
+
+#: includes/class-elementor-mask-control.php:55
+msgid "Credit Card"
+msgstr "Cartão De Crédito"
+
+#: includes/class-elementor-mask-control.php:228
+msgid "Credit Card Options"
+msgstr "Opções De Cartão De Crédito"
+
+#: includes/class-elementor-mask-control.php:236
+msgid "Credit card with hyphen"
+msgstr "Cartão de crédito com hífen"
+
+#: includes/class-elementor-mask-control.php:235
+msgid "Credit card with space"
+msgstr "Cartão de crédito com espaço"
+
+#: includes/class-elementor-mask-control.php:53
+msgid "Date & Time"
+msgstr "Data E Hora"
+
+#: includes/class-elementor-mask-control.php:177
+msgid "Date (dd/mm/yyyy)"
+msgstr "Data (dd / mm / AAAA)"
+
+#: includes/class-elementor-mask-control.php:178
+msgid "Date (mm/dd/yyyy)"
+msgstr "Data (mm / dd/AAAA)"
+
+#: includes/class-elementor-mask-control.php:170
+msgid "Date Format"
+msgstr "Formato Da Data"
+
+#: includes/class-elementor-mask-control.php:179
+msgid "DateTime (dd/mm/yyyy hh:mm)"
+msgstr "Datahora (dd/mm/aaaa hh:mm)"
+
+#: includes/class-elementor-mask-control.php:180
+msgid "DateTime (mm/dd/yyyy hh:mm)"
+msgstr "Datahora (mm / dd / aaaa hh:mm)"
+
+#: includes/class-elementor-mask-control.php:101
+msgid "Dot (.)"
+msgstr "Dot (.)"
+
+#: form-masks-for-elementor.php:130
+msgid "Elementor Pro"
+msgstr "Elementor Pro"
+
+#: includes/class-elementor-mask-control.php:378
+msgid "Enable Conditional Fields"
+msgstr "Habilitar Campos Condicionais"
+
+#: includes/class-elementor-mask-control.php:351
+msgid "Enable Country Code"
+msgstr "Ativar Código Do País"
+
+#: includes/class-elementor-mask-control.php:237
+msgid "Expiry Date (MM/YY)"
+msgstr "Prazo de validade (MM / AA)"
+
+#: includes/class-elementor-mask-control.php:238
+msgid "Expiry Date (MM/YYYY)"
+msgstr "Prazo de validade (MM / AAAA)"
+
+#. Name of the plugin
+#: form-masks-for-elementor.php:129
+msgid "Form Input Masks for Elementor Form"
+msgstr "Máscaras de entrada de formulário para Elementor Form"
+
+#. Description of the plugin
+msgid ""
+"Form Input Masks for Elementor Form creates a custom control in the field "
+"advanced tab for customizing your fields with masks. This plugin requires "
+"Elementor Pro (Form Widget)."
+msgstr ""
+"Máscaras de entrada de formulário para Elementor Form cria um controle "
+"personalizado na guia campo avançado para personalizar seus campos com "
+"máscaras. Este plugin requer Elementor Pro (Widget de formulário)."
+
+#. URI of the plugin
+#. Author URI of the plugin
+msgid "https://coolplugins.net/"
+msgstr ""
+
+#: admin/feedback/admin-feedback-form.php:109
+msgid ""
+"I agree to share my feedback with Cool Plugins, including site URL and admin "
+"email, to enable them to address my inquiry."
+msgstr ""
+"Concordo em compartilhar meus comentários com Plugins legais, incluindo URL "
+"do site e E-mail do administrador, para permitir que eles respondam à minha "
+"consulta."
+
+#: admin/feedback/admin-feedback-form.php:137
+msgid "I found a better plugin"
+msgstr "Achei um plugin melhor"
+
+#: admin/feedback/admin-feedback-form.php:56
+msgid "I found a better plugin."
+msgstr "Achei um plugin melhor."
+
+#: admin/feedback/admin-feedback-form.php:88
+msgid ""
+"If you have a moment, please share the reason for deactivating this plugin."
+msgstr ""
+"Se você tiver um momento, Compartilhe o motivo da desativação deste plugin."
+
+#: includes/class-fme-plugin.php:78
+msgid "Invalid CEP (XXXXX-XXX)."
+msgstr "CEP inválido (XXXXX-XXX)."
+
+#: includes/class-fme-plugin.php:76
+msgid "Invalid CNPJ."
+msgstr "CNPJ inválido."
+
+#: includes/class-fme-plugin.php:77
+msgid "Invalid CPF."
+msgstr "CPF inválido."
+
+#: includes/class-fme-plugin.php:90 includes/class-fme-plugin.php:91
+msgid "Invalid credit card number."
+msgstr "Número de cartão de crédito inválido."
+
+#: includes/class-fme-plugin.php:92 includes/class-fme-plugin.php:93
+msgid "Invalid date."
+msgstr "Data inválida."
+
+#: includes/class-fme-plugin.php:83
+msgid "Invalid date: dd/mm/yyyy"
+msgstr "Data inválida: dd / mm/AAAA"
+
+#: includes/class-fme-plugin.php:87
+msgid "Invalid date: dd/mm/yyyy hh:mm"
+msgstr "Data inválida: dd / mm / aaaa hh:mm"
+
+#: includes/class-fme-plugin.php:84
+msgid "Invalid date: mm/dd/yyyy"
+msgstr "Data inválida: DD / mm/AAAA"
+
+#: includes/class-fme-plugin.php:88
+msgid "Invalid date: mm/dd/yyyy hh:mm"
+msgstr "Data inválida: mm / dd / aaaa hh:mm"
+
+#: includes/class-fme-plugin.php:89
+msgid "Invalid date: mm/yyyy"
+msgstr "Data inválida: mm/aaaa"
+
+#: includes/class-fme-plugin.php:94
+msgid "Invalid IPv4 address."
+msgstr "Endereço IPv4 inválido."
+
+#: includes/class-fme-plugin.php:79
+msgid "Invalid number: (123) 456-7890"
+msgstr "Número inválido: (123) 456-7890"
+
+#: includes/class-fme-plugin.php:81
+msgid "Invalid number: (DDD) 1234-5678"
+msgstr "Número inválido: (DDD) 1234-5678"
+
+#: includes/class-fme-plugin.php:82
+msgid "Invalid number: (DDD) 91234-5678"
+msgstr "Número inválido: (DDD) 91234-5678"
+
+#: includes/class-fme-plugin.php:80
+msgid "Invalid number: 1234-5678"
+msgstr "Número inválido: 1234-5678"
+
+#: includes/class-fme-plugin.php:86
+msgid "Invalid time: hh:mm"
+msgstr "Tempo inválido: hh:mm"
+
+#: includes/class-fme-plugin.php:85
+msgid "Invalid time: hh:mm:ss"
+msgstr "Tempo inválido: hh: mm: ss"
+
+#: includes/class-elementor-mask-control.php:57
+msgid "IP Address"
+msgstr "Endereço IP"
+
+#: admin/feedback/admin-feedback-form.php:64
+#: admin/feedback/admin-feedback-form.php:145
+msgid "It's a temporary deactivation."
+msgstr "É uma desativação temporária."
+
+#: includes/class-elementor-mask-control.php:44
+msgid "Mask Control"
+msgstr "Controle De Máscara"
+
+#: includes/class-elementor-mask-control.php:145
+msgid "Mask Decimal Places"
+msgstr "Mascarar Casas Decimais"
+
+#: includes/class-elementor-mask-control.php:70
+msgid "Mask Placeholders"
+msgstr "Espaços Reservados De Máscara"
+
+#: includes/class-elementor-mask-control.php:120
+msgid "Mask Prefix"
+msgstr "Prefixo Da Máscara"
+
+#: includes/class-elementor-mask-control.php:54
+msgid "Money"
+msgstr "Dinheiro"
+
+#: includes/class-elementor-mask-control.php:183
+msgid "Month/Year (mm/yyyy)"
+msgstr "Mês / Ano (mm / aaaa)"
+
+#: admin/feedback/admin-feedback-form.php:68
+msgid "Other reason."
+msgstr "Outro motivo."
+
+#: includes/class-elementor-mask-control.php:52
+msgid "Phone"
+msgstr "Telefone"
+
+#: includes/class-elementor-mask-control.php:264
+msgid "Phone (8-digit)"
+msgstr "Telefone (8 dígitos)"
+
+#: includes/class-elementor-mask-control.php:265
+msgid "Phone (DDD + 8-digit)"
+msgstr "Telefone (DDD + 8 dígitos)"
+
+#: includes/class-elementor-mask-control.php:266
+msgid "Phone (DDD + 9-digit)"
+msgstr "Telefone (DDD + 9 dígitos)"
+
+#: includes/class-elementor-mask-control.php:263
+msgid "Phone (USA)"
+msgstr "Telefone (EUA)"
+
+#: includes/class-elementor-mask-control.php:256
+msgid "Phone Format"
+msgstr "Formato Do Telefone"
+
+#: admin/feedback/admin-feedback-form.php:69
+#: admin/feedback/admin-feedback-form.php:150
+msgid "Please share the reason."
+msgstr "Por favor, compartilhe o motivo."
+
+#: admin/feedback/admin-feedback-form.php:57
+#: admin/feedback/admin-feedback-form.php:138
+msgid "Please share which plugin."
+msgstr "Por favor, compartilhe qual plugin."
+
+#: includes/class-elementor-mask-control.php:36
+msgid "PRO"
+msgstr "PRO"
+
+#: admin/feedback/admin-feedback-form.php:79
+msgid "Quick Feedback"
+msgstr "Feedback Rápido"
+
+#: includes/class-elementor-mask-control.php:201
+msgid "Select Format"
+msgstr "Selecione O Formato"
+
+#: includes/class-elementor-mask-control.php:51
+msgid "Select Mask"
+msgstr "Selecionar Máscara"
+
+#: admin/feedback/admin-feedback-form.php:133
+msgid "The plugin didn't work as expected"
+msgstr "O plugin não funcionou como esperado"
+
+#: admin/feedback/admin-feedback-form.php:52
+msgid "The plugin didn't work as expected."
+msgstr "O plugin não funcionou como esperado."
+
+#: admin/feedback/admin-feedback-form.php:141
+msgid "The plugin is not working"
+msgstr "O plugin não está funcionando"
+
+#: admin/feedback/admin-feedback-form.php:60
+msgid "The plugin is not working."
+msgstr "O plugin não está funcionando."
+
+#: includes/class-elementor-mask-control.php:94
+msgid "Thousand separator"
+msgstr "Separador de milhar"
+
+#: includes/class-elementor-mask-control.php:181
+msgid "Time (hh:mm)"
+msgstr "Tempo (hh:mm)"
+
+#: includes/class-elementor-mask-control.php:182
+msgid "Time (hh:mm:ss)"
+msgstr "Tempo (hh:mm: ss)"
+
+#: includes/class-elementor-mask-control.php:286
+msgid "🚀 "
+msgstr ""

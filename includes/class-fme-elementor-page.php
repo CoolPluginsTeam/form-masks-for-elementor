@@ -17,8 +17,8 @@ class FME_Elementor_Page {
         if (!is_plugin_active( 'conditional-fields-for-elementor-form/class-conditional-fields-for-elementor-form.php' ) && !is_plugin_active( 'conditional-fields-for-elementor-form-pro/class-conditional-fields-for-elementor-form-pro.php' ) && !is_plugin_active( 'country-code-field-for-elementor-form/country-code-field-for-elementor-form.php' )) {
             add_submenu_page(
                 'elementor',
-                __('Cool Formkit', 'form-masks-for-elementor'),
-                __('Cool Formkit', 'form-masks-for-elementor'),
+                'Cool Formkit',
+                'Cool Formkit',
                 'manage_options',
                 'cool-formkit',
                 array($this, 'settings_page_content')
