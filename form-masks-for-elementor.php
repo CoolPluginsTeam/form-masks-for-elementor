@@ -5,7 +5,7 @@
  * Description: Form Input Masks for Elementor Form creates a custom control in the field advanced tab for customizing your fields with masks. This plugin requires Elementor Pro (Form Widget).
  * Author: Cool Plugins
  * Author URI: https://coolplugins.net/
- * Version: 2.4.3
+ * Version: 2.4.4
  * Requires at least: 5.5
  * Requires PHP: 7.4
  * Text Domain: form-masks-for-elementor
@@ -22,7 +22,7 @@
 	exit();
 }
 
-define( 'FME_VERSION', '2.4.3' );
+define( 'FME_VERSION', '2.4.4' );
 define( 'FME_PHP_MINIMUM_VERSION', '7.4' );
 define( 'FME_WP_MINIMUM_VERSION', '5.5' );
 define( 'FME_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
@@ -67,9 +67,6 @@ class Form_Masks_For_Elementor {
     }
 
 	public function fme_plugin_redirection($plugin){
-		if ( ! is_plugin_active( 'elementor-pro/elementor-pro.php' )) {
-			// return false;
-		}
 
 		if ( is_plugin_active( 'cool-formkit-for-elementor-forms/cool-formkit-for-elementor-forms.php' ) ) {
 			return false;
@@ -110,30 +107,9 @@ class Form_Masks_For_Elementor {
 			return false;
 		}
 
-		if ( ! is_plugin_active( 'elementor-pro/elementor-pro.php' ) ) {
-			// add_action('admin_notices', array($this, 'admin_notice_missing_main_plugin'));
-			// return false;
-		}
-
         return true;
     }
 
-	/**
-	 * Show notice to enable elementor pro
-	 */
-	public function admin_notice_missing_main_plugin() {
-		$message = sprintf(
-			// translators: %1$s replace with Conditional Fields for Elementor Form & %2$s replace with Elementor Pro.
-			esc_html__(
-				'%1$s requires %2$s to be installed and activated.',
-				'form-masks-for-elementor'
-			),
-			esc_html__( 'Form Input Masks for Elementor Form', 'form-masks-for-elementor' ),
-			esc_html__( 'Elementor Pro', 'form-masks-for-elementor' ),
-			); 
-			printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', esc_html( $message ) );
-			deactivate_plugins( plugin_basename( __FILE__ ) );
-		}
     /**
      * Initialize the plugin.
      */
