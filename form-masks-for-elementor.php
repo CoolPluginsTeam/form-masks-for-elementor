@@ -68,7 +68,7 @@ class Form_Masks_For_Elementor {
 
 	public function fme_plugin_redirection($plugin){
 		if ( ! is_plugin_active( 'elementor-pro/elementor-pro.php' )) {
-			return false;
+			// return false;
 		}
 
 		if ( is_plugin_active( 'cool-formkit-for-elementor-forms/cool-formkit-for-elementor-forms.php' ) ) {
@@ -111,8 +111,8 @@ class Form_Masks_For_Elementor {
 		}
 
 		if ( ! is_plugin_active( 'elementor-pro/elementor-pro.php' ) ) {
-			add_action('admin_notices', array($this, 'admin_notice_missing_main_plugin'));
-			return false;
+			// add_action('admin_notices', array($this, 'admin_notice_missing_main_plugin'));
+			// return false;
 		}
 
         return true;

@@ -87,7 +87,7 @@ class InputHandler extends elementorModules.frontend.handlers.Base {
             "ev-br_fr": "brazilian_formats",
         };
         
-        jQuery('input[data-mask]').each(function () {
+        this.elements.$form.find('input[data-mask]').each(function () {
             const $input = jQuery(this);
             const maskKey = jQuery(this)[0].dataset.mask;
             const timemaskFormat = jQuery(this)[0].dataset.timemaskFormat;
