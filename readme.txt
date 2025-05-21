@@ -7,8 +7,8 @@ Requires PHP: 7.2
 Stable tag: 2.4.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Elementor tested up to: 3.28.3
-Elementor Pro tested up to: 3.28.2
+Elementor tested up to: 3.29.0
+Elementor Pro tested up to: 3.29.0
 
 Add input mask to Elementor form widget fields - phone number masking, date mask, credit card mask and more form masks.
 

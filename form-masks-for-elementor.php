@@ -12,8 +12,8 @@
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  * Requires Plugins: elementor
- * Elementor tested up to: 3.28.3
- * Elementor Pro tested up to: 3.28.2
+ * Elementor tested up to: 3.29.0
+ * Elementor Pro tested up to: 3.29.0
  */
 
  if ( ! defined( 'ABSPATH' ) ) {
