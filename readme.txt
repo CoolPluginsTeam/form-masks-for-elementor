@@ -143,7 +143,7 @@ We will continue to expand the list of supported input masks in future updates b
 == Changelog ==
 
 ### Version 2.4.5 | 28/05/2025
-- Fixed: - Invalid form value submission issue by improving input validation.
+- Fixed: - Improved input validation to prevent invalid form submissions.
 - **Tested upto:** Elementor Version 3.29.0 and Elementor Pro Version 3.29.0.
 
 ### Version 2.4.4 | 01/04/2025
