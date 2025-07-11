@@ -146,6 +146,14 @@
     width: 100%;
   }
 
+  .cfk-p-info{
+    align-items: flex-start;
+  }
+
+  .cfk-p-name p {
+    font-size: 12px;
+}
+
   
 
 }

@@ -305,7 +305,7 @@ class CFEF_Admin {
         if (isset($_GET['page']) &&(strpos($_GET['page'], 'cool-formkit') !== false || strpos($_GET['page'], 'cfkef-entries') !== false)){
             wp_enqueue_style('cfkef-admin-style', FME_PLUGIN_URL . 'assets/css/admin-style.css', array(), $this->version, 'all');
 
-            wp_enqueue_style('cfkef-temp-style', FME_PLUGIN_URL . 'assets/css/temp.css', array(), '1.0', 'all');
+            wp_enqueue_style('cfkef-temp-style', FME_PLUGIN_URL . 'assets/css/dashboard-style.css', array(), '1.0', 'all');
 
             wp_enqueue_style('dashicons');
             wp_enqueue_script('cfkef-admin-script', FME_PLUGIN_URL . 'assets/js/admin-script.js', array('jquery'), $this->version, true);

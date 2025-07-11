@@ -26,10 +26,11 @@ class FME_Elementor_Page {
 
     private function load_dependencies() {
 
-        if (!is_plugin_active( 'conditional-fields-for-elementor-form/class-conditional-fields-for-elementor-form.php' )) {
+        if (!is_plugin_active( 'conditional-fields-for-elementor-form/class-conditional-fields-for-elementor-form.php' ) && !is_plugin_active( 'mask-form-elementor/index.php' )) {
 
-        require_once FME_PLUGIN_PATH . 'admin/class-cfef-admin.php';
-        $plugin_admin = CFEF_Admin::get_instance($this->get_plugin_name(), $this->get_version());
+            
+            require_once FME_PLUGIN_PATH . 'admin/class-cfef-admin.php';
+            $plugin_admin = CFEF_Admin::get_instance($this->get_plugin_name(), $this->get_version());
 
         }
 

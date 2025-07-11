@@ -782,7 +782,7 @@ $input_form_mask_features = array(
                                     <img src="<?php echo FME_PLUGIN_URL . 'assets/images/form-input-mask-icon.gif'; ?>">
                                 </picture>
                                 <div class="cfk-p-name">
-                                    <p>Input Mask Elementor Form Fields</p>
+                                    <p>Add input mask for form fields to enhance user input accuracy.</p>
                                     <div class="cfk-buttons">
                                         <a target="_blank" class="button button-secondary" href="https://coolplugins.net/add-input-masks-elementor-form/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=blog&utm_content=setting-page-ccfef-docs">
                                             Documentation
