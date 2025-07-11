@@ -27,6 +27,10 @@ define( 'FME_PHP_MINIMUM_VERSION', '7.4' );
 define( 'FME_WP_MINIMUM_VERSION', '5.5' );
 define( 'FME_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'FME_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'FME_FEEDBACK_URL', 'http://ravi.com/' );
+
+
+
 
 register_activation_hook( __FILE__, array( 'Form_Masks_For_Elementor', 'fme_activate' ) );
 register_deactivation_hook( __FILE__, array( 'Form_Masks_For_Elementor', 'fme_deactivate' ) );
@@ -50,8 +54,25 @@ class Form_Masks_For_Elementor {
             add_action( 'init', array( $this, 'text_domain_path_set' ) );
 			add_action( 'activated_plugin', array( $this, 'fme_plugin_redirection' ) );
 			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'fme_pro_plugin_demo_link' ) );
+
+			add_action( 'plugins_loaded',array($this,'plugin_loads'));
+
+            $this->includes();
         }
     }
+
+    public function plugin_loads(){
+
+		if(!class_exists('CPFM_Feedback_Notice')){
+			require_once FME_PLUGIN_PATH . 'admin/feedback/cpfm-common-notice.php';
+		}
+	}
+
+    private function includes() {
+
+		require_once FME_PLUGIN_PATH . 'admin/feedback/cron/fme-class-cron.php';
+		
+	}
 
     /**
      * Singleton instance.
@@ -114,12 +135,22 @@ class Form_Masks_For_Elementor {
      * Initialize the plugin.
      */
     private function initialize_plugin() {
-        require_once FME_PLUGIN_PATH . 'includes/class-fme-plugin.php';
-        FME\Includes\FME_Plugin::instance();
+
+        if(get_option('form_input_mask', true)){
+
+            require_once FME_PLUGIN_PATH . 'includes/class-fme-plugin.php';
+            FME\Includes\FME_Plugin::instance();
+        }
+
 
         if(!is_plugin_active( 'extensions-for-elementor-form/extensions-for-elementor-form.php' )){
-            require_once FME_PLUGIN_PATH . '/includes/class-fme-elementor-page.php';
-            new FME_Elementor_Page();
+
+
+                require_once FME_PLUGIN_PATH . '/includes/class-fme-elementor-page.php';
+                new FME_Elementor_Page();
+                
+
+
         }
 
 		if ( is_admin() ) {
@@ -159,9 +190,34 @@ class Form_Masks_For_Elementor {
 		update_option( 'fme-v', FME_VERSION );
 		update_option( 'fme-type', 'FREE' );
 		update_option( 'fme-installDate', gmdate( 'Y-m-d h:i:s' ) );
+
+
+        if(!get_option( 'fme-install-date' ) ) {
+				add_option( 'fme-install-date', gmdate('Y-m-d h:i:s') );
+        	}
+
+
+			$settings       = get_option('fme_usage_share_data');
+
+			
+			if (!empty($settings) || $settings === 'on'){
+				
+				static::fme_cron_job_init();
+			}
 	}
 
+    public static function fme_cron_job_init()
+		{
+			if (!wp_next_scheduled('fme_extra_data_update')) {
+				wp_schedule_event(time(), 'every_30_days', 'fme_extra_data_update');
+			}
+		}
+
 	public static function fme_deactivate(){
+
+        if (wp_next_scheduled('fme_extra_data_update')) {
+            	wp_clear_scheduled_hook('fme_extra_data_update');
+        }
 	}
 }
 

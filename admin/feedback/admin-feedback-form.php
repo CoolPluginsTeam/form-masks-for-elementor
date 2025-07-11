@@ -157,7 +157,10 @@ class cfef_feedback {
 			$sanitized_message = empty( $_POST['message'] ) || sanitize_text_field( $_POST['message'] ) == '' ? 'N/A' : sanitize_text_field( $_POST['message'] );
 			$admin_email       = sanitize_email( get_option( 'admin_email' ) );
 			$site_url          = esc_url( site_url() );
-			$feedback_url      = esc_url( 'http://feedback.coolplugins.net/wp-json/coolplugins-feedback/v1/feedback' );
+			$feedback_url      = FME_FEEDBACK_URL.'wp-json/coolplugins-feedback/v1/site';
+			$install_date 		= get_option('fme-install-date');
+			$unique_key     	= '14';
+			$site_id        	= $site_url . '-' . $install_date . '-' . $unique_key;
 			$response          = wp_remote_post(
 				$feedback_url,
 				array(
@@ -169,6 +172,8 @@ class cfef_feedback {
 						'review'         => $sanitized_message,
 						'email'          => $admin_email,
 						'domain'         => $site_url,
+						'site_id'    	 => md5($site_id),
+
 					),
 				)
 			);
