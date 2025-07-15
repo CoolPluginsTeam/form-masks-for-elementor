@@ -143,6 +143,43 @@ $cdn_image = get_option('cfefp_cdn_image', '');
             </div>
             <div class="wrapper-body">
 
+            <p class="cool-formkit-description highlight-description"><?php esc_html_e('Configure the settings for conditional fields\' action after submit.', 'cool-formkit'); ?></p>
+                <table class="form-table cool-formkit-table">
+                    <tr>
+                        <th scope="row" class="cool-formkit-table-th">
+                            <label for="cfefp_email_conditionally" class="cool-formkit-label"><?php esc_html_e('Number of Conditional Emails', 'cool-formkit'); ?>
+                                <span class="cfkef-pro-feature">
+                                    <a href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboarsd#pricing" target="_blank">
+                                    (Pro)
+                                    </a>
+                                </span>
+                            </label>
+                        </th>
+                        <td class="cool-formkit-table-td">
+                            <input type="number" id="cfefp_email_conditionally" name="cfefp_email_conditionally" min="4" value="<?php echo esc_attr($email_conditionally); ?>" class="regular-text cool-formkit-input" 
+                            disabled="disabled"/>
+                            <p class="description cool-formkit-description"><?php esc_html_e('Set the no. of conditional emails for the Elementor form.', 'cool-formkit'); ?></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="cool-formkit-table-th">
+                            <label for="cfefp_redirect_conditionally" class="cool-formkit-label"><?php esc_html_e('Number of Conditional Redirections', 'cool-formkit'); ?>
+                                <span class="cfkef-pro-feature">
+                                    <a href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboarsd#pricing" target="_blank">
+                                    (Pro)
+                                    </a>
+                                </span>
+                            </label>
+                        </th>
+                        <td class="cool-formkit-table-td">
+                            <input type="number" id="cfefp_redirect_conditionally" name="cfefp_redirect_conditionally" min="4" value="<?php echo esc_attr($redirect_conditionally); ?>" class="regular-text cool-formkit-input" disabled="disabled"/>
+                            <p class="description cool-formkit-description"><?php esc_html_e('Set the no. of conditional redirects for the Elementor form.', 'cool-formkit'); ?></p>
+                        </td>
+                    </tr>
+                </table>
+
+                <hr>
+
                 <p class="cool-formkit-description highlight-description"><?php esc_html_e('Configure the settings for country code and country field.', 'cool-formkit'); ?></p>
                 <?php wp_nonce_field('cool_formkit_save_api_keys', 'cool_formkit_nonce'); ?>
                 <table class="form-table cool-formkit-table">
@@ -221,41 +258,8 @@ $cdn_image = get_option('cfefp_cdn_image', '');
                         </td>
                     </tr>
                 </table>
-                <hr>
-                <p class="cool-formkit-description highlight-description"><?php esc_html_e('Configure the settings for conditional fields\' action after submit.', 'cool-formkit'); ?></p>
-                <table class="form-table cool-formkit-table">
-                    <tr>
-                        <th scope="row" class="cool-formkit-table-th">
-                            <label for="cfefp_email_conditionally" class="cool-formkit-label"><?php esc_html_e('Number of Conditional Emails', 'cool-formkit'); ?>
-                                <span class="cfkef-pro-feature">
-                                    <a href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboarsd#pricing" target="_blank">
-                                    (Pro)
-                                    </a>
-                                </span>
-                            </label>
-                        </th>
-                        <td class="cool-formkit-table-td">
-                            <input type="number" id="cfefp_email_conditionally" name="cfefp_email_conditionally" min="4" value="<?php echo esc_attr($email_conditionally); ?>" class="regular-text cool-formkit-input" 
-                            disabled="disabled"/>
-                            <p class="description cool-formkit-description"><?php esc_html_e('Set the no. of conditional emails for the Elementor form.', 'cool-formkit'); ?></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="cool-formkit-table-th">
-                            <label for="cfefp_redirect_conditionally" class="cool-formkit-label"><?php esc_html_e('Number of Conditional Redirections', 'cool-formkit'); ?>
-                                <span class="cfkef-pro-feature">
-                                    <a href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboarsd#pricing" target="_blank">
-                                    (Pro)
-                                    </a>
-                                </span>
-                            </label>
-                        </th>
-                        <td class="cool-formkit-table-td">
-                            <input type="number" id="cfefp_redirect_conditionally" name="cfefp_redirect_conditionally" min="4" value="<?php echo esc_attr($redirect_conditionally); ?>" class="regular-text cool-formkit-input" disabled="disabled"/>
-                            <p class="description cool-formkit-description"><?php esc_html_e('Set the no. of conditional redirects for the Elementor form.', 'cool-formkit'); ?></p>
-                        </td>
-                    </tr>
-                </table>
+                
+                
                 <hr>
                 <h3><?php esc_html_e('Cloudflare Turnstile Settings', 'cool-formkit'); ?></h3>
                 <p class="description cool-formkit-description"><?php _e('You can get your site key and secret key from here: <a href="https://www.cloudflare.com/en-au/application-services/products/turnstile/" target="_blank">https://www.cloudflare.com/en-au/application-services/products/turnstile/</a>', 'cool-formkit'); ?></p>

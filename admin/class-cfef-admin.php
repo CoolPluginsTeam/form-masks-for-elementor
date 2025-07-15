@@ -278,6 +278,16 @@ class CFEF_Admin {
                 update_option('fme_plugin_initialized', true);
             
         }
+
+        if (!get_option('mfe_plugin_initialized')) {
+            // Get current enabled elements or empty array
+
+                update_option( 'input_mask', true );
+            
+                // Set initialization flag to avoid repeating
+                update_option('mfe_plugin_initialized', true);
+            
+        }
     }
 
     /**
