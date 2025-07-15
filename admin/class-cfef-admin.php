@@ -261,6 +261,14 @@ class CFEF_Admin {
 
         register_setting( 'cfkef_form_elements_group', 'cfkef_enable_elementor_pro_form' );
 
+        if (!get_option('ccfef_plugin_initialized')) {
+            // Get current enabled elements or empty array
+                update_option( 'country_code', true );
+            
+            // Set initialization flag to avoid repeating
+            update_option('ccfef_plugin_initialized', true);
+        }
+
         if (!get_option('fme_plugin_initialized')) {
             // Get current enabled elements or empty array
 
