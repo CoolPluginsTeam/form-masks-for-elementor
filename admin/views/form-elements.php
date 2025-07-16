@@ -1069,7 +1069,7 @@ $input_form_mask_features = array(
 
                             <div class="cfkef-save-controls">
 
-                                <a target="_blank" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php $first_plugin ?>&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard" class="button">Get Pro</a>
+                                <a target="_blank" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin ?>&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard" class="button">Get Pro</a>
                             </div>
 
                         </div>
