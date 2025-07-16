@@ -627,7 +627,6 @@ $input_form_mask_features = array(
                                 <?php foreach ($country_field_features as $key => $element): ?>
 
 
-
                                     <?php if (!empty($element['pro'])): ?>
 
                                         <div class="cfkef-form-element-card">
@@ -682,7 +681,7 @@ $input_form_mask_features = array(
                                             data-init="<?php echo esc_attr($data_init); ?>"
                                             <?php endif; ?>
                                             <?php endif; ?>
-                                            title="<?php echo !$is_country_field_active ? 'Requires Country Field Plugin plugin to be activated' : ''; ?>">
+                                            title="<?php echo !$is_country_field_active ? 'Requires Conditional plugin to be activated' : ''; ?>">
                                             <div class="cfkef-form-element-info">
                                                 <img src="<?php echo $element['icon'] ?>" alt="Color Field">
                                                 <h4>
@@ -708,26 +707,22 @@ $input_form_mask_features = array(
                                                 </div>
                                             </div>
 
-
                                             <label class="cfkef-toggle-switch" style="<?php echo !$is_country_field_active ? 'opacity: 0.2; ' : ''; ?>">
-                                                <input type="checkbox" name="cfkef_enabled_elements[]" value="<?php echo esc_attr($key); ?>" <?php checked(get_option('country_code')); ?> class="cfkef-element-toggle"
-                                                    <?php disabled(!empty($element['pro'])); ?>>
+                                                <input type="checkbox" name="<?php echo esc_attr($key); ?>" value="1" <?php checked(get_option('country_code'));
+                                                                                                                        ?> class="cfkef-element-toggle"
+                                                    <?php disabled(!$is_country_field_active); ?>>
                                                 <?php if (!empty($element['pro'])): ?>
-                                                    <a href="<?php echo $element['demo'] ?>" target="_blank">
+                                                    <a href="<?php echo $element['how_to'] ?>" target="_blank">
                                                         <span class="cfkef-slider round"></span>
                                                     </a>
                                                 <?php else: ?>
                                                     <span class="cfkef-slider round"></span>
                                                 <?php endif; ?>
 
-                                                <?php if (!$is_country_field_active): ?>
-                                                    <div class="cfkef-tooltip"><?php esc_html_e('Requires Country Field plugin to be activated', 'cool-formkit'); ?></div>
-                                                <?php endif; ?>
-
                                             </label>
-
-                                            
-                                            
+                                            <?php if (!$is_country_field_active): ?>
+                                                <div class="cfkef-tooltip"><?php esc_html_e('Requires Conditional Field plugin to be activated', 'cool-formkit'); ?></div>
+                                            <?php endif; ?>
                                         </div>
 
                                     <?php endif; ?>
@@ -827,7 +822,7 @@ $input_form_mask_features = array(
                                                     </div>
                                                 </div>
                                                 <label class="cfkef-toggle-switch" >
-                                                    <input type="checkbox" name="cfkef_enabled_elements[]" value="<?php echo esc_attr($key); ?>" <?php checked(in_array($key, $enabled_elements)); ?> class="cfkef-element-toggle"
+                                                    <input type="checkbox" name="<?php echo esc_attr($key); ?>" value="<?php echo esc_attr($key); ?>" <?php checked(in_array($key, $enabled_elements)); ?> class="cfkef-element-toggle"
                                                         <?php disabled(!empty($element['pro'])); ?>>
                                                     <?php if (!empty($element['pro'])): ?>
                                                         <a href="<?php echo $element['how_to'] ?>" target="_blank">
@@ -1097,13 +1092,7 @@ $input_form_mask_features = array(
                                                 <span class="cfkef-label-popular"><a href="<?php echo $element['how_to'] ?>" target="_blank"><?php esc_html_e('Pro', 'cool-formkit'); ?></a></span>
                                             <?php endif; ?>
 
-                                            <?php if (in_array($key, $popular_elements)): ?>
-                                                <span class="cfkef-label-popular">Popular</span>
-                                            <?php endif; ?>
-
-                                            <?php if (in_array($key, $updated_elements)): ?>
-                                                <span class="cfkef-label-updated">Updated</span>
-                                            <?php endif; ?>
+                                            
                                         </h4>
                                         <div>
                                             <a href="<?php echo $element['demo'] ?>" title="Documentation" target="_blank" rel="noreferrer">

@@ -84,6 +84,8 @@ function buttonShakeEffectHandler() {
 		const input1 = wrapper.querySelector('input[name="condtional_logic"]');
 		const input2 = wrapper.querySelector('input[name="country_code"]');
 		const input3 = wrapper.querySelector('input[name="form_input_mask"]');
+		const input4 = wrapper.querySelector('input[name="input_mask"]');
+
 
 
 
@@ -123,6 +125,14 @@ function buttonShakeEffectHandler() {
 					if(input3.checked || !input3.checked){
 
 						jQuery('input[name="form_input_mask"]').parent().parent().parent().parent().parent().find(".button-primary").addClass('shake-effect');
+					}
+				}
+
+				else if (input4 && input.name === 'input_mask') {
+
+					if(input4.checked || !input4.checked){
+
+						jQuery('input[name="input_mask"]').parent().parent().parent().parent().parent().find(".button-primary").addClass('shake-effect');
 					}
 				}
 

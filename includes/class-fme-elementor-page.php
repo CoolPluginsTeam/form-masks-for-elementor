@@ -141,7 +141,7 @@ class FME_Elementor_Page {
 
     private function load_dependencies() {
 
-        if (!is_plugin_active( 'conditional-fields-for-elementor-form/class-conditional-fields-for-elementor-form.php' ) && !is_plugin_active( 'mask-form-elementor/index.php' )) {
+        if (!is_plugin_active( 'conditional-fields-for-elementor-form/class-conditional-fields-for-elementor-form.php' ) && !is_plugin_active( 'mask-form-elementor/index.php') && !is_plugin_active( 'conditional-fields-for-elementor-form-pro/class-conditional-fields-for-elementor-form-pro.php')) {
 
             
             require_once FME_PLUGIN_PATH . 'admin/class-cfef-admin.php';
