@@ -88,6 +88,10 @@ This plugin is developed and maintained by **Cool Plugins**, a team of expert Wo
 
 * Automatically translate WordPress plugin and theme strings with a single click.
 
+🔁 **[Loop Grid Extender for Elementor Pro](https://wordpress.org/plugins/loop-grid-extender-for-elementor-pro/)**
+
+* Enhance Elementor Pro's Loop Grid widget by displaying ACF Repeater Fields inside loop templates.
+
 🚀 **[More Plugins by Cool Plugins](https://coolplugins.net/products/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=all-plugins&utm_content=more-plugins)**
 
 **DISCLAIMER:** This plugin is not affiliated with or developed by the official Elementor team. Some of the links in this content may be affiliate links, meaning we may earn a commission at no extra cost to you if you make a purchase through these links.
