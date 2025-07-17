@@ -217,11 +217,9 @@ function handleTooltipButtonAction(){
 								security: cfkef_plugin_vars.nonce
 							},
 							success: function (res) {
-								if (res.success) {
+								if (res) {
 									window.location.reload();
-								} else {
-									alert('Activation error: ' + res.data?.message);
-								}
+								} 
 							},
 							error: function () {
 								alert('Activation failed.');
