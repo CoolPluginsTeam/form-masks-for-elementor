@@ -386,7 +386,7 @@ $input_form_mask_features = array(
                                 } else {
 
                                     echo '<a target="_blank" href="' . esc_url(
-                                        ' https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=' . urlencode($first_plugin) . '&utm_medium=inside&utm_campaign=docs&utm_content=plugins-dashboard'
+                                        ' https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=' . urlencode($first_plugin) . '&utm_medium=inside&utm_campaign=docs&utm_content=plugins-dashboard#pricing'
                                     ) . '" class="button">' . esc_html__('Get Pro', 'cfef') . '</a>';
                                 }
                                 ?>
@@ -593,7 +593,7 @@ $input_form_mask_features = array(
                                 } else {
 
                                     echo '<a target="_blank" href="' . esc_url(
-                                        'https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=' . urlencode($first_plugin) . '&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'
+                                        'https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=' . urlencode($first_plugin) . '&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard#pricing'
                                     ) . '" class="button">' . esc_html__('Get Pro', 'cfef') . '</a>';
                                 }
                                 ?>
@@ -765,7 +765,7 @@ $input_form_mask_features = array(
                                 <div class="cfkef-save-controls">
 
                                         <a target="_blank" href="
-                                            https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin?>&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard" class="button">Get Pro</a>
+                                            https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin?>&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard#pricing" class="button">Get Pro</a>
                                     
                                 </div>
                             </div>
@@ -909,7 +909,7 @@ $input_form_mask_features = array(
                                     } else {
 
                                         echo '<a target="_blank" href="' . esc_url(
-                                            'https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=' . urlencode($first_plugin) . '&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'
+                                            'https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=' . urlencode($first_plugin) . '&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard#pricing'
                                         ) . '" class="button">' . esc_html__('Get Pro', 'cfef') . '</a>';
                                     }
                                     ?>
@@ -1070,7 +1070,7 @@ $input_form_mask_features = array(
 
                             <div class="cfkef-save-controls">
 
-                                <a target="_blank" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin ?>&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard" class="button">Get Pro</a>
+                                <a target="_blank" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin ?>&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard#pricing" class="button">Get Pro</a>
                             </div>
 
                         </div>
