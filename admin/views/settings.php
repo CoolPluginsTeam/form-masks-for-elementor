@@ -371,6 +371,9 @@ $cdn_image = get_option('cfefp_cdn_image', '');
                                             <div id="termsBox" style="display: none; padding-left: 20px; margin-top: 10px; font-size: 12px; color: #999;">
                                                 <p>
                                                     <?php esc_html_e('Opt in to receive email updates about security improvements, new features, helpful tutorials, and occasional special offers. We\'ll collect:', 'ccpw'); ?>
+                                                    <a href="https://my.coolplugins.net/terms/usage-tracking/" target="_blank">Click Here</a>
+
+
                                                 </p>
                                                 <ul style="list-style-type: auto;">
                                                     <li><?php esc_html_e('Your website home URL and WordPress admin email.', 'ccpw'); ?></li>
