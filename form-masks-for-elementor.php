@@ -27,7 +27,7 @@ define( 'FME_PHP_MINIMUM_VERSION', '7.4' );
 define( 'FME_WP_MINIMUM_VERSION', '5.5' );
 define( 'FME_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'FME_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'FME_FEEDBACK_URL', 'http://ravi.com/' );
+define( 'FME_FEEDBACK_URL', 'https://feedback.coolplugins.net/' );
 
 
 

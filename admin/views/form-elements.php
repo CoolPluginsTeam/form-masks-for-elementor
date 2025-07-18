@@ -210,7 +210,7 @@ $condition_plugin_features = array(
     'multicondtion_or_logic' => array(
         'label' => __('Multiple OR Conditions', 'cool-formkit'),
         'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=plugins-dashboard#pricing'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/plugin/conditional-fields-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard/#conditional-redirect'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/and-or-conditional-logic-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard/#conditional-redirect'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/or-condition.svg',
         'pro' => true
 
@@ -220,7 +220,7 @@ $condition_plugin_features = array(
     'more_operators' => array(
         'label' => __('More Operators', 'cool-formkit'),
         'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=plugins-dashboard#pricing'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/plugin/conditional-fields-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard/#conditional-redirect'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/elementor-form-conditional-logic-operators/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard/#conditional-redirect'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/more-opreators.svg',
         'pro' => true
 
@@ -264,7 +264,7 @@ $country_field_features = array(
 
 $form_mask_features = array(
     'form_input_mask' => array(
-        'label' => __('Field Maksing', 'cool-formkit'),
+        'label' => __('Field Masking', 'cool-formkit'),
         'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/input-masks-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=plugins-dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/input-masks-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard/#view-demo-forms'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/input-mask-min.svg'
@@ -1000,7 +1000,7 @@ $input_form_mask_features = array(
                                                 data-init="<?php echo esc_attr($data_init); ?>"
                                                 <?php endif; ?>
                                                 <?php endif; ?>
-                                                title="<?php echo !$is_form_mask_active ? 'Requires Form Maks plugin to be activated' : ''; ?>">
+                                                title="<?php echo !$is_form_mask_active ? 'Requires Form Mask plugin to be activated' : ''; ?>">
                                                 <div class="cfkef-form-element-info">
                                                     <img src="<?php echo $element['icon'] ?>" alt="Color Field">
                                                     <h4>
@@ -1129,9 +1129,9 @@ $input_form_mask_features = array(
                         <span>Submit Review ★★★★★</span>
                     </a>
                     <div class="cfk-box">
-                        <h3>Links</h3>
+                        <h3>Important Links</h3>
                         <div class="cfk-buttons">
-                            <a href="https://my.coolplugins.net/account/support-tickets/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=support&utm_content=important-links" class="button button-secondary" target="_blank">Contact Support</a>
+                            <a href="https://coolplugins.net/support/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=support&utm_content=important-links" class="button button-secondary" target="_blank">Contact Support</a>
                             <a href="https://coolplugins.net/about-us/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=about-us&utm_content=important-links" class="button" target="_blank">Meet Cool Plugins Developers</a>
                             <a href="https://x.com/cool_plugins" class="button" target="_blank">Follow On X</a>
                         </div>

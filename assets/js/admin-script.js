@@ -153,7 +153,9 @@ function handleElementCardTooltip() {
 			// Toggle visibility
 			if (tooltip.style.display === 'block') {
 				tooltip.style.display = 'none';
-				tooltip.innerHTML = 'Requires Hello Plus plugin to be activated'; // Reset message
+				let plugin_name = tooltip.textContent.replace('Activate Plugin', '');
+
+				tooltip.innerHTML = plugin_name; // Reset message
 			} else {
 				tooltip.style.display = 'block';
 
@@ -180,7 +182,8 @@ function handleElementCardTooltip() {
 		if (!e.target.closest('.cfkef-form-element-card')) {
 			document.querySelectorAll('.cfkef-tooltip').forEach(tip => {
 				tip.style.display = 'none';
-				tip.innerHTML = 'Requires Conditional Field plugin to be activated';
+				tip_message  = tip.textContent.replace('Activate Plugin', '');
+				tip.innerHTML = tip_message;
 			});
 		}
 	});
