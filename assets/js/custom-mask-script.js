@@ -727,74 +727,69 @@
     // ----------------- Form Submit -----------------
 
     $(document).on("click", ".elementor-field-type-submit", function (e) {
-      var $submitBtn = $(this);
-      var $form = $submitBtn.closest("form");
+        var $submitBtn = $(this);
+        var $form = $submitBtn.closest("form");
 
-      // Prevent double-clicks
-      if ($submitBtn.data("clicked")) {
-        e.preventDefault();
-        return;
-      }
-      $submitBtn.data("clicked", true); // Mark as clicked
+        // Prevent double-clicks
+        if ($submitBtn.data("clicked")) {
+          e.preventDefault();
+          return;
+        }
+        $submitBtn.data("clicked", true); // Mark as clicked
 
-      // Trigger blur on inputs to ensure validation runs
-      $form.find("input").trigger("blur");
+        // Trigger blur on inputs to ensure validation runs
+        $form.find("input").trigger("blur");
 
-      $form[0].classList.add("elementor-form-waiting");
+        // Add Elementor waiting class
+        $form[0].classList.add("elementor-form-waiting");
 
-      var $errors = $form.find(".mask-error").filter(function () {
-        return $(this).text().trim() !== "";
-      });
+        // Wait for mask errors or blur logic to complete
+        setTimeout(() => {
+          let hasVisibleMaskError = false;
 
-      setTimeout(() => {
-        let hasVisibleMaskError = false;
+          // Check for visible mask error messages
+          const $errors = $form.find(".mask-error").filter(function () {
+            return $(this).text().trim() !== "" && $(this).is(":visible");
+          });
 
-        // Check for mask errors first
-        $errors.each(function () {
-          if ($(this).is(":visible")) {
+          if ($errors.length > 0) {
             hasVisibleMaskError = true;
-            $("html, body").animate(
-              {
-                scrollTop: $(this).offset().top - 200,
-              },
-              300
-            );
-          }
-        });
-
-        if (hasVisibleMaskError) {
-          $form[0].classList.remove("elementor-form-waiting");
-          $submitBtn.data("clicked", false);
-          e.preventDefault();
-          return;
-        }
-
-        // Check HTML5 validity (e.g., invalid email)
-        if (!$form[0].checkValidity()) {
-          // Scroll to first invalid input
-          const $firstInvalid = $form.find(":invalid").first();
-          if ($firstInvalid.length) {
-            $("html, body").animate(
-              {
-                scrollTop: $firstInvalid.offset().top - 200,
-              },
-              300
-            );
-            $firstInvalid.focus();
+            const $firstError = $errors.first();
+            $("html, body").animate({
+              scrollTop: $firstError.offset().top - 200
+            }, 300);
           }
 
-          $form[0].classList.remove("elementor-form-waiting");
-          $submitBtn.data("clicked", false);
-          e.preventDefault();
-          return;
-        }
+          // ✅ Check for empty required masked fields
+          const $emptyRequiredMasked = $form.find("input[required]").filter(function () {
+            const val = $(this).val().trim();
+            const isVisible = $(this).is(":visible");
+            return isVisible && (val === "" || /^[\s_\-\(\)\.:/]+$/.test(val));
+          });
 
-        // All validations passed
-        $form[0].classList.remove("elementor-form-waiting");
-        $form[0].requestSubmit(); // Safe native submission
-        $submitBtn.data("clicked", false);
-      }, 500);
-    });
+          if ($emptyRequiredMasked.length > 0) {
+            hasVisibleMaskError = true;
+            const $firstEmpty = $emptyRequiredMasked.first();
+            $("html, body").animate({
+              scrollTop: $firstEmpty.offset().top - 200
+            }, 300);
+            $firstEmpty.focus();
+          }
+
+          // ❌ Validation failed
+          if (hasVisibleMaskError || !$form[0].checkValidity()) {
+            $form[0].classList.remove("elementor-form-waiting");
+            $submitBtn.data("clicked", false);
+            e.preventDefault();
+            return;
+          }
+
+          // ✅ All good — submit the form
+          $form[0].classList.remove("elementor-form-waiting");
+          $form[0].requestSubmit();
+          $submitBtn.data("clicked", false);
+        }, 500);
+      });
 
     
   });
