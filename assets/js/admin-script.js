@@ -171,7 +171,13 @@ function handleElementCardTooltip() {
 					if(el.classList.contains('need-install') && el.dataset.slug === 'elementor-pro'){
 						extraCss = 'redirect-elementor-page'
 					}
-					tooltip.innerHTML += `<button class="cfkef-install-plugin-btn ${extraCss}" data-slug="${slug}" data-init="${init}">Install Plugin</button>`;
+					let tooltip_text = tooltip.innerHTML;
+
+					tooltip_text = tooltip_text.replace('Install Plugin', '');
+
+					tooltip.innerHTML = "";
+
+					tooltip.innerHTML = tooltip_text + `<button class="cfkef-install-plugin-btn ${extraCss}" data-slug="${slug}" data-init="${init}">Install Plugin</button>`;
 				}
 			}
 		});

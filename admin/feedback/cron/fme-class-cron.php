@@ -114,13 +114,13 @@ if (!class_exists('fme_cronjob')) {
                   $server_info        = $extra_data_details['server_info'];
                   $extra_details      = $extra_data_details['extra_details'];
                   $site_url           = get_site_url();
-                  $install_date       = get_option('cfef-install-date');
+                  $install_date       = get_option('fme-install-date');
                   $uni_id      		  = '14';
 			      $site_id            = $site_url . '-' . $install_date . '-' .$uni_id;
                  
-                  $initial_version = get_option('cfef_initial_save_version');
+                  $initial_version = get_option('fme-v');
                   $initial_version = is_string($initial_version) ? sanitize_text_field($initial_version) : 'N/A';
-                  $plugin_version = defined('CFEF_VERSION') ? FME_VERSION : 'N/A';
+                  $plugin_version = defined('FME_VERSION') ? FME_VERSION : 'N/A';
                   $admin_email = sanitize_email(get_option('admin_email') ?: 'N/A');
               
                   $post_data = array(

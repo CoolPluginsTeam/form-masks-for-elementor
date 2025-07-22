@@ -59,17 +59,120 @@ function cfef_handle_unchecked_checkbox() {
 
             // If the checkbox is unchecked (value is empty, false, or null)
             if (empty($options)) {
+
+
+                // form mask
+
                 wp_clear_scheduled_hook('fme_extra_data_update');
+
+
+                // country field
+
+                if(method_exists('ccfef_cronjob', 'ccfef_send_data')){
+
+                    wp_clear_scheduled_hook('ccfef_extra_data_update');
+                }
+
+
+                // conditional free
+
+                if(method_exists('cfef_cronjob', 'cfef_send_data')){
+                    wp_clear_scheduled_hook('cfef_extra_data_update');
+                }
+
+
+                // conditional pro
+
+                if(method_exists('cfefp_cronjob', 'cfefp_send_data')){
+
+                    wp_clear_scheduled_hook('cfefp_extra_data_update');
+                }
+
+
+                // input form mask
+
+                if(method_exists('Mask_Form_Elementor\mfe_cronjob', 'mfe_send_data')){
+
+                    wp_clear_scheduled_hook('mfe_extra_data_update');
+            
+                }
+
+
             }
 
             // If checkbox is checked (value is 'on' or any non-empty value)
             else {
+
+
+                // form mask
+
                 if (!wp_next_scheduled('fme_extra_data_update')) {
                     if (class_exists('fme_cronjob') && method_exists('fme_cronjob', 'fme_send_data')) {
                         fme_cronjob::fme_send_data();
                     }
                     wp_schedule_event(time(), 'every_30_days', 'fme_extra_data_update');
                 }
+
+
+                // input form mask
+
+                if(method_exists('Mask_Form_Elementor\mfe_cronjob', 'mfe_send_data')){
+
+                    if (!wp_next_scheduled('mfe_extra_data_update')) {
+                        
+                        Mask_Form_Elementor\mfe_cronjob::mfe_send_data();
+                        wp_schedule_event(time(), 'every_30_days', 'mfe_extra_data_update');
+                    }
+
+                }
+
+
+
+                // country code
+
+                if(method_exists('ccfef_cronjob', 'ccfef_send_data')){
+
+
+                    if (!wp_next_scheduled('ccfef_extra_data_update')) {
+                        
+                        CCFEF_cronjob::ccfef_send_data();
+                        
+                        wp_schedule_event(time(), 'every_30_days', 'ccfef_extra_data_update');
+                    }
+
+                }
+
+
+                // condition field pro
+
+                if(method_exists('cfefp_cronjob', 'cfefp_send_data')){
+
+                    
+                    if (!wp_next_scheduled('cfefp_extra_data_update')) {
+                        
+                        cfefp_cronjob::cfefp_send_data();
+                        
+                        wp_schedule_event(time(), 'every_30_days', 'cfefp_extra_data_update');
+                    }
+
+                }
+
+
+                // conditional fields free
+
+                if(method_exists('cfef_cronjob', 'cfef_send_data')){
+
+                    
+                    if (!wp_next_scheduled('cfef_extra_data_update')) {
+
+                        cfef_cronjob::cfef_send_data();
+                        wp_schedule_event(time(), 'every_30_days', 'cfef_extra_data_update');
+
+
+                    }
+
+                }
+
             }
         }
 }
