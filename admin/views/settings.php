@@ -51,7 +51,7 @@ function cfkef_sanitize_sql_input($input) {
 
 function cfef_handle_unchecked_checkbox() {
         $choice  = get_option('cpfm_opt_in_choice_cool_forms');
-        $options = get_option('fme_usage_share_data');
+        $options = get_option('cfef_usage_share_data');
 
 
 
@@ -200,9 +200,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     }else{
 
-    $fme_usage_share_data = isset($_POST['fme_usage_share_data']) ? sanitize_text_field($_POST['fme_usage_share_data']) : '';
+    $cfef_usage_share_data = isset($_POST['cfef_usage_share_data']) ? sanitize_text_field($_POST['cfef_usage_share_data']) : '';
 
-    update_option( "fme_usage_share_data",  $fme_usage_share_data);
+    update_option( "cfef_usage_share_data",  $cfef_usage_share_data);
 
 
     cfef_handle_unchecked_checkbox();
@@ -451,7 +451,7 @@ $cdn_image = get_option('cfefp_cdn_image', '');
                     <?php $cpfm_opt_in = get_option('cpfm_opt_in_choice_cool_forms','');
                                      if ($cpfm_opt_in) {
         
-                                      $check_option =  get_option( 'fme_usage_share_data','');
+                                      $check_option =  get_option( 'cfef_usage_share_data','');
                                     
                                     if($check_option == 'on'){
                                         $checked = 'checked';
@@ -463,10 +463,10 @@ $cdn_image = get_option('cfefp_cdn_image', '');
                                     
                                     <tr>
                                         <th scope="row" class="cool-formkit-table-th">
-                                            <label for="fme_usage_share_data" class="usage-share-data-label"><?php esc_html_e('Usage Share Data', 'cool-formkit'); ?></label>
+                                            <label for="cfef_usage_share_data" class="usage-share-data-label"><?php esc_html_e('Usage Share Data', 'cool-formkit'); ?></label>
                                         </th>
                                         <td class="cool-formkit-table-td usage-share-data">
-                                            <input type="checkbox" id="fme_usage_share_data" name="fme_usage_share_data" value="on" <?php echo $checked ?>  class="regular-text cool-formkit-input"  />
+                                            <input type="checkbox" id="cfef_usage_share_data" name="cfef_usage_share_data" value="on" <?php echo $checked ?>  class="regular-text cool-formkit-input"  />
                                             <div class="description cool-formkit-description">
                                             <?php esc_html_e('Help us make this plugin more compatible with your site by sharing non-sensitive site data.', 'ccpw'); ?>
                                             <a href="#" class="ccpw-see-terms">[<?php esc_html_e('See terms', 'ccpw'); ?>]</a>

@@ -43,7 +43,7 @@ if (!class_exists('fme_cronjob')) {
 
         function fme_cron_extra_data_autoupdater() {
 
-            $settings  = get_option('fme_usage_share_data');
+            $settings  = get_option('cfef_usage_share_data');
             
             if (!empty($settings) || $settings === 'on') {
                     fme_cronjob::fme_send_data();

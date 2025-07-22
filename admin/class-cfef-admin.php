@@ -73,43 +73,7 @@ class CFEF_Admin {
 
 
 
-        add_action('cpfm_register_notice', function () {
-            
-            if (!class_exists('\CPFM_Feedback_Notice') || !current_user_can('manage_options')) {
-                return;
-            }
-
-            $notice = [
-
-                'title' => __('Elementor Form Addons by Cool Plugins', 'cool-formkit-for-elementor-forms'),
-                'message' => __('Help us make this plugin more compatible with your site by sharing non-sensitive site data.', 'cool-plugins-feedback'),
-                'pages' => ['cool-formkit','cfkef-entries','cool-formkit&tab=recaptcha-settings'],
-                'always_show_on' => ['cool-formkit','cfkef-entries','cool-formkit&tab=recaptcha-settings'], // This enables auto-show
-                'plugin_name'=>'fme'
-            ];
-
-            \CPFM_Feedback_Notice::cpfm_register_notice('cool_forms', $notice);
-
-                if (!isset($GLOBALS['cool_plugins_feedback'])) {
-                    $GLOBALS['cool_plugins_feedback'] = [];
-                }
-                
-                $GLOBALS['cool_plugins_feedback']['cool_forms'][] = $notice;
-           
-            });
         
-        add_action('cpfm_after_opt_in_fme', function($category) {
-
-                
-
-                if ($category === 'cool_forms') {
-
-                    require_once FME_PLUGIN_PATH . 'admin/feedback/cron/fme-class-cron.php';
-
-                    fme_cronjob::fme_send_data();
-                    update_option( 'fme_usage_share_data','on' );   
-                } 
-        });
     }
     /**
      * Get the instance of this class.

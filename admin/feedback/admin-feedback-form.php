@@ -122,6 +122,53 @@ class cfef_feedback {
 		<?php
 	}
 
+	function cfef_get_user_info() {
+        global $wpdb;
+        // Server and WP environment details
+        $server_info = [
+            'server_software'        => isset($_SERVER['SERVER_SOFTWARE']) ? sanitize_text_field($_SERVER['SERVER_SOFTWARE']) : 'N/A',
+            'mysql_version'          => $wpdb ? sanitize_text_field($wpdb->get_var("SELECT VERSION()")) : 'N/A',
+            'php_version'            => sanitize_text_field(phpversion() ?: 'N/A'),
+            'wp_version'             => sanitize_text_field(get_bloginfo('version') ?: 'N/A'),
+            'wp_debug'               => (defined('WP_DEBUG') && WP_DEBUG) ? 'Enabled' : 'Disabled',
+            'wp_memory_limit'        => sanitize_text_field(ini_get('memory_limit') ?: 'N/A'),
+            'wp_max_upload_size'     => sanitize_text_field(ini_get('upload_max_filesize') ?: 'N/A'),
+            'wp_permalink_structure' => sanitize_text_field(get_option('permalink_structure') ?: 'Default'),
+            'wp_multisite'           => is_multisite() ? 'Enabled' : 'Disabled',
+            'wp_language'            => sanitize_text_field(get_option('WPLANG') ?: get_locale()),
+            'wp_prefix'              => isset($wpdb->prefix) ? sanitize_key($wpdb->prefix) : 'N/A',
+        ];
+        // Theme details
+        $theme = wp_get_theme();
+        $theme_data = [
+            'name'      => sanitize_text_field($theme->get('Name')),
+            'version'   => sanitize_text_field($theme->get('Version')),
+            'theme_uri' => esc_url($theme->get('ThemeURI')),
+        ];
+        // Ensure plugin functions are loaded
+        if ( ! function_exists('get_plugins') ) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+        // Active plugins details
+        $active_plugins = get_option('active_plugins', []);
+        $plugin_data = [];
+        foreach ( $active_plugins as $plugin_path ) {
+            $plugin_info = get_plugin_data(WP_PLUGIN_DIR . '/' . sanitize_text_field($plugin_path));
+            $plugin_data[] = [
+                'name'       => sanitize_text_field($plugin_info['Name']),
+                'version'    => sanitize_text_field($plugin_info['Version']),
+                'plugin_uri' => esc_url($plugin_info['PluginURI']),
+            ];
+        }
+        return [
+            'server_info'   => $server_info,
+            'extra_details' => [
+                'wp_theme'       => $theme_data,
+                'active_plugins' => $plugin_data,
+            ],
+        ];
+    }
+
 
 	function submit_deactivation_response() {
 		if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( $_POST['_wpnonce'] ), '_cool-plugins_deactivate_feedback_nonce' ) ) {
@@ -157,7 +204,7 @@ class cfef_feedback {
 			$sanitized_message = empty( $_POST['message'] ) || sanitize_text_field( $_POST['message'] ) == '' ? 'N/A' : sanitize_text_field( $_POST['message'] );
 			$admin_email       = sanitize_email( get_option( 'admin_email' ) );
 			$site_url          = esc_url( site_url() );
-			$feedback_url      = FME_FEEDBACK_URL.'wp-json/coolplugins-feedback/v1/site';
+			$feedback_url      = FME_FEEDBACK_URL.'wp-json/coolplugins-feedback/v1/feedback';
 			$install_date 		= get_option('fme-install-date');
 			$unique_key     	= '14';
 			$site_id        	= $site_url . '-' . $install_date . '-' . $unique_key;
@@ -166,6 +213,9 @@ class cfef_feedback {
 				array(
 					'timeout' => 30,
 					'body'    => array(
+						'server_info' => serialize($this->cfef_get_user_info()['server_info']),
+                        'extra_details' => serialize($this->cfef_get_user_info()['extra_details']),
+                        'plugin_initial'  => isset($plugin_initial) ? sanitize_text_field($plugin_initial) : 'N/A',
 						'plugin_version' => $this->plugin_version,
 						'plugin_name'    => $this->plugin_name,
 						'reason'         => $deativation_reason,
