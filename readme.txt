@@ -4,11 +4,11 @@ Tags: elementor form, mask, input masks, elementor, form builder
 Requires at least: 5.0
 Tested up to: 6.8.1
 Requires PHP: 7.2
-Stable tag: 2.4.5
+Stable tag: 2.5.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Elementor tested up to: 3.29.0
-Elementor Pro tested up to: 3.29.0
+Elementor tested up to: 3.30.3
+Elementor Pro tested up to: 3.30.0
 
 Add input mask to Elementor form widget fields - phone number masking, date mask, credit card mask and more form masks.
 
@@ -88,6 +88,10 @@ This plugin is developed and maintained by **Cool Plugins**, a team of expert Wo
 
 * Automatically translate WordPress plugin and theme strings with a single click.
 
+🔁 **[Loop Grid Extender for Elementor Pro](https://wordpress.org/plugins/loop-grid-extender-for-elementor-pro/)**
+
+* Enhance Elementor Pro's Loop Grid widget by displaying ACF Repeater Fields inside loop templates.
+
 🚀 **[More Plugins by Cool Plugins](https://coolplugins.net/products/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=all-plugins&utm_content=more-plugins)**
 
 **DISCLAIMER:** This plugin is not affiliated with or developed by the official Elementor team. Some of the links in this content may be affiliate links, meaning we may earn a commission at no extra cost to you if you make a purchase through these links.
@@ -141,6 +145,10 @@ We will continue to expand the list of supported input masks in future updates b
 — —————————————- —
 
 == Changelog ==
+
+### Version 2.5.0 | 24/07/2025
+- Updated: - Admin Dashboard enhancements.
+- **Tested upto:** Elementor Version 3.30.3 and Elementor Pro Version 3.30.0.
 
 ### Version 2.4.5 | 28/05/2025
 - Fixed: - Improved input validation to prevent invalid form submissions.

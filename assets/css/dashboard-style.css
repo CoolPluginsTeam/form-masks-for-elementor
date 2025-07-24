@@ -1,0 +1,181 @@
+
+.cfk-p-info .button {
+    padding: 4px 10px;
+    font-size: 12px;
+    line-height: 12px;
+    min-height: auto;
+}
+
+.cfk-plugins .cfkef-form-element-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  width: calc(50% - 10px);
+  box-shadow: 0px 2px 2px rgb(150 150 150 / 12%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+  gap: 10px;
+  min-height: 70px;
+}
+
+
+.cfkef-form-element-card h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: initial;
+}
+
+
+@media screen and (max-width: 1500px) {
+
+.cfkef-form-element-card h4 {
+  font-size: 10px;
+}
+
+}
+
+@media screen and (max-width: 1400px) {
+
+.cfk-plugins .cfkef-form-element-card{
+  flex-wrap: wrap;
+
+}
+
+.cfk-plugins .cfkef-form-element-card .cfkef-form-element-info{
+  margin-top: 10px;
+  width: 100%;
+}
+
+.cfk-p-name p {
+    font-size: 10px;
+}
+
+}
+
+
+@media screen and (max-width: 1200px) {
+
+  .cfk-plugins .cfkef-form-element-card{
+    width: 100%;
+  }
+
+  .cfk-plugins .cfkef-title-desc h2{
+    font-size: 12px;
+  }
+
+}
+
+@media screen and (max-width: 1000px) {
+
+  .cfk-p-name p {
+    font-size: 8px;
+}
+
+.cfk-box .wrapper-body{
+  padding: 10px;
+}
+
+.cfk-wrapper .button{
+  font-size: 10px;
+}
+
+}
+
+@media screen and (max-width: 850px) {
+
+  .cfk-header{
+    flex-direction: column;
+    align-items: flex-start;
+
+    height: auto !important;
+    
+  }
+
+  .cfkef-wrapper .nav-tab-wrapper{
+
+    margin-top: 50px;
+
+  }
+
+}
+
+@media screen and (max-width: 800px) {
+
+  .cfk-plugins{
+    flex-direction: column;
+  }
+
+  .cfk-plugins .cfk-left{
+    width: 100% !important;
+  }
+
+  .cfk-plugins .cfk-middle{
+    width: 100%;
+  }
+
+  .cfk-plugins .cfk-right{
+    width: 100%;
+  }
+
+  .cfk-plugins .wrapper-header {
+    height: auto !important;
+  }
+
+  .cfk-promo {
+    flex-direction: column;
+  }
+
+  .cfk-promo .cfk-left {
+    width: 100% !important;
+  }
+
+  .cfk-promo .cfk-right{
+    width: 100% !important;
+  }
+
+  .cfk-plugins .cfkef-form-element-card{
+    flex-wrap: nowrap;
+  }
+
+  .cfkef-license-box{
+    width: 100%;
+  }
+
+  .cfk-p-info{
+    align-items: flex-start;
+  }
+
+  .cfk-p-name p {
+    font-size: 12px;
+}
+
+  
+
+}
+
+
+@media screen and (max-width: 782px) {
+
+
+  .cfkef-wrapper .nav-tab-wrapper{
+
+    margin-top: 92px;
+
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+
+  .cfkef-wrapper .nav-tab-wrapper {
+    margin-top: 35px;
+  }
+}
+
+
+
