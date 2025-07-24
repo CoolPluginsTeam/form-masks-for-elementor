@@ -146,6 +146,10 @@ We will continue to expand the list of supported input masks in future updates b
 
 == Changelog ==
 
+### Version 2.5.0 | 24/07/2025
+- Updated: - Admin Dashboard enhancements.
+- **Tested upto:** Elementor Version 3.30.3 and Elementor Pro Version 3.30.0.
+
 ### Version 2.4.5 | 28/05/2025
 - Fixed: - Improved input validation to prevent invalid form submissions.
 - **Tested upto:** Elementor Version 3.29.0 and Elementor Pro Version 3.29.0.
