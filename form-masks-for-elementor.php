@@ -33,7 +33,6 @@ define( 'FME_FEEDBACK_URL', 'https://feedback.coolplugins.net/' );
 
 
 
-
 register_activation_hook( __FILE__, array( 'Form_Masks_For_Elementor', 'fme_activate' ) );
 register_deactivation_hook( __FILE__, array( 'Form_Masks_For_Elementor', 'fme_deactivate' ) );
 
@@ -150,7 +149,7 @@ class Form_Masks_For_Elementor {
     }
 
 	public function fme_pro_plugin_demo_link($links){
-		$get_pro_link = '<a href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard#pricing" style="font-weight: bold; color: green;" target="_blank">Get Pro</a>';
+		$get_pro_link = '<a href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=fme_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-list#pricing" style="font-weight: bold; color: green;" target="_blank">Get Pro</a>';
 		array_unshift( $links, $get_pro_link );
 		return $links;
 	}
@@ -279,7 +278,7 @@ class Form_Masks_For_Elementor {
     public function plugin_row_meta( $plugin_meta, $plugin_file ) {
 			if ( FME_PLUGIN_BASE === $plugin_file ) {
 				$row_meta = [
-					'docs' => '<a href="https://coolplugins.net/add-input-masks-elementor-form/?utm_source=fme_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard/" aria-label="' . esc_attr( esc_html__( 'Country Code Documentation', '' ) ) . '" target="_blank">' . esc_html__( 'Docs & FAQs', 'cfef' ) . '</a>'
+					'docs' => '<a href="https://coolplugins.net/add-input-masks-elementor-form/?utm_source=fme_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-list" aria-label="' . esc_attr( esc_html__( 'Country Code Documentation', '' ) ) . '" target="_blank">' . esc_html__( 'Docs & FAQs', 'cfef' ) . '</a>'
 				];
 
 				$plugin_meta = array_merge( $plugin_meta, $row_meta );
