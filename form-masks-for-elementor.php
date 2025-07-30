@@ -5,7 +5,7 @@
  * Description: Form Input Masks for Elementor Form creates a custom control in the field advanced tab for customizing your fields with masks. This plugin requires Elementor Pro (Form Widget).
  * Author: Cool Plugins
  * Author URI: https://coolplugins.net/
- * Version: 2.5.0
+ * Version: 2.5.1
  * Requires at least: 5.5
  * Requires PHP: 7.4
  * Text Domain: form-masks-for-elementor
@@ -22,7 +22,7 @@
 	exit();
 }
 
-define( 'FME_VERSION', '2.5.0' );
+define( 'FME_VERSION', '2.5.1' );
 define( 'FME_FILE', __FILE__ );
 define( 'FME_PLUGIN_BASE', plugin_basename( FME_FILE ) );
 define( 'FME_PHP_MINIMUM_VERSION', '7.4' );
@@ -30,7 +30,6 @@ define( 'FME_WP_MINIMUM_VERSION', '5.5' );
 define( 'FME_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'FME_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'FME_FEEDBACK_URL', 'https://feedback.coolplugins.net/' );
-
 
 
 
@@ -150,7 +149,7 @@ class Form_Masks_For_Elementor {
     }
 
 	public function fme_pro_plugin_demo_link($links){
-		$get_pro_link = '<a href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard#pricing" style="font-weight: bold; color: green;" target="_blank">Get Pro</a>';
+		$get_pro_link = '<a href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=fme_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-list#pricing" style="font-weight: bold; color: green;" target="_blank">Get Pro</a>';
 		array_unshift( $links, $get_pro_link );
 		return $links;
 	}
@@ -279,7 +278,7 @@ class Form_Masks_For_Elementor {
     public function plugin_row_meta( $plugin_meta, $plugin_file ) {
 			if ( FME_PLUGIN_BASE === $plugin_file ) {
 				$row_meta = [
-					'docs' => '<a href="https://coolplugins.net/add-input-masks-elementor-form/?utm_source=fme_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard/" aria-label="' . esc_attr( esc_html__( 'Country Code Documentation', '' ) ) . '" target="_blank">' . esc_html__( 'Docs & FAQs', 'cfef' ) . '</a>'
+					'docs' => '<a href="https://coolplugins.net/add-input-masks-elementor-form/?utm_source=fme_plugin&utm_medium=inside&utm_campaign=docs&utm_content=plugins-list" aria-label="' . esc_attr( esc_html__( 'Country Code Documentation', '' ) ) . '" target="_blank">' . esc_html__( 'Docs & FAQs', 'cfef' ) . '</a>'
 				];
 
 				$plugin_meta = array_merge( $plugin_meta, $row_meta );
