@@ -169,7 +169,7 @@ class CFEF_Admin {
                     </a>
 
                     <span>Lite</span>
-                    <a class="button button-primary upgrade-pro-btn" target="_blank" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin ?>&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard#pricing">
+                    <a class="button button-primary upgrade-pro-btn" target="_blank" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard#pricing">
                         <img class="crown-diamond-pro" src="<?php echo esc_url(FME_PLUGIN_URL . 'assets/images/crown-diamond-pro.png'); ?>" alt="Cool FormKit Logo">
                         <?php esc_html_e('Upgrade To Pro', 'cool-formkit'); ?>
                     </a>
