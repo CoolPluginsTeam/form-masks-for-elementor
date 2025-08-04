@@ -24,6 +24,14 @@
   flex-wrap: wrap;
 }
 
+.no-pro-buy-btn{
+  margin-left: 15px !important;
+}
+
+.pro-plugin-buy-buttons-con{
+  margin-bottom: 13px;
+}
+
 /* Updated CSS for Toggle Switch */
 .cfkef-toggle-switch {
   position: relative;
