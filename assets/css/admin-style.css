@@ -24,12 +24,16 @@
   flex-wrap: wrap;
 }
 
+.pro-plugin-buy p{
+  margin: 8px 0px !important;
+}
+
 .no-pro-buy-btn{
-  margin-left: 15px !important;
+  margin-left: 10px !important;
 }
 
 .pro-plugin-buy-buttons-con{
-  margin-bottom: 13px;
+  margin-bottom: 8px;
 }
 
 /* Updated CSS for Toggle Switch */

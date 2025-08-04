@@ -55,7 +55,7 @@ if (!empty($plugins_dates)) {
             <em><?php esc_html_e('As a valued user, you automatically receive an exclusive discount on the Annual License and an even greater discount on the POPULAR Lifetime License at checkout!', 'cool-formkit'); ?></em>
         </div>
 
-        <div class="pro-plugin-buy">
+        <div class="pro-plugin-buy cfkef-license-upgrade-box">
 
             <p><?php esc_html_e('Have you purchased pro plugin?', 'cool-formkit'); ?></p>
 
@@ -73,7 +73,7 @@ if (!empty($plugins_dates)) {
                 </a>
             </div>
 
-            <em>If you've purchased the Pro plugin, download it from MyCoolPlugins, deactivate the free plugin, then install and activate the Pro version along with the license.</em>
+            <em>If you've purchased the Pro plugin, download it from <a href="https://my.coolplugins.net/account/downloads/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=plugin-zip&utm_content=plugins-dashboard">my.coolplugins.net</a>, deactivate the free plugin, then install and activate the Pro version along with the license.</em>
 
         </div>
 
