@@ -82,7 +82,7 @@ This plugin is developed and maintained by **Cool Plugins**, a team of expert Wo
 
 📅 **[Events Widgets for Elementor](https://eventscalendaraddons.com/plugin/events-widgets-pro/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=get-pro-ewe&utm_content=more-plugins)**
 
-* This plugin provides **The Events Calendar** widgets for Elementor, allowing you to easily display events in a grids, list, or carousel format.
+* This plugin provides **The Events Calendar** widgets for Elementor, allowing you to easily display events in a grid, list, or carousel format.
 
 🌍 **[Loco Translate Addon](https://locoaddon.com/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=get-pro-loco&utm_content=more-plugins)**
 
