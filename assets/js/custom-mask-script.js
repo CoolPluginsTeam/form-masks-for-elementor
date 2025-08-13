@@ -1,4 +1,5 @@
 (function ($) {
+
   $(document).ready(function () {
     // ----------------- Global Settings -----------------
     let currencySymbol = "$"; // Change to any currency symbol dynamically
@@ -733,7 +734,7 @@
         // Prevent double-clicks
         if ($submitBtn.data("clicked")) {
           e.preventDefault();
-          return;
+          return; 
         }
         $submitBtn.data("clicked", true); // Mark as clicked
 
@@ -745,6 +746,9 @@
 
         // Wait for mask errors or blur logic to complete
         setTimeout(() => {
+
+
+
           let hasVisibleMaskError = false;
 
           // Check for visible mask error messages
@@ -767,6 +771,7 @@
             return isVisible && (val === "" || /^[\s_\-\(\)\.:/]+$/.test(val));
           });
 
+
           if ($emptyRequiredMasked.length > 0) {
             hasVisibleMaskError = true;
             const $firstEmpty = $emptyRequiredMasked.first();
@@ -778,19 +783,25 @@
 
           // ❌ Validation failed
           if (hasVisibleMaskError || !$form[0].checkValidity()) {
-            $form[0].classList.remove("elementor-form-waiting");
+            // $form[0].classList.remove("elementor-form-waiting");
             $submitBtn.data("clicked", false);
             e.preventDefault();
             return;
           }
 
-          // ✅ All good — submit the form
-          $form[0].classList.remove("elementor-form-waiting");
-          $form[0].requestSubmit();
-          $submitBtn.data("clicked", false);
+
+          if(!hasVisibleMaskError && !(!$form[0].checkValidity())){
+
+            // ✅ All good — submit the form
+            $form[0].classList.remove("elementor-form-waiting");
+            $form[0].requestSubmit();
+            $submitBtn.data("clicked", false);
+            $submitBtn.trigger("submit");
+          }
+
         }, 500);
       });
+});
 
-    
-  });
+
 })(jQuery);
