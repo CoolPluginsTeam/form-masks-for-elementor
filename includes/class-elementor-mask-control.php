@@ -283,7 +283,7 @@ class FME_Elementor_Forms_Mask {
 			'fme_mask_alert_pro_version' => [
 				'type' => \Elementor\Controls_Manager::ALERT,
 				'alert_type' => 'info',
-				'content' => esc_html__( '🚀 ', 'form-masks-for-elementor' ) . ' <a href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=get_cool_formkit" target="_blank">' . 'Get Cool FormKit For Advanced Fields.'. '</a>',
+				'content' => esc_html__( '🚀 ', 'form-masks-for-elementor' ) . ' <a href="https://coolformkit.com/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=get_cool_formkit" target="_blank">' . 'Get Cool FormKit For Advanced Fields.'. '</a>',
 				'tab' => 'content',
 				'tabs_wrapper' => 'form_fields_tabs',
 				'inner_tab' => 'form_fields_advanced_tab',

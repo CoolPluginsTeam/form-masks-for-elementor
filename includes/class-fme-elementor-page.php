@@ -49,7 +49,11 @@ class FME_Elementor_Page {
 
     private static function cfkef_current_page($slug)
     {
-        $current_page = isset($_REQUEST['page']) ? esc_html($_REQUEST['page']) : (isset($_REQUEST['post_type']) ? esc_html($_REQUEST['post_type']) : '');
+        $current_page = isset($_GET['page']) ? esc_html( wp_unslash( $_GET['page'] ) ) :
+                 ( isset($_POST['page']) ? esc_html( wp_unslash( $_POST['page'] ) ) :
+                 ( isset($_GET['post_type']) ? esc_html( wp_unslash( $_GET['post_type'] ) ) :
+                 ( isset($_POST['post_type']) ? esc_html( wp_unslash( $_POST['post_type'] ) ) : '' )));
+
         $status=false;
 
         if (in_array($current_page, self::get_allowed_pages()) && $current_page === $slug) {

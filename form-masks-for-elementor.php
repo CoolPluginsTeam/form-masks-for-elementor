@@ -5,15 +5,15 @@
  * Description: Form Input Masks for Elementor Form creates a custom control in the field advanced tab for customizing your fields with masks. This plugin requires Elementor Pro (Form Widget).
  * Author: Cool Plugins
  * Author URI: https://coolplugins.net/
- * Version: 2.5.1
+ * Version: 2.5.2
  * Requires at least: 5.5
  * Requires PHP: 7.4
  * Text Domain: form-masks-for-elementor
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  * Requires Plugins: elementor
- * Elementor tested up to: 3.30.3
- * Elementor Pro tested up to: 3.30.0
+ * Elementor tested up to: 3.31.2
+ * Elementor Pro tested up to: 3.31.2
  */
 
  if ( ! defined( 'ABSPATH' ) ) {
@@ -22,7 +22,7 @@
 	exit();
 }
 
-define( 'FME_VERSION', '2.5.1' );
+define( 'FME_VERSION', '2.5.2' );
 define( 'FME_FILE', __FILE__ );
 define( 'FME_PLUGIN_BASE', plugin_basename( FME_FILE ) );
 define( 'FME_PHP_MINIMUM_VERSION', '7.4' );
@@ -149,7 +149,7 @@ class Form_Masks_For_Elementor {
     }
 
 	public function fme_pro_plugin_demo_link($links){
-		$get_pro_link = '<a href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=fme_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-list#pricing" style="font-weight: bold; color: green;" target="_blank">Get Pro</a>';
+		$get_pro_link = '<a href="https://coolformkit.com/?utm_source=fme_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-list" style="font-weight: bold; color: green;" target="_blank">Get Pro</a>';
 		array_unshift( $links, $get_pro_link );
 		return $links;
 	}
