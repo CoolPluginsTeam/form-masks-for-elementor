@@ -272,7 +272,9 @@
     }
 
     // ----------------- Backspace Handling -----------------
-    $(document).on("keydown", "input", function (e) {
+    $(document).on("keydown, mousedown", "input", function (e) {
+      // jQuery(".e-form__buttons__wrapper__button[data-direction='next']").off("click");
+
       if (e.key === "Backspace") {
         var input = this;
 
@@ -316,6 +318,8 @@
         let matchedClass = Object.keys(formatFunctions).find((cls) =>
           $(input).hasClass(cls.substring(1))
         );
+
+
 
         if (matchedClass) {
           var formatted = formatFunctions[matchedClass](newDigits);
@@ -363,6 +367,9 @@
 
       $(document).on("input", selector, function () {
         var input = $(this);
+
+        nextbtnVisibility(errorClass, input, validationFunction);
+
         var errorElement = input
           .closest(".elementor-field-group")
           .find("." + errorClass);
@@ -727,81 +734,180 @@
 
     // ----------------- Form Submit -----------------
 
-    $(document).on("click", ".elementor-field-type-submit", function (e) {
-        var $submitBtn = $(this);
-        var $form = $submitBtn.closest("form");
 
-        // Prevent double-clicks
-        if ($submitBtn.data("clicked")) {
-          e.preventDefault();
-          return; 
+    // 3️⃣ Re-attach Elementor’s handlers later (e.g. after validation)
+    // nextBtnOriginalClicks.forEach(fn => {
+    //     $btn.on("click", fn);
+    // });
+
+    const maskErrorArr = {};
+    const nextBtnOriginalClicks = {};
+    const clickStatus={};
+
+    const nextbtnVisibility = (errorClass, input, validationFunction) => {
+      const closesWidget = input.closest(".elementor-widget-form");
+      const widgetId = closesWidget.data('id');
+      const inuptId = input.attr('id');
+      const fieldStep=input.closest(".elementor-field-type-step");
+
+      if (!closesWidget.length || !fieldStep.length) {
+        return;
+      }
+
+      const nextBtn = fieldStep.find(".e-form__buttons__wrapper__button[data-direction='next']");
+
+      if (!nextBtn.length) {
+        return;
+      }
+
+      let val = input.val();
+
+      if (val.length === 1 && !/\d/.test(val)) {
+        val = '';
+      }
+
+
+      // Show error message if validation fails
+      if (val !== "" && !validationFunction(val)) {
+        if (closesWidget.length > 0) {
+
+          if (!maskErrorArr[widgetId]) {
+            maskErrorArr[widgetId] = [];
+          }
+
+          if (!maskErrorArr[widgetId].includes(inuptId)) {
+            maskErrorArr[widgetId].push(inuptId);
+          }
         }
-        $submitBtn.data("clicked", true); // Mark as clicked
 
-        // Trigger blur on inputs to ensure validation runs
-        $form.find("input").trigger("blur");
+        if (!nextBtnOriginalClicks[widgetId] || !nextBtnOriginalClicks[widgetId].length) {
+          const origninalClicks = jQuery._data(nextBtn[0], "events");
 
-        // Add Elementor waiting class
-        $form[0].classList.add("elementor-form-waiting");
+          if (origninalClicks && (!nextBtnOriginalClicks[widgetId] || !nextBtnOriginalClicks[widgetId].length === 0)) {
+            console.log(origninalClicks.click)
+            nextBtnOriginalClicks[widgetId] = origninalClicks && origninalClicks.click ? origninalClicks.click.map(h => h.handler) : [];
+          }
+        }
+      } else {
+        if (maskErrorArr[widgetId] && maskErrorArr[widgetId].includes(inuptId)) {
+          maskErrorArr[widgetId] = maskErrorArr[widgetId].filter(item => item !== inuptId);
+        }
+      }
 
-        // Wait for mask errors or blur logic to complete
-        setTimeout(() => {
+      if (maskErrorArr[widgetId] && maskErrorArr[widgetId].length > 0) {
 
+        const origninalClicks = jQuery._data(nextBtn[0], "events");
 
-
-          let hasVisibleMaskError = false;
-
-          // Check for visible mask error messages
-          const $errors = $form.find(".mask-error").filter(function () {
-            return $(this).text().trim() !== "" && $(this).is(":visible");
+        if (origninalClicks && (!nextBtnOriginalClicks[widgetId] || !nextBtnOriginalClicks[widgetId].length)) {
+          nextBtnOriginalClicks[widgetId] = origninalClicks && origninalClicks.click ? origninalClicks.click.map(h => h.handler) : [];
+        }
+        
+        if (nextBtnOriginalClicks[widgetId] && nextBtnOriginalClicks[widgetId].length > 0) {
+          nextBtn.off("click");
+        }
+      } else {
+        if (nextBtnOriginalClicks[widgetId] && nextBtnOriginalClicks[widgetId].length > 0) {
+          // 2️⃣ Re-attach original click handlers
+          nextBtnOriginalClicks[widgetId].forEach(fn => {
+            nextBtn.on("click", fn);
           });
+        }
+      }
+    }
 
-          if ($errors.length > 0) {
-            hasVisibleMaskError = true;
-            const $firstError = $errors.first();
-            $("html, body").animate({
-              scrollTop: $firstError.offset().top - 200
-            }, 300);
-          }
+    $(document).on("click", ".elementor-field-type-submit", function (e) {
 
-          // ✅ Check for empty required masked fields
-          const $emptyRequiredMasked = $form.find("input[required]").filter(function () {
-            const val = $(this).val().trim();
-            const isVisible = $(this).is(":visible");
-            return isVisible && (val === "" || /^[\s_\-\(\)\.:/]+$/.test(val));
-          });
+      var $submitBtn = $(this);
 
 
-          if ($emptyRequiredMasked.length > 0) {
-            hasVisibleMaskError = true;
-            const $firstEmpty = $emptyRequiredMasked.first();
-            $("html, body").animate({
-              scrollTop: $firstEmpty.offset().top - 200
-            }, 300);
-            $firstEmpty.focus();
-          }
+      if ($submitBtn.find('button').hasClass('cfkef-prevent-submit') || $submitBtn.find('button').hasClass('confirmation-pending')
+      ) {
+        return
+      }
 
-          // ❌ Validation failed
-          if (hasVisibleMaskError || !$form[0].checkValidity()) {
-            // $form[0].classList.remove("elementor-form-waiting");
-            $submitBtn.data("clicked", false);
-            e.preventDefault();
-            return;
-          }
+      var $submitBtn = $(this);
+      var $form = $submitBtn.closest("form");
+
+      // e.preventDefault();
+
+      // Prevent double-clicks
+      if ($submitBtn.data("clicked")) {
+        e.preventDefault();
+        return;
+      }
+      $submitBtn.data("clicked", true); // Mark as clicked
+
+      // Trigger blur on inputs to ensure validation runs
+      $form.find("input").trigger("blur");
+
+      // Add Elementor waiting class
+      $form[0].classList.add("elementor-form-waiting");
+
+      if (!$form[0].checkValidity()) {
+        $submitBtn.data("clicked", false); // Mark as clicked
+
+        return;
+      }
+
+      e.preventDefault(); // Prevent default form submission
+
+      // Wait for mask errors or blur logic to complete
+      setTimeout(() => {
 
 
-          if(!hasVisibleMaskError && !(!$form[0].checkValidity())){
+        let hasVisibleMaskError = false;
 
-            // ✅ All good — submit the form
-            $form[0].classList.remove("elementor-form-waiting");
-            $form[0].requestSubmit();
-            $submitBtn.data("clicked", false);
-            $submitBtn.trigger("submit");
-          }
+        // Check for visible mask error messages
+        const $errors = $form.find(".mask-error").filter(function () {
+          return $(this).text().trim() !== "" && $(this).css("display") == "flex";
+        });
 
-        }, 500);
-      });
-});
+        if ($errors.length > 0) {
+          hasVisibleMaskError = true;
+          const $firstError = $errors.first();
+          $("html, body").animate({
+            scrollTop: $firstError.offset().top - 200
+          }, 300);
+        }
+
+        // ✅ Check for empty required masked fields
+        const $emptyRequiredMasked = $form.find("input[required]").filter(function () {
+          const val = $(this).val().trim();
+          const isVisible = $(this).css("display") == "flex";
+          return (val === "" || /^[\s_\-\(\)\.:/]+$/.test(val));
+        });
+
+
+        if ($emptyRequiredMasked.length > 0) {
+          hasVisibleMaskError = true;
+          const $firstEmpty = $emptyRequiredMasked.first();
+          $("html, body").animate({
+            scrollTop: $firstEmpty.offset().top - 200
+          }, 300);
+          $firstEmpty.focus();
+        }
+
+        // ❌ Validation failed
+        if (hasVisibleMaskError || !$form[0].checkValidity()) {
+          // $form[0].classList.remove("elementor-form-waiting");
+          $submitBtn.data("clicked", false);
+          e.preventDefault();
+          return;
+        }
+
+
+        if (!hasVisibleMaskError && !(!$form[0].checkValidity())) {
+
+          // ✅ All good — submit the form
+          $form[0].classList.remove("elementor-form-waiting");
+          $form[0].requestSubmit();
+          $submitBtn.data("clicked", false);
+          $submitBtn.trigger("submit");
+        }
+
+      }, 500);
+    });
+  });
 
 
 })(jQuery);
