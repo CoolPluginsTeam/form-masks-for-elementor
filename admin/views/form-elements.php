@@ -48,123 +48,123 @@ $form_elements = array(
     
     'whatsapp_redirect' => array(
         'label' => __('Whatsapp Redirect', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/whatsapp-redirect-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/whatsapp-redirection-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/whatsapp-redirect-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/whatsapp-redirection-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/whatsapp-icon-min.svg',
         'pro' => true
     ),
     
     'range_slider' => array(
         'label' => __('Range Slider', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/range-slider-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/range-slider-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/range-slider-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/range-slider-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/range-slider-min.svg',
         'pro' => true
     ),
     'calculator_field' => array(
         'label' => __('Calculator Field', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/calculator-for-elementor/?utm_source=&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/calculator-field-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/calculator-for-elementor/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/calculator-field-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/calculator-field-min.svg',
         'pro' => true
     ),
     'rating_field' => array(
         'label' => __('Rating Field', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/rating-field-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/rating-field-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/rating-field-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/rating-field-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/rating-field-min.svg',
         'pro' => true
     ),
     'signature_field' => array(
         'label' => __('Signature Field', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/signature-field-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/signature-field-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/signature-field-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/signature-field-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/signature.svg',
         'pro' => true
     ),
     'image_radio' => array(
         'label' => __('Image Radio', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/image-radio-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/add-image-radio-field/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/image-radio-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/add-image-radio-field/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/image-radio-min.svg',
         'pro' => true
     ),
     'radio_checkbox_styler' => array(
         'label' => __('Radio & Checkbox Styler', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/checkbox-radio-styles-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/style-radio-checkbox-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/checkbox-radio-styles-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/style-radio-checkbox-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/radio-styler-min.svg',
         'pro' => true
     ),
     'label_styler' => array(
         'label' => __('Label Styler', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/label-styler-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/label-styler-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/label-styler-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/label-styler-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/label-style-min.svg',
         'pro' => true
     ),
     'select2' => array(
         'label' => __('Select2', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/select2-field-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/select-field-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/select2-field-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/select-field-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/select2-field-min.svg',
         'pro' => true
     ),
     'WYSIWYG' => array(
         'label' => __('WYSIWYG', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/wysiwyg-field-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/add-wysiwyg-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/wysiwyg-field-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/add-wysiwyg-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/WYSIWYG-min.svg',
         'pro' => true
     ),
     'confirm_dialog' => array(
         'label' => __('Confirm Dialog Box', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/?utm_source=&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/elementor-form-confirm-dialog-popup/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/elementor-form-confirm-dialog-popup/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/dialog-box-min.svg',
         'pro' => true
     ),
     'restrict_date' => array(
         'label' => __('Restrict Date', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/restrict-date-field-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/restrict-date-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/restrict-date-field-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/restrict-date-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/restrict-date-min.svg',
         'pro' => true
     ),
     'currency_field' => array(
         'label' => __('Currency Field', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/?utm_source=&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/add-currency-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/currency-field-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/add-currency-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/currency-field-min.svg',
         'pro' => true
     ),
     'month_week_field' => array(
         'label' => __('Month/Week Field', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/month-week-field-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/add-month-week/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/month-week-field-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/add-month-week/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/month-week-field-min.svg',
         'pro' => true
     ),
     'cloudflare_recaptcha' => array(
         'label' => __('Cloudflare Turnstile', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/cloudflare-turnstile-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/add-cloudflare-turnstile-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/cloudflare-turnstile-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/add-cloudflare-turnstile-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/cloudflare-icon-min.svg',
         'pro' => true
     ),
 
     'h_recaptcha' => array(
         'label' => __('hCAPTCHA', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/hcaptcha-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/add-hcaptcha-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/hcaptcha-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/add-hcaptcha-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/hcaptcha-icon-min.svg',
         'pro' => true
     ),
     'toggle_field' => array(
 
         'label' => __('Toggle Field', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/toggle-field-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/toggle-field-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/toggle-field-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/toggle-field-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/toggle-field.svg',
         'pro' => true,
     ),
@@ -172,8 +172,8 @@ $form_elements = array(
 
     'conditional_mailchimp' => array(
         'label' => __('Conditional MailChimp', 'cool-formkit'),
-        'demo' => str_replace('utm_source=', 'utm_source=' . esc_attr($first_plugin),'https://docs.coolplugins.net/doc/conditional-mailchimp-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
-        'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . esc_attr($first_plugin),'https://coolformkit.com/features/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'demo' => str_replace('utm_source=', 'utm_source=' . esc_attr($first_plugin),'https://docs.coolplugins.net/doc/conditional-mailchimp-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . esc_attr($first_plugin),'https://coolformkit.com/features/conditional-mailchimp-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/mailchimp-logo.svg',
         'pro' => true,
         'pro_link' => 'https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=cfkl_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard/#pricing'
@@ -184,15 +184,15 @@ $form_elements = array(
 $condition_plugin_features = array(
     'condtional_logic' => array(
         'label' => __('Conditional Logic', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/elementor-form-conditional-fields/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/elementor-form-conditional-fields/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://coolformkit.com/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/conditional-logic-1-min.svg'
     ),
 
     'submit_condition' => array(
         'label' => __('Submit Conditions', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/elementor-form-submit-button-conditions/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/elementor-form-submit-button-conditions/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/conditional-button-min.svg',
         'pro' => true
     ),
@@ -200,8 +200,8 @@ $condition_plugin_features = array(
 
     'redirect_conditionaly' => array(
         'label' => __('Redirect Conditionaly', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/conditional-redirect-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/conditional-redirect-elementor-form-on-submit/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/conditional-redirect-elementor-form-on-submit/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/redirect-conditionally-min.svg',
         'pro' => true
     ),
@@ -209,8 +209,8 @@ $condition_plugin_features = array(
 
     'email_conditionaly' => array(
         'label' => __('Email Conditionaly', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/conditional-emails-on-form-submission/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/conditional-email-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/conditional-email-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/conditional-email-1-min.svg',
         'pro' => true
 
@@ -219,8 +219,8 @@ $condition_plugin_features = array(
 
     'multicondtion_or_logic' => array(
         'label' => __('Multiple OR Conditions', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/and-or-conditional-logic-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/and-or-conditional-logic-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/or-condition.svg',
         'pro' => true
 
@@ -229,8 +229,8 @@ $condition_plugin_features = array(
 
     'more_operators' => array(
         'label' => __('More Operators', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/elementor-form-conditional-logic-operators/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/elementor-form-conditional-logic-operators/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/more-opreators.svg',
         'pro' => true
 
@@ -248,24 +248,24 @@ $condition_plugin_features = array(
 $country_field_features = array(
     'country_code' => array(
         'label' => __('Country code', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/country-code-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/country-code-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/country-code-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/country-code-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/country-code-min.svg'
     ),
 
 
     'country_state' => array(
         'label' => __('State Field', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/country-and-state-field-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/plugin/cool-formkit-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/country-and-state-field-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/plugin/cool-formkit-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/state-field.svg',
         'pro' => true
     ),
 
     'auto_select_country' => array(
         'label' => __('Auto Detect Country', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/?utm_source=&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/plugin/cool-formkit-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/plugin/cool-formkit-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/auto-detect.svg',
         'pro' => true
 
@@ -278,22 +278,22 @@ $country_field_features = array(
 $form_mask_features = array(
     'form_input_mask' => array(
         'label' => __('Field Masking', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/input-masks-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/input-masks-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/input-masks-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/input-masks-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/input-mask-min.svg'
     ),
     'hello_plus_support' => array(
         'label' => __('Hello Plus Support', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features?utm_source=&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/plugin/cool-formkit-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/plugin/cool-formkit-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/hello-plus-support.svg',
         'pro' => true
     ),
 
     'advanced_fields' => array(
         'label' => __('Advanced Fields', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features?utm_source=&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/plugin/cool-formkit-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/plugin/cool-formkit-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/advanced-field.svg',
         'pro' => true
     ),
@@ -306,26 +306,27 @@ $input_form_mask_features = array(
     'form_input_mask' => array(
         'label' => __('Input Mask', 'cool-formkit'),
         'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/input-masks-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/input-masks-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/input-masks-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/input-mask-min.svg'
     ),
     'hello_plus_support' => array(
         'label' => __('Hello Plus Support', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/?utm_source=&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/plugin/conditional-fields-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/plugin/conditional-fields-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/hello-plus-support.svg',
         'pro' => true
     ),
 
     'advanced_fields' => array(
         'label' => __('Advanced Fields', 'cool-formkit'),
-        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/?utm_source=&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'),
-        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://coolformkit.com/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
+        'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
+        'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => FME_PLUGIN_URL . 'assets/icons/advanced-field.svg',
         'pro' => true
-    ),
+    ), 
 
 );
+
 
 
 
@@ -399,7 +400,7 @@ $input_form_mask_features = array(
                                 } else {
 
                                     echo '<a target="_blank" href="' . esc_url(
-                                        ' https://coolformkit.com/?utm_source=' . urlencode($first_plugin) . '&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'
+                                        ' https://coolformkit.com/pricing/?utm_source=' . urlencode($first_plugin) . '&utm_medium=inside&utm_campaign=get_pro&utm_content=dashboard'
                                     ) . '" class="button">' . esc_html__('Get Pro', 'cfef') . '</a>';
                                 }
                                 ?>
@@ -420,7 +421,7 @@ $input_form_mask_features = array(
                             <div class="cfk-p-name">
                                 <p>Show or hide Elementor form fields based on other fields values selected by user.</p>
                                 <div class="cfk-buttons">
-                                    <a target="_blank" class="button button-secondary" href="https://coolplugins.net/conditional-fields-for-elementor-form/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=blog&utm_content=plugins-dashboard">
+                                    <a target="_blank" class="button button-secondary" href="https://docs.coolplugins.net/plugin/conditional-fields-for-elementor-form/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=docs&utm_content=dashboard">
                                         Documentation
                                     </a>
                                 </div>
@@ -606,7 +607,7 @@ $input_form_mask_features = array(
                                 } else {
 
                                     echo '<a target="_blank" href="' . esc_url(
-                                        'https://coolformkit.com/?utm_source=' . urlencode($first_plugin) . '&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'
+                                        'https://coolformkit.com/pricing/?utm_source=' . urlencode($first_plugin) . '&utm_medium=inside&utm_campaign=get_pro&utm_content=dashboard'
                                     ) . '" class="button">' . esc_html__('Get Pro', 'cfef') . '</a>';
                                 }
                                 ?>
@@ -627,7 +628,7 @@ $input_form_mask_features = array(
                                 <p>Show country codes & flags in Elementor phone field.</p>
                                 <div class="cfk-buttons">
 
-                                    <a target="_blank" class="button button-secondary" href="https://docs.coolplugins.net/docs/cool-formkit/add-country-code-dropdown-to-tel-field-in-elementor-forms/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard">
+                                    <a target="_blank" class="button button-secondary" href="https://docs.coolplugins.net/doc/country-code-elementor-form/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=docs&utm_content=dashboard">
                                         Documentation
                                     </a>
                                 </div>
@@ -778,7 +779,7 @@ $input_form_mask_features = array(
                                 <div class="cfkef-save-controls">
 
                                         <a target="_blank" href="
-                                            https://coolformkit.com/?utm_source=<?php echo esc_attr($first_plugin)?>&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard" class="button">Get Pro</a>
+                                            https://coolformkit.com/pricing/?utm_source=<?php echo esc_attr($first_plugin)?>&utm_medium=inside&utm_campaign=get_pro&utm_content=dashboard" class="button">Get Pro</a>
                                     
                                 </div>
                             </div>
@@ -797,7 +798,7 @@ $input_form_mask_features = array(
                                 <div class="cfk-p-name">
                                     <p>Add input mask for form fields to enhance user input accuracy.</p>
                                     <div class="cfk-buttons">
-                                        <a target="_blank" class="button button-secondary" href="https://coolplugins.net/add-input-masks-elementor-form/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=blog&utm_content=plugins-dashboard">
+                                        <a target="_blank" class="button button-secondary" href="https://coolplugins.net/add-input-masks-elementor-form/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=docs&utm_content=dashboard">
                                             Documentation
                                         </a>
                                     </div>
@@ -922,7 +923,7 @@ $input_form_mask_features = array(
                                     } else {
 
                                         echo '<a target="_blank" href="' . esc_url(
-                                            'https://coolformkit.com/?utm_source=' . urlencode($first_plugin) . '&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard'
+                                            'https://coolformkit.com/pricing/?utm_source=' . urlencode($first_plugin) . '&utm_medium=inside&utm_campaign=get_pro&utm_content=dashboard'
                                         ) . '" class="button">' . esc_html__('Get Pro', 'cfef') . '</a>';
                                     }
                                     ?>
@@ -944,7 +945,7 @@ $input_form_mask_features = array(
                                     <p>Add input masks to Elementor Pro forms.</p>
                                     <div class="cfk-buttons">
 
-                                        <a target="_blank" class="button button-secondary" href="https://coolplugins.net/add-input-masks-elementor-form/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=blog&utm_content=plugins-dashboard">
+                                        <a target="_blank" class="button button-secondary" href="https://coolplugins.net/add-input-masks-elementor-form/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=docs&utm_content=dashboard">
                                             Documentation
                                         </a>
                                     </div>
@@ -1083,7 +1084,7 @@ $input_form_mask_features = array(
 
                             <div class="cfkef-save-controls">
 
-                                <a target="_blank" href="https://coolformkit.com/?utm_source=<?php echo esc_attr($first_plugin) ?>&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard" class="button">Get Pro</a>
+                                <a target="_blank" href="https://coolformkit.com/pricing/?utm_source=<?php echo esc_attr($first_plugin) ?>&utm_medium=inside&utm_campaign=get_pro&utm_content=dashboard" class="button">Get Pro</a>
                             </div>
 
                         </div>
@@ -1144,8 +1145,8 @@ $input_form_mask_features = array(
                     <div class="cfk-box">
                         <h3>Important Links</h3>
                         <div class="cfk-buttons">
-                            <a href="https://coolplugins.net/support/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=support&utm_content=important-links" class="button button-secondary" target="_blank">Contact Support</a>
-                            <a href="https://coolplugins.net/about-us/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=about-us&utm_content=important-links" class="button" target="_blank">Meet Cool Plugins Developers</a>
+                            <a href="https://coolplugins.net/support/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=support&utm_content=setting_page_sidebar" class="button button-secondary" target="_blank">Contact Support</a>
+                            <a href="https://coolplugins.net/about-us/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=about_us&utm_content=setting_page_sidebar" class="button" target="_blank">Meet Cool Plugins Developers</a>
                             <a href="https://x.com/cool_plugins" class="button" target="_blank">Follow On X</a>
                         </div>
                     </div>
