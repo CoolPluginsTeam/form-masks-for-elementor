@@ -4,7 +4,7 @@ Tags: elementor form, mask, input masks, elementor, form builder
 Requires at least: 5.0
 Tested up to: 6.8.2
 Requires PHP: 7.2
-Stable tag: 2.5.2
+Stable tag: 2.5.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Elementor tested up to: 3.31.2
@@ -20,12 +20,12 @@ Add input mask to Elementor form widget fields - phone number masking, date mask
 * It requires **Elementor Pro**, as the Form Widget is only available in Elementor pro version.
 
 — —————————————- —
-🔗 **VIEW [PLUGIN DEMO & DOCS](https://coolplugins.net/add-input-masks-elementor-form/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=blog&utm_content=plugin-demo-docs)**
+🔗 **VIEW [PLUGIN DEMO & DOCS](https://coolplugins.net/add-input-masks-elementor-form/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=blog&utm_content=veiw_demos)**
 — —————————————- —
 
 https://youtu.be/S6kwtxizgYM
 
-**NOTE:** You can extend Elementor form widget with **[Cool FormKit](https://coolformkit.com/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=get-pro-cfk&utm_content=note)** to add more advanced fields like [range slider](https://coolplugins.net/add-range-slider-elementor-forms/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=blog&utm_content=note), [calculator field](https://coolplugins.net/interest-or-loan-calculator-elementor/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=blog&utm_content=note), [rating field](https://coolplugins.net/add-rating-field-elementor-form-widget/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=blog&utm_content=note), [signature field](https://coolplugins.net/add-signature-field-elementor-form/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=blog&utm_content=note) and [conditional fields](https://coolplugins.net/conditional-fields-for-elementor-form/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=blog&utm_content=note) inside Elementor form.
+**NOTE:** You can extend Elementor form widget with **[Cool FormKit](https://coolformkit.com/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=cfkef_description)** to add more advanced fields like [range slider](https://coolformkit.com/features/range-slider-for-elementor-form/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=features&utm_content=cfkef_description), [calculator field](https://coolformkit.com/features/calculator-for-elementor/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=features&utm_content=cfkef_description), [rating field](https://coolformkit.com/features/rating-field-for-elementor-form/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=features&utm_content=cfkef_description), [signature field](https://coolformkit.com/features/signature-field-for-elementor-form/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=features&utm_content=cfkef_description) and [conditional fields](https://coolformkit.com/features/conditional-logic-for-elementor-form/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=features&utm_content=cfkef_description) inside Elementor form.
 
 ### SUPPORTED INPUT MASKS
 — —————————————- —
@@ -64,27 +64,27 @@ https://youtu.be/S6kwtxizgYM
 
 This plugin is developed and maintained by **Cool Plugins**, a team of expert WordPress developers who have built 20+ free and premium WordPress plugins. Check out some of their other innovative solutions:
 
-📝 **[Cool FormKit For Elementor](https://coolformkit.com/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=get-pro-cfk&utm_content=more-plugins)**  
+📝 **[Cool FormKit For Elementor](https://coolformkit.com/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=cfkef_more_plugins)**  
 
 * Add advanced fields like conditional logic, range sliders, calculator fields, and country code selection to Elementor forms.
 
-🔥 **[Conditional Fields For Elementor Form](https://coolformkit.com/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=get-pro-cfe&utm_content=more-plugins)**  
+🔥 **[Conditional Fields For Elementor Form](https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=cfef_more_plugins)**  
 
 * An essential addon for Elementor forms that allows you to add conditional logic to input fields, enabling fields to show/hide based on other field values.
 
-📞 **[Country Code For Elementor Form Telephone Field](https://coolplugins.net/add-country-code-telephone-elementor-form/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=blog&utm_content=more-plugins)**  
+📞 **[Country Code For Elementor Form Telephone Field](https://coolplugins.net/add-country-code-telephone-elementor-form/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=blog&utm_content=ccfef_more_plugins)**  
 
 * Enhances phone fields with a country code selection feature for accurate data input.
 
-📜 **[Timeline Widget for Elementor](https://cooltimeline.com/plugin/timeline-widget-pro/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=get-pro-twe&utm_content=more-plugins)**
+📜 **[Timeline Widget for Elementor](https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=twae_more_plugins)**
 
 * Use this plugin to showcase your history in a stylish vertical or horizontal timeline layout on Elementor pages.
 
-📅 **[Events Widgets for Elementor](https://eventscalendaraddons.com/plugin/events-widgets-pro/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=get-pro-ewe&utm_content=more-plugins)**
+📅 **[Events Widgets for Elementor](https://eventscalendaraddons.com/plugin/events-widgets-pro/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=ectbe_more_plugins)**
 
 * This plugin provides **The Events Calendar** widgets for Elementor, allowing you to easily display events in a grid, list, or carousel format.
 
-🌍 **[Loco Translate Addon](https://locoaddon.com/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=get-pro-loco&utm_content=more-plugins)**
+🌍 **[Loco Translate Addon](https://locoaddon.com/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=atlt_more_plugins)**
 
 * Automatically translate WordPress plugin and theme strings with a single click.
 
@@ -92,12 +92,12 @@ This plugin is developed and maintained by **Cool Plugins**, a team of expert Wo
 
 * Enhance Elementor Pro's Loop Grid widget by displaying ACF Repeater Fields inside loop templates.
 
-🚀 **[More Plugins by Cool Plugins](https://coolplugins.net/products/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=all-plugins&utm_content=more-plugins)**
+🚀 **[More Plugins by Cool Plugins](https://coolplugins.net/products/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=view_plugin&utm_content=more_plugins)**
 
 **DISCLAIMER:** This plugin is not affiliated with or developed by the official Elementor team. Some of the links in this content may be affiliate links, meaning we may earn a commission at no extra cost to you if you make a purchase through these links.
 
 — —————————————- —
-**Get [Cool FormKit for Elementor](https://coolformkit.com/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=get-pro-cfk&utm_content=footer)**
+**Get [Cool FormKit for Elementor](https://coolformkit.com/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=cfkef_get_coolformkit)**
 — —————————————- —
 
 == Frequently Asked Questions ==
@@ -135,16 +135,19 @@ We will continue to expand the list of supported input masks in future updates b
 
 ### Quick Installation
 
-1. Navigate to **"wp-admin >> Plugins >> Add New"** on your WordPress website, search for **"Form Input Masks For Elementor by Cool Plugins"**, and install and activate this plugin developed by [Cool Plugins](https://coolplugins.net/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=homepage&utm_content=installation).
+1. Navigate to **"wp-admin >> Plugins >> Add New"** on your WordPress website, search for **"Form Input Masks For Elementor by Cool Plugins"**, and install and activate this plugin developed by [Cool Plugins](https://coolplugins.net/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=author_page&utm_content=installation).
 2. Install **"Elementor PRO"** to access this plugin's features, as the Form Widget is only available in the Elementor Pro version.
 3. Edit a page with Elementor and create a form. In the form text field, navigate to the **Advanced** tab, where you will find the **Mask Control** option. Select the mask you want to apply to the text field.
 4. Save or update the page and preview the changes.
 
 — —————————————- —
-**Get [Cool FormKit for Elementor](https://coolformkit.com/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=get-pro-cfk&utm_content=installation)**
+**Get [Cool FormKit for Elementor](https://coolformkit.com/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=cfkef_installation)**
 — —————————————- —
 
 == Changelog ==
+
+### Version 2.5.3 | 23/08/2025
+- Updated: - UTM Links.
 
 ### Version 2.5.2 | 13/08/2025
 - Fixed: - Security issues.
