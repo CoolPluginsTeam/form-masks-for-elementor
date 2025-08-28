@@ -134,7 +134,7 @@ if (!class_exists('fme_cronjob')) {
                       'extra_details'     => $extra_details,
                   );
               
-                  $response = wp_remote_post($feedback_url, array(
+                  $response = wp_remote_post(esc_url($feedback_url), array(
                       'method'    => 'POST',
                       'timeout'   => 30,
                       'headers'   => array(

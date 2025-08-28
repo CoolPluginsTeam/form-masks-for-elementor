@@ -167,14 +167,14 @@ class CFEF_Admin {
                     </a>
 
                     <span>Lite</span>
-                    <a class="button button-primary upgrade-pro-btn" target="_blank" href="https://coolformkit.com/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard">
+                    <a class="button button-primary upgrade-pro-btn" target="_blank" href="https://coolformkit.com/pricing/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=get_pro&utm_content=dashboard">
                         <img class="crown-diamond-pro" src="<?php echo esc_url(FME_PLUGIN_URL . 'assets/images/crown-diamond-pro.png'); ?>" alt="Cool FormKit Logo">
                         <?php esc_html_e('Upgrade To Pro', 'cool-formkit'); ?>
                     </a>
                 </div>
                 <div class="cfk-buttons">
                     <p>Advanced Elementor Form Builder.</p>
-                    <a href="https://coolformkit.com/pricing/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard" class="button" target="_blank">Get Cool FormKit</a>
+                    <a href="https://coolformkit.com/pricing/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=get_pro&utm_content=setting_page_header" class="button" target="_blank">Get Cool FormKit</a>
                 </div>
             </div>
             <h2 class="nav-tab-wrapper">
