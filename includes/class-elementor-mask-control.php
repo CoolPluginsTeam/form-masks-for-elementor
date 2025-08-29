@@ -345,64 +345,7 @@ class FME_Elementor_Forms_Mask {
 			}
 		}
 
-		if ( !is_plugin_active( 'country-code-field-for-elementor-form/country-code-field-for-elementor-form.php' ) && !is_plugin_active( 'conditional-fields-for-elementor-form/class-conditional-fields-for-elementor-form.php' ) && !is_plugin_active( 'conditional-fields-for-elementor-form-pro/class-conditional-fields-for-elementor-form-pro.php' )) {
-			$controls_to_register['fme_country_code_toggle'] = array(
-				'name'            => 'fme_country_code_toggle',
-				'label'        => esc_html__( 'Enable Country Code', 'form-masks-for-elementor' ),
-				'type'            => Controls_Manager::SWITCHER,
-				'tab'             => 'content',
-				'condition'       => array(
-						'field_type' => 'tel',
-				),
-				'inner_tab'       => 'form_fields_content_tab',
-				'tabs_wrapper'    => 'form_fields_tabs',
-			);
-
-			$controls_to_register['fme_country_code_link_button'] = array(
-				'name'            => 'fme_country_code_link_button',
-				'type'            => Controls_Manager::RAW_HTML,
-				'raw'             => "<p>To Add country code to Elementor form fields <a href='plugin-install.php?s=Country%2520Code%2520For%2520Elementor%2520Form%2520Telephone%2520Field%2520by%2520coolplugins&tab=search&type=term' target='_blank' >Activate Plugin</a></p>",
-				'content_classes' => 'get_ccfef_link',
-				'condition'       => array(
-					'fme_country_code_toggle' => 'yes',
-					'field_type' => 'tel'
-				),
-				'inner_tab'       => 'form_fields_content_tab',
-				'tabs_wrapper'    => 'form_fields_tabs',
-			);
-		}
-
-		if ( !is_plugin_active( 'country-code-field-for-elementor-form/country-code-field-for-elementor-form.php' ) && !is_plugin_active( 'conditional-fields-for-elementor-form/class-conditional-fields-for-elementor-form.php' ) && !is_plugin_active( 'conditional-fields-for-elementor-form-pro/class-conditional-fields-for-elementor-form-pro.php' ) ) {
-			$controls_to_register['fme_conditional_field_toggle'] = array(
-				'name'            => 'fme_conditional_field_toggle',
-				'label'        => esc_html__( 'Enable Conditional Fields', 'form-masks-for-elementor' ),
-				'type'            => Controls_Manager::SWITCHER,
-				'tab'             => 'content',
-				'conditions' => [
-					'terms' => [
-						[
-							'name' => 'field_type',
-							'operator' => 'in',
-							'value' => $this->allowed_fields,
-						],
-					],
-				],
-				'tabs_wrapper' => 'form_fields_tabs',
-				'inner_tab' => 'form_fields_advanced_tab',
-			);
-
-			$controls_to_register['fme_conditional_field_link_button'] = array(
-				'name'            => 'fme_conditional_field_link_button',
-				'type'            => Controls_Manager::RAW_HTML,
-				'raw'             => "<p>To Add Conditional Field to Elementor form fields <a href='plugin-install.php?s=Conditional%2520Fields%2520for%2520Elementor%2520Form%2520by%2520coolplugins&tab=search&type=term' target='_blank' >Activate Plugin</a></p>",
-				'content_classes' => 'get_ccfef_link',
-				'condition'       => array(
-					'fme_conditional_field_toggle' => 'yes',
-				),
-				'tabs_wrapper' => 'form_fields_tabs',
-				'inner_tab' => 'form_fields_advanced_tab',
-			);
-		}
+		
 
 		/**
 		 * Filter to pro version change control.

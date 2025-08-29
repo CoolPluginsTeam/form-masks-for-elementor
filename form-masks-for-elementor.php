@@ -71,8 +71,14 @@ class Form_Masks_For_Elementor {
 
     public function plugin_loads(){
 
+
 		if(!class_exists('CPFM_Feedback_Notice')){
 			require_once FME_PLUGIN_PATH . 'admin/feedback/cpfm-common-notice.php';
+		}
+
+        if ( did_action( 'elementor/loaded' ) && class_exists( '\Elementor\Plugin' ) ) {
+
+			require_once FME_PLUGIN_PATH . '/admin/fme-marketing-common.php';
 		}
 
         add_action('cpfm_register_notice', function () {
