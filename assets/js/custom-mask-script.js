@@ -1023,7 +1023,10 @@
 
       const previousBtn = currectStepFields.find(".e-form__buttons__wrapper__button[data-direction='previous']");
 
-      if(!$submitBtn.data("mousedownrun") && previousBtn.length){
+      const inputMaskFields = currectStepFields.find("input.fme-mask-input");
+
+
+      if(!$submitBtn.data("mousedownrun") && previousBtn.length && inputMaskFields.length){
 
         var $subBtnTag = $submitBtn.find("button");
 
