@@ -64,14 +64,8 @@ if (! class_exists('FME_Marketing_Controllers')) {
 					
 				];
 
-				$conditional_pro_path = 'conditional-fields-for-elementor-form-pro/class-conditional-fields-for-elementor-form-pro.php';
+				if (empty(array_intersect($required_plugins, $active_plugins))) {
 
-				$all_plugins = get_plugins();
-                $is_conditinal_pro_installed = isset($all_plugins[$conditional_pro_path]);
-
-				if (empty(array_intersect($required_plugins, $active_plugins)) && !$is_conditinal_pro_installed) {
-
-					var_dump("fksf");
 
 					add_action('elementor/element/form/section_form_fields/before_section_end', [$this, 'fme_marketing_controls'], 100, 2);
 				}
@@ -493,23 +487,6 @@ if (! class_exists('FME_Marketing_Controllers')) {
 			if (! $dismissed) {
 
 
-				$coolformkit_lite_path = 'extensions-for-elementor-form/extensions-for-elementor-form.php';
-
-				$all_plugins = get_plugins();
-				$is_coolformkit_lite_installed = isset($all_plugins[$coolformkit_lite_path]);
-
-				if($is_coolformkit_lite_installed){
-
-
-						$button_html = '<button type="button" class="elementor-button e-btn e-success e-btn-1 fme-activate-plugin"  
-								data-plugin="' . esc_attr($coolformkit_lite_path) . '" 
-								data-nonce="' . esc_attr(wp_create_nonce('fme_activate_nonce')) . '">
-								Activate Cool FormKit</button>';
-
-					}else{
-
-						$button_html = '<button type="button" class="elementor-button e-btn e-info e-btn-1 fme-install-plugin"  data-plugin="cool-form-lite" data-nonce="' . esc_attr(wp_create_nonce('fme_install_nonce')) . '">Install Cool FormKit</button>';
-					}
 
 					$widget->add_control(
 						'fme_marketing_box',
@@ -523,7 +500,7 @@ if (! class_exists('FME_Marketing_Controllers')) {
 												
 												<div class="elementor-control-notice-main-content">Add advanced fields & features to your Elementor forms.</div>
 												<div class="elementor-control-notice-main-actions">
-												'. $button_html . '
+												<button type="button" class="elementor-button e-btn e-info e-btn-1 fme-install-plugin"  data-plugin="cool-form-lite" data-nonce="' . esc_attr(wp_create_nonce('fme_install_nonce')) . '">Install Cool FormKit</button>
 											</div></div>
 											<button class="elementor-control-notice-dismiss tooltip-target fme-dismiss-cross fme-dismiss-notice" data-notice="cool_form" data-nonce="' . esc_attr(wp_create_nonce('fme_dismiss_nonce_cool_form')) . '">
 												<i class="eicon eicon-close" aria-hidden="true"></i>
@@ -538,25 +515,6 @@ if (! class_exists('FME_Marketing_Controllers')) {
 			$marketing_notice_controls    = array();
 
 			$conditional_logic_controls   = array();
-
-
-			$country_code_path = 'country-code-field-for-elementor-form/country-code-field-for-elementor-form.php';
-
-			$all_plugins = get_plugins();
-			$is_country_code_installed = isset($all_plugins[$country_code_path]);
-
-			if($is_country_code_installed){
-
-
-					$button_html = '<button type="button" class="elementor-button e-btn e-success e-btn-1 fme-activate-plugin"  
-                            data-plugin="' . esc_attr($country_code_path) . '" 
-                            data-nonce="' . esc_attr(wp_create_nonce('fme_activate_nonce')) . '">
-                            Activate Country code</button>';
-
-				}else{
-
-					$button_html = '<button type="button" class="elementor-button e-btn e-info e-btn-1 fme-install-plugin"  data-plugin="country-code" data-nonce="' . esc_attr(wp_create_nonce('fme_install_nonce')) . '">Install Country code</button>';
-				}
 			
 
 			$marketing_notice_controls = array(
@@ -590,7 +548,7 @@ if (! class_exists('FME_Marketing_Controllers')) {
 				
 											<div class="elementor-control-notice-main-content">Add a country code dropdown to your phone field.</div>
 											<div class="elementor-control-notice-main-actions">
-											'. $button_html . '
+											<button type="button" class="elementor-button e-btn e-info e-btn-1 fme-install-plugin"  data-plugin="country-code" data-nonce="' . esc_attr(wp_create_nonce('fme_install_nonce')) . '">Install Country code</button>
 											</div></div></div></div>',
 											
 						'tab'             => 'content',
@@ -612,27 +570,12 @@ if (! class_exists('FME_Marketing_Controllers')) {
                 $is_conditinal_pro_installed = isset($all_plugins[$conditional_pro_path]);
 
 
-				// condtional free
-
-				$conditional_free_path = 'conditional-fields-for-elementor-form/class-conditional-fields-for-elementor-form.php';
-
-				$all_plugins = get_plugins();
-				$is_conditinal_free_installed = isset($all_plugins[$conditional_free_path]);
-
 				// button logic
 
 				 if ( $is_conditinal_pro_installed ) {
 
-					$button_html = '<button type="button" class="elementor-button e-btn e-success e-btn-1 fme-activate-plugin"  
+					$button_html = '<button type="button" class="elementor-button e-btn e-info e-btn-1 fme-activate-plugin"  
                             data-plugin="' . esc_attr($conditional_pro_path) . '" 
-                            data-nonce="' . esc_attr(wp_create_nonce('fme_activate_nonce')) . '">
-                            Activate Conditional Fields</button>';
-
-				}else if($is_conditinal_free_installed){
-
-
-					$button_html = '<button type="button" class="elementor-button e-btn e-success e-btn-1 fme-activate-plugin"  
-                            data-plugin="' . esc_attr($conditional_free_path) . '" 
                             data-nonce="' . esc_attr(wp_create_nonce('fme_activate_nonce')) . '">
                             Activate Conditional Fields</button>';
 
