@@ -764,6 +764,8 @@
     let maskErrorArr = {};
     let nextBtnOriginalClicks = {};
     let clickStatus={};
+    let recaptchaEvent;
+
 
     const nextbtnVisibility = (errorClass, input, validationFunction) => {
 
@@ -775,17 +777,23 @@
 
       const currectStepFields = form.find(".elementor-form-fields-wrapper.elementor-labels-above").children("div:not(.elementor-hidden)").find('input, textarea, select');
 
+      const submtBtnTag = form.find("button[type='submit']");
+
+
 
       if (!closesWidget.length || !fieldStep.length) {
         return;
       }
 
       const nextBtn = fieldStep.find(".e-form__buttons__wrapper__button[data-direction='next']");
+
       
 
-      if (!nextBtn.length) {
+      if ((nextBtn.length == 0 && submtBtnTag.length > 0 ) && (submtBtnTag.length == 0 && nextBtn.length == 0) ) {
         return;
       }
+
+
 
       let val = input.val();
 
@@ -812,12 +820,18 @@
         if (!nextBtnOriginalClicks[widgetId] || !nextBtnOriginalClicks[widgetId].length) {
 
 
-          const origninalClicks = jQuery._data(nextBtn[0], "events");
 
-          if (origninalClicks && (!nextBtnOriginalClicks[widgetId] || !nextBtnOriginalClicks[widgetId].length === 0)) {
-            nextBtnOriginalClicks[widgetId] = origninalClicks && origninalClicks.click ? origninalClicks.click.map(h => h.handler) : [];
+          if(nextBtn.length > 0){
 
+            const origninalClicks = jQuery._data(nextBtn[0], "events");
+  
+            if (origninalClicks && (!nextBtnOriginalClicks[widgetId] || !nextBtnOriginalClicks[widgetId].length === 0)) {
+              nextBtnOriginalClicks[widgetId] = origninalClicks && origninalClicks.click ? origninalClicks.click.map(h => h.handler) : [];
+  
+            }
           }
+
+
         }
       } else {
         if (maskErrorArr[widgetId] && maskErrorArr[widgetId].includes(inuptId)) {
@@ -828,8 +842,9 @@
 
       if (maskErrorArr[widgetId] && maskErrorArr[widgetId].length > 0) {
 
+        if(nextBtn.length > 0){
 
-        const origninalClicks = jQuery._data(nextBtn[0], "events");
+          const origninalClicks = jQuery._data(nextBtn[0], "events");
 
         if (origninalClicks && (!nextBtnOriginalClicks[widgetId] || !nextBtnOriginalClicks[widgetId].length)) {
 
@@ -841,9 +856,29 @@
         if (nextBtnOriginalClicks[widgetId] && nextBtnOriginalClicks[widgetId].length > 0) {
           nextBtn.off("click");
         }
+
+
+        }
+
+
+        
       } else {
 
+
+
+        if(recaptchaEvent){
+
+          recaptchaEvent.forEach(fn => {
+                  submtBtnTag.one("click", fn); // use .one instead of .on
+                });
+        }
+
+
+
         if (nextBtnOriginalClicks[widgetId] && nextBtnOriginalClicks[widgetId].length > 0) {
+
+
+
 
           let isfieldsValid = true
 
@@ -862,13 +897,20 @@
           if (isfieldsValid) {
 
 
-            // 2️⃣ First, clear existing handlers to avoid duplication
-            nextBtn.off("click");
-            
-            // Re-attach original click handlers only once
-            nextBtnOriginalClicks[widgetId].forEach(fn => {
-              nextBtn.one("click", fn); // use .one instead of .on
-            });
+
+
+
+            if(nextBtn.length > 0){
+
+              // 2️⃣ First, clear existing handlers to avoid duplication
+              nextBtn.off("click");
+              
+              // Re-attach original click handlers only once
+              nextBtnOriginalClicks[widgetId].forEach(fn => {
+                nextBtn.one("click", fn); // use .one instead of .on
+              });
+            }
+
 
           }
             
@@ -898,6 +940,9 @@
         }
       }
 
+      
+
+
       const closesWidget = $(this).closest(".elementor-widget-form");
       const widgetId = closesWidget.data('id');
 
@@ -918,6 +963,8 @@
             }
 
           }
+
+         
             
           // Re-attach original click handlers only once
             
@@ -949,8 +996,6 @@
       const nextBtn = currectStepFields.find(".e-form__buttons__wrapper__button[data-direction='next']");
 
       
-      // Re-attach original click handlers only once
-
       if (nextBtnOriginalClicks[widgetId] && nextBtnOriginalClicks[widgetId].length > 0) {
         nextBtn.off("click");
 
@@ -965,9 +1010,47 @@
      // end - step field mask error handling
 
 
+
+
+     // handle validation on submit button of step field form
+     $(document).on("mousedown", ".elementor-field-type-submit", function (e){
+
+      var $submitBtn = $(this);
+
+       var $form = $submitBtn.closest("form");
+
+      const currectStepFields = $form.find(".elementor-form-fields-wrapper.elementor-labels-above").children("div:not(.elementor-hidden)")
+
+      const previousBtn = currectStepFields.find(".e-form__buttons__wrapper__button[data-direction='previous']");
+
+      if(!$submitBtn.data("mousedownrun") && previousBtn.length){
+
+        var $subBtnTag = $submitBtn.find("button");
+
+
+      var $form = $submitBtn.closest("form");
+
+      const origninalclick = jQuery._data($subBtnTag[0], "events");
+
+      recaptchaEvent  = origninalclick && origninalclick.click ? origninalclick.click.map(h => h.handler) : [];
+
+      const origninalSubmit = jQuery._data($form[0], "events");
+
+
+      $form.off("submit", origninalSubmit.submit[0].handler);
+
+      $subBtnTag.off("click");
+
+      $submitBtn.data("mousedownrun", true);
+      }
+    })
+
+
     $(document).on("click", ".elementor-field-type-submit", function (e) {
 
       var $submitBtn = $(this);
+
+       var $subBtnTag = $submitBtn.find("button");
 
 
       if ($submitBtn.find('button').hasClass('cfkef-prevent-submit') || $submitBtn.find('button').hasClass('confirmation-pending')
@@ -992,6 +1075,7 @@
       // Add Elementor waiting class
       $form[0].classList.add("elementor-form-waiting");
 
+      // e.preventDefault(); // Prevent default form submission
 
       // Wait for mask errors or blur logic to complete
       setTimeout(() => {
@@ -1038,6 +1122,7 @@
         }
 
         if (!hasVisibleMaskError) {
+
 
           // ✅ All good — submit the form
           $form[0].classList.remove("elementor-form-waiting");
