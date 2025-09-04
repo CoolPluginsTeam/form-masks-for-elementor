@@ -53,13 +53,8 @@ class Form_Masks_For_Elementor {
         if ( $this->check_requirements() ) {
             $this->initialize_plugin();
             add_action( 'init', array( $this, 'text_domain_path_set' ) );
+            add_action( 'init', array( $this, 'is_compatible' ) );
 			add_action( 'activated_plugin', array( $this, 'fme_plugin_redirection' ) );
-
-            add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'fme_pro_plugin_demo_link' ) );
-
-            add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'fme_plugin_settings_link' ) );
-
-			
 
 			add_filter( 'plugin_row_meta', [ $this, 'plugin_row_meta' ], 10, 2 );
 
@@ -71,6 +66,15 @@ class Form_Masks_For_Elementor {
 
     public function plugin_loads(){
 
+        if ( ! is_plugin_active( 'elementor-pro/elementor-pro.php' ) && ! is_plugin_active( 'pro-elements/pro-elements.php' ) ) {
+				return false;
+			}
+
+
+            add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'fme_pro_plugin_demo_link' ) );
+
+            add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'fme_plugin_settings_link' ) );
+
 
 		if(!class_exists('CPFM_Feedback_Notice')){
 			require_once FME_PLUGIN_PATH . 'admin/feedback/cpfm-common-notice.php';
@@ -78,7 +82,7 @@ class Form_Masks_For_Elementor {
 
         if ( did_action( 'elementor/loaded' ) && class_exists( '\Elementor\Plugin' ) ) {
 
-			require_once FME_PLUGIN_PATH . '/admin/fme-marketing-common.php';
+			require_once FME_PLUGIN_PATH . '/admin/marketing/fme-marketing-common.php';
 		}
 
         add_action('cpfm_register_notice', function () {
@@ -141,6 +145,10 @@ class Form_Masks_For_Elementor {
 
 	public function fme_plugin_redirection($plugin){
 
+        if ( ! is_plugin_active( 'elementor-pro/elementor-pro.php' ) ) {
+				return false;
+			}
+
 		if ( is_plugin_active( 'cool-formkit-for-elementor-forms/cool-formkit-for-elementor-forms.php' ) ) {
 			return false;
 		}
@@ -148,6 +156,45 @@ class Form_Masks_For_Elementor {
 		if ( $plugin == plugin_basename( __FILE__ ) ) {
 			exit( wp_redirect( admin_url( 'admin.php?page=cool-formkit' ) ) );
 		}	
+	}
+
+    /**
+	* Check if Elementor Pro is installed or activated
+	*/
+	public function is_compatible() {
+		add_action( 'admin_init', array( $this, 'is_elementor_pro_exist' ) );
+	}
+
+    /**
+	* Function used to deactivate the plugin if Elementor Pro does not exist
+	*/
+    public function is_elementor_pro_exist() {
+		if (
+			is_plugin_active('elementor-pro/elementor-pro.php')
+		) {
+			return true; // At least one plugin is active, the country code plugin can run.
+		}
+		
+		// If neither plugin is active, show an admin notice.
+		add_action('admin_notices', array($this, 'admin_notice_missing_main_plugin'));
+		return false;
+	}
+
+    /**
+	* Show notice to enable Elementor Pro
+	*/
+	public function admin_notice_missing_main_plugin() {
+		$message = sprintf(
+				// translators: %1$s replace with Form Input Masks for Elementor Form & %2$s replace with Elementor Pro.
+				esc_html__(
+					'%1$s requires %2$s to be installed and activated.',
+					'form-masks-for-elementor'
+				),
+				esc_html__( 'Form Input Masks for Elementor Form', 'form-masks-for-elementor' ),
+				esc_html__( 'Elementor Pro', 'form-masks-for-elementor' ),
+			);
+			printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', esc_html( $message ) );
+			deactivate_plugins( plugin_basename( __FILE__ ) );
 	}
 
     public function text_domain_path_set(){

@@ -139,7 +139,7 @@ if (! class_exists('FME_Marketing_Controllers')) {
 						'type'      => \Elementor\Controls_Manager::RAW_HTML,
 						'raw'       => '<div class="elementor-control-raw-html cool-form-wrp"><div class="elementor-control-notice elementor-control-notice-type-info">
 										<div class="elementor-control-notice-icon">
-										<img class="fme-highlight-icon" src="'.esc_url( FME_PLUGIN_URL . 'assets/images/fme-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" />
+										<img class="fme-highlight-icon" src="'.esc_url( FME_PLUGIN_URL . 'admin/marketing/images/fme-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" />
 										</div>
 										<div class="elementor-control-notice-main">
 										<div class="elementor-control-notice-main-content">Enable smart taxonomy filters for your Elementor loop grid.</div>
@@ -176,7 +176,7 @@ if (! class_exists('FME_Marketing_Controllers')) {
 
 			wp_enqueue_script(
 					'coolplugin-editor-js',
-					FME_PLUGIN_URL . 'assets/js/fme-form-marketing.js',
+					FME_PLUGIN_URL . 'admin/marketing/js/fme-form-marketing.js',
 					['jquery'],
 					FME_VERSION,
 					true
@@ -251,7 +251,7 @@ if (! class_exists('FME_Marketing_Controllers')) {
 						'label'     => '',
 						'type'      => \Elementor\Controls_Manager::RAW_HTML,
 							'raw'       => '<div class="elementor-control-raw-html cool-form-wrp"><div class="elementor-control-notice elementor-control-notice-type-info">
-											<div class="elementor-control-notice-icon"><img class="fme-highlight-icon" src="'.esc_url( FME_PLUGIN_URL . 'assets/images/fme-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" />
+											<div class="elementor-control-notice-icon"><img class="fme-highlight-icon" src="'.esc_url( FME_PLUGIN_URL . 'admin/marketing/images/fme-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" />
 											</div>
 											<div class="elementor-control-notice-main">
 											<div class="elementor-control-notice-main-content">Display ACF Repeater fields in your Elementor loop grid.</div>
@@ -275,7 +275,7 @@ if (! class_exists('FME_Marketing_Controllers')) {
 
 			wp_enqueue_script(
 				'coolplugin-editor-js',
-				FME_PLUGIN_URL . 'assets/js/fme-form-marketing.js',
+				FME_PLUGIN_URL . 'admin/marketing/js/fme-form-marketing.js',
 				['jquery'],
 				FME_VERSION,
 				true
@@ -290,7 +290,7 @@ if (! class_exists('FME_Marketing_Controllers')) {
 
 			wp_enqueue_style(
 				'coolplugin-editor-css',
-				FME_PLUGIN_URL . 'assets/css/fme-mkt.css',
+				FME_PLUGIN_URL . 'admin/marketing/css/fme-mkt.css',
 				[],
 				FME_VERSION
 			);
@@ -495,7 +495,7 @@ if (! class_exists('FME_Marketing_Controllers')) {
 							'label'     => '',
 							'type'      => \Elementor\Controls_Manager::RAW_HTML,
 							'raw'       => '<div class="elementor-control-raw-html cool-form-wrp"><div class="elementor-control-notice elementor-control-notice-type-info">
-											<div class="elementor-control-notice-icon"><img class="fme-highlight-icon" src="'.esc_url( FME_PLUGIN_URL . 'assets/images/fme-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" /></div>
+											<div class="elementor-control-notice-icon"><img class="fme-highlight-icon" src="'.esc_url( FME_PLUGIN_URL . 'admin/marketing/images/fme-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" /></div>
 											<div class="elementor-control-notice-main">
 												
 												<div class="elementor-control-notice-main-content">Add advanced fields & features to your Elementor forms.</div>
@@ -505,9 +505,7 @@ if (! class_exists('FME_Marketing_Controllers')) {
 											<button class="elementor-control-notice-dismiss tooltip-target fme-dismiss-cross fme-dismiss-notice" data-notice="cool_form" data-nonce="' . esc_attr(wp_create_nonce('fme_dismiss_nonce_cool_form')) . '">
 												<i class="eicon eicon-close" aria-hidden="true"></i>
 											</button></div></div>',
-							'tab'          => 'content',
-							'inner_tab'    => 'form_fields_conditions_tab',
-							'tabs_wrapper' => 'form_fields_tabs',
+
 						]
 					);
 			}
@@ -543,7 +541,7 @@ if (! class_exists('FME_Marketing_Controllers')) {
 						'type'            => \Elementor\Controls_Manager::RAW_HTML,
 						
 						'raw'             => '<div class="elementor-control-raw-html cool-form-wrp"><div class="elementor-control-notice elementor-control-notice-type-info">
-											<div class="elementor-control-notice-icon"><img class="fme-highlight-icon" src="'.esc_url( FME_PLUGIN_URL . 'assets/images/fme-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" /></div>
+											<div class="elementor-control-notice-icon"><img class="fme-highlight-icon" src="'.esc_url( FME_PLUGIN_URL . 'admin/marketing/images/fme-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" /></div>
 											<div class="elementor-control-notice-main">
 				
 											<div class="elementor-control-notice-main-content">Add a country code dropdown to your phone field.</div>
@@ -614,7 +612,7 @@ if (! class_exists('FME_Marketing_Controllers')) {
 
 						'raw' => '<div class="elementor-control-raw-html cool-form-wrp"><div class="elementor-control-notice elementor-control-notice-type-info">
 								<div class="elementor-control-notice-icon">
-									<img class="fme-highlight-icon" src="'.esc_url( FME_PLUGIN_URL . 'assets/images/fme-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" />
+									<img class="fme-highlight-icon" src="'.esc_url( FME_PLUGIN_URL . 'admin/marketing/images/fme-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" />
 								</div>
 								<div class="elementor-control-notice-main">
 									<div class="elementor-control-notice-main-content">Show or hide form fields using conditional logic.</div>

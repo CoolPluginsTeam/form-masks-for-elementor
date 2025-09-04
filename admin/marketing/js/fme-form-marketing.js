@@ -66,6 +66,7 @@ jQuery(document).ready(function($) {
                 const responseString = JSON.stringify(response);
                 const responseContainsPlugin = responseString.includes(pluginSlug);
 
+
                 if (responseContainsPlugin) {
 
                     button.text('Activated')

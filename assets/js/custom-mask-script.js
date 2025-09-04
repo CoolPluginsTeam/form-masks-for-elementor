@@ -764,7 +764,8 @@
     let maskErrorArr = {};
     let nextBtnOriginalClicks = {};
     let clickStatus={};
-    let recaptchaEvent;
+    let recaptchaEvent = {};
+    let submitBtnEvent = {};
 
 
     const nextbtnVisibility = (errorClass, input, validationFunction) => {
@@ -778,8 +779,6 @@
       const currectStepFields = form.find(".elementor-form-fields-wrapper.elementor-labels-above").children("div:not(.elementor-hidden)").find('input, textarea, select');
 
       const submtBtnTag = form.find("button[type='submit']");
-
-
 
       if (!closesWidget.length || !fieldStep.length) {
         return;
@@ -865,12 +864,17 @@
       } else {
 
 
+        // when no error in mask validation
 
-        if(recaptchaEvent){
+        if(recaptchaEvent[widgetId]){
 
-          recaptchaEvent.forEach(fn => {
+          recaptchaEvent[widgetId].forEach(fn => {
                   submtBtnTag.one("click", fn); // use .one instead of .on
                 });
+        }
+
+        if(submitBtnEvent[widgetId]){
+          form.on("submit", submitBtnEvent[widgetId]);
         }
 
 
@@ -922,17 +926,20 @@
 
     
 
+    // handle next button event before click
 
      $(document).on("mousedown", ".e-form__buttons__wrapper__button[data-direction='next']", function(e){
 
       const form = $(this).closest(".elementor-form");
 
-      const currectStepFields = form.find(".elementor-form-fields-wrapper.elementor-labels-above").children("div:not(.elementor-hidden)").find('input, textarea, select');
-
       const mask_error_div = form.find(".elementor-form-fields-wrapper.elementor-labels-above").children("div:not(.elementor-hidden)").find('div.mask-error');
+
+      const closesWidget = $(this).closest(".elementor-widget-form");
+      const widgetId = closesWidget.data('id');
 
       let mask_error = false;
 
+      // finding mask error
       for(let i=0; i<mask_error_div.length; i++){
         if(mask_error_div[i].value != "" && mask_error_div[i].style.display == 'flex'){
           mask_error = true;
@@ -940,32 +947,9 @@
         }
       }
 
-      
-
-
-      const closesWidget = $(this).closest(".elementor-widget-form");
-      const widgetId = closesWidget.data('id');
-
-
-      let isfieldsValid = true
+      // reattcach next button event when no mask error
 
        if (maskErrorArr[widgetId] && !maskErrorArr[widgetId].length > 0 && !mask_error) {
-
-
-        for (let i = 0; i < currectStepFields.length; i++) {
-
-
-            if (currectStepFields[i].checkValidity() == false) {
-
-              isfieldsValid = false;
-              break;
-
-            }
-
-          }
-
-         
-            
           // Re-attach original click handlers only once
             
           if (nextBtnOriginalClicks[widgetId] && nextBtnOriginalClicks[widgetId].length > 0) {
@@ -982,9 +966,10 @@
      })
 
 
+     // handling next button event when previous button click
+
     $(document).on("click", ".e-form__buttons__wrapper__button[data-direction='previous']", function(e){
 
-      
       const form = $(this).closest(".elementor-form");
       
       const closesWidget = form.closest(".elementor-widget-form");
@@ -995,6 +980,7 @@
 
       const nextBtn = currectStepFields.find(".e-form__buttons__wrapper__button[data-direction='next']");
 
+      // attaching events to next button
       
       if (nextBtnOriginalClicks[widgetId] && nextBtnOriginalClicks[widgetId].length > 0) {
         nextBtn.off("click");
@@ -1007,17 +993,15 @@
 
     })
 
-     // end - step field mask error handling
-
-
-
-
-     // handle validation on submit button of step field form
+     // handle mask validation on submit button of step field form
      $(document).on("mousedown", ".elementor-field-type-submit", function (e){
 
       var $submitBtn = $(this);
 
        var $form = $submitBtn.closest("form");
+
+       const closesWidget = $form.closest(".elementor-widget-form");
+      const widgetId = closesWidget.data('id');
 
       const currectStepFields = $form.find(".elementor-form-fields-wrapper.elementor-labels-above").children("div:not(.elementor-hidden)")
 
@@ -1026,28 +1010,49 @@
       const inputMaskFields = currectStepFields.find("input.fme-mask-input");
 
 
-      if(!$submitBtn.data("mousedownrun") && previousBtn.length && inputMaskFields.length){
+      // run only first time when click on submit button 
+      // if maskerror found in the form widget this will remove submit button and form events to prevent submit
+
+      if(!$submitBtn.data("mousedownrun") && previousBtn.length && inputMaskFields.length && maskErrorArr[widgetId]){
 
         var $subBtnTag = $submitBtn.find("button");
 
+      
+      // getting submit button recaptcha and click events
 
       var $form = $submitBtn.closest("form");
 
       const origninalclick = jQuery._data($subBtnTag[0], "events");
 
-      recaptchaEvent  = origninalclick && origninalclick.click ? origninalclick.click.map(h => h.handler) : [];
+      if(!recaptchaEvent[widgetId]){
+
+        recaptchaEvent[widgetId]  = origninalclick && origninalclick.click ? origninalclick.click.map(h => h.handler) : [];
+      }
+
+
+      // getting form apply step events
 
       const origninalSubmit = jQuery._data($form[0], "events");
 
+      if(!submitBtnEvent[widgetId]){
 
-      $form.off("submit", origninalSubmit.submit[0].handler);
+        submitBtnEvent[widgetId] = origninalSubmit.submit[0].handler;
+      }
 
+      // removing form apply step event
+      $form.off("submit", submitBtnEvent[widgetId]);
+
+      // removing submit button click events
       $subBtnTag.off("click");
 
       $submitBtn.data("mousedownrun", true);
       }
     })
 
+    // end - step field mask error handling
+
+
+    // handling form submit of mask field in elementor form
 
     $(document).on("click", ".elementor-field-type-submit", function (e) {
 
@@ -1125,12 +1130,11 @@
         }
 
         if (!hasVisibleMaskError) {
-
-
           // ✅ All good — submit the form
           $form[0].classList.remove("elementor-form-waiting");
-            $submitBtn.data("clicked", false);
+          $submitBtn.data("clicked", false);
           $submitBtn.trigger("submit");
+          $submitBtn.data("mousedownrun", false);
         }
 
       }, 500);
