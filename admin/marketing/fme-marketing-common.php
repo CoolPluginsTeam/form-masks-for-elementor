@@ -11,7 +11,7 @@ use Elementor\Controls_Manager;
  *
  * Handles marketing notices and AJAX actions for Elementor forms.
  *
- * @package Timeline Widget Addon for Elementor
+ * @package Form Input Masks for Elementor Form
  */
 
 if (! class_exists('FME_Marketing_Controllers')) {
