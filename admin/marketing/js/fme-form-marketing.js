@@ -118,132 +118,6 @@ jQuery(document).ready(function($) {
             });
     });
 
-
-    $(document).on('click', '.fme-activate-plugin', function(e) {
-
-
-        e.preventDefault();
-
-        var $form = $(this);
-        var $wrapper = $form.closest('.cool-form-wrp');
-        let button = $(this);
-        button.next('.fme-error-message').remove();
-
-        const slug = button.data('plugin');
-        if (!slug) return;
-        // Get the nonce from the button data attribute
-        let nonce = button.data('nonce');
-
-        button.text('Activating...').prop('disabled', true);
-        disableAllOtherPluginButtonsTemporarily(slug);
-
-
-
-        $.ajax({
-				type: 'POST',
-				url: ajaxurl,
-				data: {
-					action: 'fme_activate_plugin',
-					slug: slug,
-					_wpnonce: nonce
-				},
-				success: function (res) {
-
-                    button.text('Activated')
-                        .removeClass('e-btn e-info e-btn-1 elementor-button-success')
-                        .addClass('elementor-disabled')
-                        .prop('disabled', true);
-
-                    let successMessage = 'Plugin Activated. Save & reload the page to start using the feature.';
-
-					$wrapper.find('.elementor-control-notice-success').remove();
-                        $wrapper.find(' .elementor-control-notice-main-actions').after(
-                            '<div class="elementor-control-notice elementor-control-notice-success">' +
-                            '<div class="elementor-control-notice-content">' +
-                            successMessage +
-                            '</div></div>');
-				},
-				error: function () {
-
-                    button.text('Activated')
-                        .removeClass('e-btn e-info e-btn-1 elementor-button-success')
-                        .addClass('elementor-disabled')
-                        .prop('disabled', true);
-
-                    
-					$wrapper.find('.elementor-control-notice-success').remove();
-                    $wrapper.find('.elementor-control-notice-main-actions').after('<div class="elementor-control-notice elementor-control-notice-success">' + '<div class="elementor-control-notice-content">' +
-                        'Please go to the Plugins menu and activate it.' +
-                        '</div></div>');
-				},
-				
-			});
-
-        // $.post(ajaxurl, {
-
-        //         action: 'fme_activate_plugin',
-        //         slug: slug,
-        //         _wpnonce: nonce
-        //     },
-
-        //     function(response) {
-
-        //         const pluginSlug = slug;
-        //         const responseString = JSON.stringify(response);
-        //         console.log(responseString);
-        //         const responseContainsPlugin = responseString.includes(pluginSlug);
-
-        //         if (responseContainsPlugin) {
-
-        //             button.text('Activated')
-        //                 .removeClass('e-btn e-info e-btn-1 elementor-button-success')
-        //                 .addClass('elementor-disabled')
-        //                 .prop('disabled', true);
-
-        //             disableOtherPluginButtons(slug);
-
-        //             let successMessage = 'Save & reload the page to start using the feature.';
-
-        //             if (slug === 'events-widgets-for-elementor-and-the-events-calendar') {
-
-        //                 successMessage = 'Events Widget is now active! Design your Events page with Elementor to access powerful new features.';
-        //                 jQuery('.ect-notice-widget').text(successMessage);
-
-        //             } else {
-
-        //                 $wrapper.find('.elementor-control-notice-success').remove();
-        //                 $wrapper.find(' .elementor-control-notice-main-actions').after(
-        //                     '<div class="elementor-control-notice elementor-control-notice-success">' +
-        //                     '<div class="elementor-control-notice-content">' +
-        //                     successMessage +
-        //                     '</div></div>');
-        //             }
-
-        //         } else if (!responseContainsPlugin) {
-
-        //             $wrapper.find('.elementor-control-notice-success').remove();
-        //             $wrapper.find('.elementor-control-notice-main-actions').after('<div class="elementor-control-notice elementor-control-notice-success">' + '<div class="elementor-control-notice-content">' +
-        //                 'Please go to the Plugins menu and activate it.' +
-        //                 '</div></div>');
-        //         } else {
-
-        //             let errorMessage = 'Please try again or download plugin manually from WordPress.org</a>';
-        //             $wrapper.find('.elementor-button-warning').remove();
-        //             if (slug === 'events-widget') {
-        //                 //
-        //                 jQuery('.ect-notice-widget').text(errorMessage)
-        //             } else {
-
-        //                 $wrapper.find('.elementor-control-notice-main-actions').after(
-        //                     '<div class="elementor-control-notice elementor-button-warning">' +
-        //                     '<div class="elementor-control-notice-content">' +
-        //                     errorMessage +
-        //                     '</div></div>');
-        //             }
-        //         }
-        //     });
-    });
-
     function getPluginSlug(plugin) {
 
         const slugs = {
@@ -251,7 +125,8 @@ jQuery(document).ready(function($) {
             'conditional': 'conditional-fields-for-elementor-form',
             'country-code': 'country-code-field-for-elementor-form',
             'loop-grid': 'loop-grid-extender-for-elementor-pro',
-            'events-widget': 'events-widgets-for-elementor-and-the-events-calendar'
+            'events-widget': 'events-widgets-for-elementor-and-the-events-calendar',
+            'conditional-pro': 'conditional-fields-for-elementor-form-pro',
         };
         return slugs[plugin];
     }
