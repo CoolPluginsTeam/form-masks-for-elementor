@@ -70,6 +70,8 @@
       if(input.value != '$0,00'){
 
         newValue = formatMoneyInput(input.value, type, moneyPrefix, input);
+      }else{
+        newValue = "";
       }
 
 
@@ -245,6 +247,8 @@
         if(newVal != '('){
 
           input.value = newVal;
+        }else{
+          input.value = "";
         }
 
 
