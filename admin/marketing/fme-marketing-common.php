@@ -183,31 +183,35 @@ if (! class_exists('FME_Marketing_Controllers')) {
 				true
 			);
 
+
+
 			// Check if it's tribe_events post type or tec settings page
-			$is_tribe_post = isset($_GET['post_type']) && sanitize_key($_GET['post_type']) === 'tribe_events';
-			$is_tec_settings = isset($_GET['page']) && sanitize_key($_GET['page']) === 'tec-events-settings';
+			$is_tribe_post    = isset($_GET['post_type']) && sanitize_key($_GET['post_type']) === 'tribe_events';
+			$is_tec_settings  = isset($_GET['page']) && sanitize_key($_GET['page']) === 'tec-events-settings';
 
-			if ($is_tribe_post || $is_tec_settings) {
+			// Only show notice if not on taxonomy screens
+			if ( ($is_tribe_post || $is_tec_settings) && !isset($_GET['taxonomy']) ) {
 
-			?>
+				// If we're on tribe post and page param is set, require tec settings page specifically
+				if ($is_tribe_post && isset($_GET['page']) && sanitize_key($_GET['page']) !== 'tec-events-settings') {
+					return;
+				} 
+				?>
+				<div class="notice notice-info is-dismissible fme-tec-notice"
+					data-notice="tec_notice"
+					data-nonce="<?php echo esc_attr( wp_create_nonce('fme_dismiss_nonce_tec_notice') ); ?>">
 
-							<div class="notice notice-info is-dismissible fme-tec-notice"
+					<p class="ect-notice-widget">
+						<button class="button button-primary fme-install-plugin"
+								data-plugin="events-widget"
 								data-notice="tec_notice"
-								data-nonce="<?php echo esc_attr(wp_create_nonce('fme_dismiss_nonce_tec_notice')); ?>">
-
-								<p class="ect-notice-widget">
-									<button class="button button-primary fme-install-plugin"
-										data-plugin="events-widget"
-										data-notice="tec_notice"
-										data-nonce="<?php echo esc_attr(wp_create_nonce('fme_install_nonce')); ?>">
-										Install Events Widgets for Elementor
-									</button>
-									Easily display The Events Calendar events on your Elementor pages.
-								</p>
-							</div>
-
-			<?php
-
+								data-nonce="<?php echo esc_attr( wp_create_nonce('fme_install_nonce') ); ?>">
+							Install Events Widgets for Elementor
+						</button>
+						Easily display The Events Calendar events on your Elementor pages.
+					</p>
+				</div>
+				<?php
 			}
 
 			}
