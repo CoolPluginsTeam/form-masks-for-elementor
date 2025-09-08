@@ -163,7 +163,9 @@ if (! class_exists('FME_Marketing_Controllers')) {
 		function fme_show_tec_active_notice()
 		{
 
-			$active_plugins = get_option('active_plugins', []);
+			if(!is_plugin_active('timeline-widget-addon-for-elementor/timeline-widget-addon-for-elementor.php')){
+
+				$active_plugins = get_option('active_plugins', []);
 			if (
 				!class_exists('Tribe__Events__Main')
 				|| in_array('events-widgets-pro/events-widgets-pro.php', $active_plugins, true)
@@ -187,24 +189,26 @@ if (! class_exists('FME_Marketing_Controllers')) {
 
 			if ($is_tribe_post || $is_tec_settings) {
 
-?>
+			?>
 
-				<div class="notice notice-info is-dismissible fme-tec-notice"
-					data-notice="tec_notice"
-					data-nonce="<?php echo esc_attr(wp_create_nonce('fme_dismiss_nonce_tec_notice')); ?>">
+							<div class="notice notice-info is-dismissible fme-tec-notice"
+								data-notice="tec_notice"
+								data-nonce="<?php echo esc_attr(wp_create_nonce('fme_dismiss_nonce_tec_notice')); ?>">
 
-					<p class="ect-notice-widget">
-						<button class="button button-primary fme-install-plugin"
-							data-plugin="events-widget"
-							data-notice="tec_notice"
-							data-nonce="<?php echo esc_attr(wp_create_nonce('fme_install_nonce')); ?>">
-							Install Events Widgets for Elementor
-						</button>
-						Easily display The Events Calendar events on your Elementor pages.
-					</p>
-				</div>
+								<p class="ect-notice-widget">
+									<button class="button button-primary fme-install-plugin"
+										data-plugin="events-widget"
+										data-notice="tec_notice"
+										data-nonce="<?php echo esc_attr(wp_create_nonce('fme_install_nonce')); ?>">
+										Install Events Widgets for Elementor
+									</button>
+									Easily display The Events Calendar events on your Elementor pages.
+								</p>
+							</div>
 
-<?php
+			<?php
+
+			}
 
 			}
 		}

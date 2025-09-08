@@ -66,8 +66,53 @@ jQuery(document).ready(function($) {
                 const responseString = JSON.stringify(response);
                 const responseContainsPlugin = responseString.includes(pluginSlug);
 
+                
 
-                if (responseContainsPlugin) {
+                if(pluginSlug == 'country-code-field-for-elementor-form'){
+
+                    const $page_html = $(response);
+
+                    let $input_country_code = $page_html.find('input[name="country_code"]');
+
+                    if($input_country_code.is(':disabled')){
+                       $wrapper.find('.elementor-control-notice-success').remove();
+                    $wrapper.find('.elementor-control-notice-main-actions').after('<div class="elementor-control-notice elementor-control-notice-success">' + '<div class="elementor-control-notice-content">' +
+                        'The plugin is installed but not yet activated. Please go to the Plugins menu and activate it.' +
+                        '</div></div>');
+                    }else{
+                        button.text('Activated')
+                        .removeClass('e-btn e-info e-btn-1 elementor-button-success')
+                        .addClass('elementor-disabled')
+                        .prop('disabled', true);
+
+                        disableOtherPluginButtons(slug);
+
+                        let successMessage = 'Save & reload the page to start using the feature.';
+
+                        if (slug === 'events-widgets-for-elementor-and-the-events-calendar') {
+
+                            successMessage = 'Events Widget is now active! Design your Events page with Elementor to access powerful new features.';
+                            jQuery('.ect-notice-widget').text(successMessage);
+
+                        } else {
+
+                            $wrapper.find('.elementor-control-notice-success').remove();
+                            $wrapper.find(' .elementor-control-notice-main-actions').after(
+                                '<div class="elementor-control-notice elementor-control-notice-success">' +
+                                '<div class="elementor-control-notice-content">' +
+                                successMessage +
+                                '</div></div>');
+                        }
+                    }
+
+
+
+                }
+
+
+
+
+                else if (responseContainsPlugin) {
 
                     button.text('Activated')
                         .removeClass('e-btn e-info e-btn-1 elementor-button-success')

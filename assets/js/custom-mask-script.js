@@ -1000,6 +1000,10 @@
      // handle mask validation on submit button of step field form
      $(document).on("mousedown", ".elementor-field-type-submit", function (e){
 
+      console.log(recaptchaEvent);
+      console.log(submitBtnEvent);
+
+
       var $submitBtn = $(this);
 
        var $form = $submitBtn.closest("form");
