@@ -44,7 +44,6 @@ if (! class_exists('FME_Marketing_Controllers')) {
 
 
 
-			add_action('admin_notices', array($this, 'fme_show_tec_active_notice'));
 
 			$active_plugins = get_option('active_plugins', []);
 
@@ -62,17 +61,21 @@ if (! class_exists('FME_Marketing_Controllers')) {
 					'conditional-fields-for-elementor-form/class-conditional-fields-for-elementor-form.php',
 					'cool-formkit-for-elementor-forms/cool-formkit-for-elementor-forms.php',
 					'conditional-fields-for-elementor-form-pro/class-conditional-fields-for-elementor-form-pro.php',
-
+					'mask-form-elementor/index.php'
 				];
 
 				if (empty(array_intersect($required_plugins, $active_plugins))) {
-
 
 					add_action('elementor/element/form/section_form_fields/before_section_end', [$this, 'fme_marketing_controls'], 100, 2);
 				}
 				if (!in_array('loop-grid-extender-for-elementor-pro/loop-grid-extender-for-elementor-pro.php', $active_plugins, true)) {
 					add_action("elementor/element/taxonomy-filter/section_taxonomy_filter/before_section_end", [$this, 'fme_register_controls'], 10);
 				}
+			}
+
+			if (!is_plugin_active('timeline-widget-addon-for-elementor/timeline-widget-addon-for-elementor.php')) {
+
+				add_action('admin_notices', array($this, 'fme_show_tec_active_notice'));
 			}
 
 			add_action('wp_ajax_fme_install_plugin', [$this, 'fme_install_plugin']);
@@ -163,7 +166,12 @@ if (! class_exists('FME_Marketing_Controllers')) {
 		function fme_show_tec_active_notice()
 		{
 
-			if(!is_plugin_active('timeline-widget-addon-for-elementor/timeline-widget-addon-for-elementor.php')){
+			if ( defined( 'EVENT_WIDGET_NOTICE_SHOWN' ) && EVENT_WIDGET_NOTICE_SHOWN ) {
+				return;
+			}
+			else{
+
+				define( 'EVENT_WIDGET_NOTICE_SHOWN', true );
 
 				$active_plugins = get_option('active_plugins', []);
 			if (
@@ -215,6 +223,7 @@ if (! class_exists('FME_Marketing_Controllers')) {
 			}
 
 			}
+
 		}
 
 		/**

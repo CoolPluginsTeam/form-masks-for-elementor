@@ -1000,10 +1000,6 @@
      // handle mask validation on submit button of step field form
      $(document).on("mousedown", ".elementor-field-type-submit", function (e){
 
-      console.log(recaptchaEvent);
-      console.log(submitBtnEvent);
-
-
       var $submitBtn = $(this);
 
        var $form = $submitBtn.closest("form");
@@ -1017,11 +1013,11 @@
 
       const inputMaskFields = currectStepFields.find("input.fme-mask-input");
 
-
       // run only first time when click on submit button 
       // if maskerror found in the form widget this will remove submit button and form events to prevent submit
 
-      if(!$submitBtn.data("mousedownrun") && previousBtn.length && inputMaskFields.length && maskErrorArr[widgetId]){
+
+      if(previousBtn.length && inputMaskFields.length && maskErrorArr[widgetId].length){
 
         var $subBtnTag = $submitBtn.find("button");
 
@@ -1032,20 +1028,32 @@
 
       const origninalclick = jQuery._data($subBtnTag[0], "events");
 
+
       if(!recaptchaEvent[widgetId]){
 
         recaptchaEvent[widgetId]  = origninalclick && origninalclick.click ? origninalclick.click.map(h => h.handler) : [];
       }
 
 
+
+
       // getting form apply step events
 
       const origninalSubmit = jQuery._data($form[0], "events");
 
-      if(!submitBtnEvent[widgetId]){
+      origninalSubmit.submit.forEach((ele) => {
+        if(ele.handler.toString().trim().includes("resetForm")){
 
-        submitBtnEvent[widgetId] = origninalSubmit.submit[0].handler;
-      }
+          if(!submitBtnEvent[widgetId]){
+
+            submitBtnEvent[widgetId] = ele.handler;
+
+          }
+
+        }
+      })
+
+
 
       // removing form apply step event
       $form.off("submit", submitBtnEvent[widgetId]);
@@ -1053,7 +1061,7 @@
       // removing submit button click events
       $subBtnTag.off("click");
 
-      $submitBtn.data("mousedownrun", true);
+
       }
     })
 
@@ -1142,7 +1150,6 @@
           $form[0].classList.remove("elementor-form-waiting");
           $submitBtn.data("clicked", false);
           $submitBtn.trigger("submit");
-          $submitBtn.data("mousedownrun", false);
         }
 
       }, 500);
