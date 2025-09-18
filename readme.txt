@@ -5,10 +5,10 @@ Tags: mask, input masks, elementor form, elementor, elementor form builder
 Requires at least: 5.0
 Tested up to: 6.8.2
 Requires PHP: 7.2
-Stable tag: 2.5.5
+Stable tag: 2.5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Elementor tested up to: 3.31.4
+Elementor tested up to: 3.32.1
 Elementor Pro tested up to: 3.31.2
 
 Add input masks to Elementor Pro or Hello Plus form fields - phone, date, time, credit card, CPF, CNPJ, CEP & more for accurate entries.
@@ -190,6 +190,11 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 - [Live Demo of Elementor Form Input Masks](https://coolplugins.net/add-input-masks-elementor-form/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=demo&utm_content=installation)  
 
 == Changelog ==
+
+= 2.5.6 - Sep 19, 2025 =
+- Added: - Marketing notices with pro elements.
+- Fixed: - Other plugin Conflict with marketing notices.
+- Tested up to: Elementor 3.32.1 and Elementor Pro 3.31.2.
 
 = 2.5.5 - Sep 11, 2025 =
 - Fixed: - Third Party Form compatibility issue.

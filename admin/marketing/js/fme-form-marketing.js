@@ -97,7 +97,9 @@ jQuery(document).ready(function($) {
 
         if (slug === 'events-widgets-for-elementor-and-the-events-calendar') {
             successMessage = 'Events Widget is now active! Design your Events page with Elementor to access powerful new features.';
-            jQuery('.ect-notice-widget').text(successMessage);
+
+            jQuery('.fme-tec-notice .ect-notice-widget').text(successMessage);
+
         } else {
             $wrapper.find('.elementor-control-notice-success').remove();
             $wrapper.find('.elementor-control-notice-main-actions').after(
