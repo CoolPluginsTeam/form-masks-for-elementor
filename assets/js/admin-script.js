@@ -100,7 +100,6 @@ function buttonShakeEffectHandler() {
 
 
 			input.addEventListener('change', function () {
-				console.log(input.name);
 
 
 				if (input1 && input.name === 'condtional_logic') {

@@ -5,15 +5,15 @@
  * Description: Form Input Masks for Elementor Form creates a custom control in the field advanced tab for customizing your fields with masks. This plugin requires Elementor Pro (Form Widget).
  * Author: Cool Plugins
  * Author URI: https://coolplugins.net/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=author_page&utm_content=plugins_list
- * Version: 2.5.3
+ * Version: 2.5.6
  * Requires at least: 5.5
  * Requires PHP: 7.4
  * Text Domain: form-masks-for-elementor
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  * Requires Plugins: elementor
- * Elementor tested up to: 3.31.2
- * Elementor Pro tested up to: 3.31.2
+ * Elementor tested up to: 3.32.2
+ * Elementor Pro tested up to: 3.32.1
  */
 
  if ( ! defined( 'ABSPATH' ) ) {
@@ -22,7 +22,7 @@
 	exit();
 }
 
-define( 'FME_VERSION', '2.5.3' );
+define( 'FME_VERSION', '2.5.6' );
 define( 'FME_FILE', __FILE__ );
 define( 'FME_PLUGIN_BASE', plugin_basename( FME_FILE ) );
 define( 'FME_PHP_MINIMUM_VERSION', '7.4' );
@@ -73,6 +73,11 @@ class Form_Masks_For_Elementor {
 
 		if(!class_exists('CPFM_Feedback_Notice')){
 			require_once FME_PLUGIN_PATH . 'admin/feedback/cpfm-common-notice.php';
+		}
+
+        if ( did_action( 'elementor/loaded' ) && class_exists( '\Elementor\Plugin' ) ) {
+
+			require_once FME_PLUGIN_PATH . '/admin/marketing/fme-marketing-common.php';
 		}
 
         add_action('cpfm_register_notice', function () {

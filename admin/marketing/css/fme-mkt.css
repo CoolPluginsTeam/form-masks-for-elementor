@@ -1,0 +1,3 @@
+img.fme-highlight-icon {
+filter: brightness(0) saturate(100%) invert(32%) sepia(84%) saturate(627%) hue-rotate(190deg) brightness(92%) contrast(92%);
+}
