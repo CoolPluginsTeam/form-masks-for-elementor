@@ -192,8 +192,8 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 == Changelog ==
 
 = 2.5.6 - Sep 19, 2025 =
-- Added: - Marketing notices with pro elements.
-- Fixed: - Other plugin Conflict with marketing notices.
+- Added: - Added other plugin recommendations for Pro Elements users.
+- Fixed: - Conflicts with other plugins.
 - Tested up to: Elementor 3.32.2 and Elementor Pro 3.32.1.
 
 = 2.5.5 - Sep 11, 2025 =
