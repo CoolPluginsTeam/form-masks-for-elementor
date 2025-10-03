@@ -1017,7 +1017,7 @@
       // if maskerror found in the form widget this will remove submit button and form events to prevent submit
 
 
-      if(previousBtn.length && inputMaskFields.length && maskErrorArr[widgetId].length){
+      if(previousBtn && previousBtn.length && inputMaskFields && inputMaskFields.length && maskErrorArr[widgetId] && maskErrorArr[widgetId].length){
 
         var $subBtnTag = $submitBtn.find("button");
 
