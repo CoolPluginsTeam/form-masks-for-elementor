@@ -1095,7 +1095,6 @@
         return
       }
 
-      var $submitBtn = $(this);
       var $form = $submitBtn.closest("form");
 
       const closesWidget = $form.closest(".elementor-widget-form");
@@ -1115,66 +1114,73 @@
       // Add Elementor waiting class
       $form[0].classList.add("elementor-form-waiting");
 
-      // e.preventDefault(); // Prevent default form submission
-
       // Wait for mask errors or blur logic to complete
       setTimeout(() => {
-
-
         let hasVisibleMaskError = false;
 
         // Check for visible mask error messages
         const $errors = $form.find(".mask-error").filter(function () {
           return $(this).text().trim() !== "" && $(this).css("display") == "flex";
-        });
+      });
 
-        if ($errors.length > 0) {
-          hasVisibleMaskError = true;
-          const $firstError = $errors.first();
-          $("html, body").animate({
-            scrollTop: $firstError.offset().top - 200
-          }, 300);
+      if ($errors.length > 0) {
+        hasVisibleMaskError = true;
+        const $firstError = $errors.first();
+        $("html, body").animate({
+          scrollTop: $firstError.offset().top - 200
+        }, 300);
+      }
+
+      // ✅ Check for empty required masked fields
+      const $emptyRequiredMasked = $form.find("input[required]").filter(function () {
+        if(!$(this).hasClass('hide-fme-mask-input')){
+          const val = $(this).val().trim();
+          const isVisible = $(this).css("display") == "flex";
+          return (val === "" || /^[\s_\-\(\)\.:/]+$/.test(val));
+        }
+      });
+
+      if ($emptyRequiredMasked.length > 0) {
+        hasVisibleMaskError = true;
+        const $firstEmpty = $emptyRequiredMasked.first();
+        $("html, body").animate({
+          scrollTop: $firstEmpty.offset().top - 200
+        }, 300);
+        $firstEmpty.focus();
+      }
+
+      // ❌ Validation failed
+      if (hasVisibleMaskError) {
+        // $form[0].classList.remove("elementor-form-waiting");
+        $submitBtn.data("clicked", false);
+        e.preventDefault();
+        return;
+      }
+
+      // ❌ Validation failed
+      if (hasVisibleMaskError) {
+        // $form[0].classList.remove("elementor-form-waiting");
+        $submitBtn.data("clicked", false);
+        e.preventDefault();
+        return;
+      }
+
+      if (!hasVisibleMaskError) { 
+        // ✅ All good — submit the form
+
+
+        if(recaptchaEvent[widgetId]){
+          submtBtnTag.on("click", recaptchaEvent[widgetId]);
+          submtBtnTag.trigger("click");
         }
 
-        // ✅ Check for empty required masked fields
-        const $emptyRequiredMasked = $form.find("input[required]").filter(function () {
+        if(submitBtnEvent[widgetId]){
+          $form.on("submit", submitBtnEvent[widgetId]);
+          submtBtnTag.trigger("click");
 
-          if(!$(this).hasClass('hide-fme-mask-input')){
-
-            const val = $(this).val().trim();
-            const isVisible = $(this).css("display") == "flex";
-            return (val === "" || /^[\s_\-\(\)\.:/]+$/.test(val));
-          }
-        });
-
-
-        if ($emptyRequiredMasked.length > 0) {
-          hasVisibleMaskError = true;
-          const $firstEmpty = $emptyRequiredMasked.first();
-          $("html, body").animate({
-            scrollTop: $firstEmpty.offset().top - 200
-          }, 300);
-          $firstEmpty.focus();
         }
 
-        // ❌ Validation failed
-        if (hasVisibleMaskError) {
-          // $form[0].classList.remove("elementor-form-waiting");
-          $submitBtn.data("clicked", false);
-          e.preventDefault();
-          return;
-        }
-
-        if (!hasVisibleMaskError) {
-          // ✅ All good — submit the form
-
-          if(recaptchaEvent[widgetId]){
-            submtBtnTag.on("click", recaptchaEvent[widgetId]);
-            submtBtnTag.trigger("click");
-
-          }
-
-          $form[0].classList.remove("elementor-form-waiting");
+        $form[0].classList.remove("elementor-form-waiting");
           $submitBtn.data("clicked", false);
           if(!recaptchaEvent[widgetId]){
 
@@ -1187,7 +1193,7 @@
 
 
           }
-        }
+      }
 
       }, 500);
     });
