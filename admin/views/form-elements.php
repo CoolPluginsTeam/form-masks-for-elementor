@@ -182,7 +182,7 @@ $form_elements = array(
 
 
 $condition_plugin_features = array(
-    'condtional_logic' => array(
+    'conditional_logic' => array(
         'label' => __('Conditional Logic', 'cool-formkit'),
         'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/elementor-form-conditional-fields/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://coolformkit.com/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
@@ -521,8 +521,7 @@ $input_form_mask_features = array(
                                             </div>
 
                                             <label class="cfkef-toggle-switch" style="<?php echo !$is_condtional_field_active ? 'opacity: 0.2; ' : ''; ?>">
-                                                <input type="checkbox" name="<?php echo esc_attr($key); ?>" value="1" <?php checked(get_option('condtional_logic'));
-                                                                                                                        ?> class="cfkef-element-toggle"
+                                                <input type="checkbox" name="cfkef_enabled_elements[]" value="<?php echo esc_attr($key); ?>" <?php checked(in_array($key, $enabled_elements));?> class="cfkef-element-toggle"
                                                     <?php disabled(!$is_condtional_field_active); ?>>
                                                 <?php if (!empty($element['pro'])): ?>
                                                     <a href="<?php echo esc_url($element['how_to']) ?>" target="_blank">
@@ -723,8 +722,7 @@ $input_form_mask_features = array(
                                             </div>
 
                                             <label class="cfkef-toggle-switch" style="<?php echo !$is_country_field_active ? 'opacity: 0.2; ' : ''; ?>">
-                                                <input type="checkbox" name="<?php echo esc_attr($key); ?>" value="1" <?php checked(get_option('country_code'));
-                                                                                                                        ?> class="cfkef-element-toggle"
+                                                <input type="checkbox" name="cfkef_enabled_elements[]" value="<?php echo esc_attr($key); ?>" <?php checked(in_array($key, $enabled_elements));?> class="cfkef-element-toggle"
                                                     <?php disabled(!$is_country_field_active); ?>>
                                                 <?php if (!empty($element['pro'])): ?>
                                                     <a href="<?php echo esc_url($element['how_to']) ?>" target="_blank">
@@ -1041,8 +1039,7 @@ $input_form_mask_features = array(
                                                 </div>
 
                                                 <label class="cfkef-toggle-switch" style="<?php echo !$is_form_mask_active ? 'opacity: 0.2; ' : ''; ?>">
-                                                    <input type="checkbox" name="<?php echo esc_attr($key); ?>" value="1" <?php checked(get_option('form_input_mask'));
-                                                                                                                            ?> class="cfkef-element-toggle"
+                                                    <input type="checkbox" name="cfkef_enabled_elements[]" value="<?php echo esc_attr($key); ?>" <?php checked(in_array($key, $enabled_elements));  ?> class="cfkef-element-toggle"
                                                         <?php disabled(!$is_form_mask_active); ?>>
                                                     <?php if (!empty($element['pro'])): ?>
                                                         <a href="<?php echo esc_url($element['how_to']) ?>" target="_blank">

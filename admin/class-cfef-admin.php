@@ -201,6 +201,12 @@ class CFEF_Admin {
         <?php
     }
 
+    public function add_to_cfkef_enabled_elements( $new_items ) {
+        $current = get_option( 'cfkef_enabled_elements', [] );
+        $merged  = array_unique( array_merge( $current, (array) $new_items ) );
+        update_option( 'cfkef_enabled_elements', $merged );
+    }
+
     /**
      * Register the settings for form elements.
      *
@@ -215,7 +221,7 @@ class CFEF_Admin {
         ));
         register_setting( 'cfkef_form_elements_group', 'cfkef_toggle_all' );
         register_setting( 'cfkef_form_elements_group', 'country_code' );
-        register_setting( 'cfkef_form_elements_group', 'condtional_logic' );
+        register_setting( 'cfkef_form_elements_group', 'conditional_logic' );
         register_setting( 'cfkef_form_elements_group', 'form_input_mask' );
         register_setting( 'cfkef_form_elements_group', 'input_mask' );
 
@@ -223,32 +229,75 @@ class CFEF_Admin {
 
         register_setting( 'cfkef_form_elements_group', 'cfkef_enable_elementor_pro_form' );
 
-        if (!get_option('ccfef_plugin_initialized')) {
-            // Get current enabled elements or empty array
-                update_option( 'country_code', true );
-            
-            // Set initialization flag to avoid repeating
-            update_option('ccfef_plugin_initialized', true);
+        if ( ! get_option( 'ccfef_plugin_initialized' ) ) {
+
+            $this->add_to_cfkef_enabled_elements( ['country_code'] );
+
+            update_option( 'ccfef_plugin_initialized', true );
+
+        } else {
+
+            if ( ! get_option( 'ccfef_migrate_done' ) ) {
+
+                $val = get_option( 'country_code', null );
+
+                if ( ! is_null( $val ) && $val ) {
+                    // Option exists AND is true
+                    $this->add_to_cfkef_enabled_elements( ['country_code'] );
+                }
+
+                update_option( 'ccfef_migrate_done', true );
+            }
         }
 
-        if (!get_option('fme_plugin_initialized')) {
-            // Get current enabled elements or empty array
 
-                update_option( 'form_input_mask', true );
-            
-                // Set initialization flag to avoid repeating
-                update_option('fme_plugin_initialized', true);
-            
+        /**
+         * 2. FME initialization / migration
+         */
+        if ( ! get_option( 'fme_plugin_initialized' ) ) {
+
+            $this->add_to_cfkef_enabled_elements( ['form_input_mask'] );
+
+            update_option( 'fme_plugin_initialized', true );
+
+        } else {
+
+            if ( ! get_option( 'fme_migrate_done' ) ) {
+
+                $val = get_option( 'form_input_mask', null );
+
+                if ( ! is_null( $val ) && $val ) {
+                    // Option exists AND is true
+                    $this->add_to_cfkef_enabled_elements( ['form_input_mask'] );
+                }
+
+                update_option( 'fme_migrate_done', true );
+            }
         }
 
-        if (!get_option('mfe_plugin_initialized')) {
-            // Get current enabled elements or empty array
 
-                update_option( 'input_mask', true );
-            
-                // Set initialization flag to avoid repeating
-                update_option('mfe_plugin_initialized', true);
-            
+        /**
+         * 3. MFE initialization / migration
+         */
+        if ( ! get_option( 'mfe_plugin_initialized' ) ) {
+
+            $this->add_to_cfkef_enabled_elements( ['input_mask'] );
+
+            update_option( 'mfe_plugin_initialized', true );
+
+        } else {
+
+            if ( ! get_option( 'mfe_migrate_done' ) ) {
+
+                $val = get_option( 'input_mask', null );
+
+                if ( ! is_null( $val ) && $val ) {
+                    // Option exists AND is true
+                    $this->add_to_cfkef_enabled_elements( ['input_mask'] );
+                }
+
+                update_option( 'mfe_migrate_done', true );
+            }
         }
     }
 

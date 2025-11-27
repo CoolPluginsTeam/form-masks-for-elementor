@@ -81,10 +81,10 @@ function buttonShakeEffectHandler() {
 
 		if (!headerButton || bodyInputs.length === 0) return;
 
-		const input1 = wrapper.querySelector('input[name="condtional_logic"]');
-		const input2 = wrapper.querySelector('input[name="country_code"]');
-		const input3 = wrapper.querySelector('input[name="form_input_mask"]');
-		const input4 = wrapper.querySelector('input[name="input_mask"]');
+		const input1 = wrapper.querySelector('input[value="conditional_logic"]');
+		const input2 = wrapper.querySelector('input[value="country_code"]');
+		const input3 = wrapper.querySelector('input[value="form_input_mask"]');
+		const input4 = wrapper.querySelector('input[value="input_mask"]');
 
 
 
@@ -94,44 +94,43 @@ function buttonShakeEffectHandler() {
 			headerButton.classList.add('shake-effect');
 		}
 
+		
 
 		bodyInputs.forEach(input => {
-
-
 
 			input.addEventListener('change', function () {
 
 
-				if (input1 && input.name === 'condtional_logic') {
+				if (input1 && input.value === 'conditional_logic') {
 
 
 					if(input1.checked || !input1.checked){
 
-						jQuery('input[name="condtional_logic"]').parent().parent().parent().parent().parent().find(".button-primary").addClass('shake-effect');
+						jQuery('input[value="conditional_logic"]').parent().parent().parent().parent().parent().find(".button-primary").addClass('shake-effect');
 					}
 				}
 				
-				else if (input2 && input.name === 'country_code') {
+				else if (input2 && input.value === 'country_code') {
 
 					if(input2.checked || !input2.checked){
 
-						jQuery('input[name="country_code"]').parent().parent().parent().parent().parent().find(".button-primary").addClass('shake-effect');
+						jQuery('input[value="country_code"]').parent().parent().parent().parent().parent().find(".button-primary").addClass('shake-effect');
 					}
 				}
 
-				else if (input3 && input.name === 'form_input_mask') {
+				else if (input3 && input.value === 'form_input_mask') {
 
 					if(input3.checked || !input3.checked){
 
-						jQuery('input[name="form_input_mask"]').parent().parent().parent().parent().parent().find(".button-primary").addClass('shake-effect');
+						jQuery('input[value="form_input_mask"]').parent().parent().parent().parent().parent().find(".button-primary").addClass('shake-effect');
 					}
 				}
 
-				else if (input4 && input.name === 'input_mask') {
+				else if (input4 && input.value === 'input_mask') {
 
 					if(input4.checked || !input4.checked){
 
-						jQuery('input[name="input_mask"]').parent().parent().parent().parent().parent().find(".button-primary").addClass('shake-effect');
+						jQuery('input[value="input_mask"]').parent().parent().parent().parent().parent().find(".button-primary").addClass('shake-effect');
 					}
 				}
 
@@ -164,19 +163,28 @@ function handleElementCardTooltip() {
 
 				// Append button
 				if (action === 'activate') {
-					tooltip.innerHTML += `<button class="cfkef-activate-plugin-btn" data-slug="${slug}" data-init="${init}">Activate Plugin</button>`;
+					const button = document.createElement('button');
+					button.className = 'cfkef-activate-plugin-btn';
+					button.dataset.slug = slug;
+					button.dataset.init = init;
+					button.textContent = 'Activate Plugin';
+					tooltip.appendChild(button);
 				} else if (action === 'install') {
-					let extraCss;
-					if(el.classList.contains('need-install') && el.dataset.slug === 'elementor-pro'){
-						extraCss = 'redirect-elementor-page'
+					let extraCss = '';
+					if (el.classList.contains('need-install') && el.dataset.slug === 'elementor-pro') {
+						extraCss = 'redirect-elementor-page';
 					}
-					let tooltip_text = tooltip.innerHTML;
 
-					tooltip_text = tooltip_text.replace('Install Plugin', '');
+					// Clear tooltip text safely
+					const tooltipText = tooltip.textContent.replace('Install Plugin', '');
+					tooltip.textContent = tooltipText;
 
-					tooltip.innerHTML = "";
-
-					tooltip.innerHTML = tooltip_text + `<button class="cfkef-install-plugin-btn ${extraCss}" data-slug="${slug}" data-init="${init}">Install Plugin</button>`;
+					const button = document.createElement('button');
+					button.className = `cfkef-install-plugin-btn ${extraCss}`;
+					button.dataset.slug = slug;
+					button.dataset.init = init;
+					button.textContent = 'Install Plugin';
+					tooltip.appendChild(button);
 				}
 			}
 		});
@@ -227,7 +235,7 @@ function handleTooltipButtonAction(){
 							success: function (res) {
 								if (res) {
 									window.location.reload();
-								} 
+								}
 							},
 							error: function () {
 								alert('Activation failed.');

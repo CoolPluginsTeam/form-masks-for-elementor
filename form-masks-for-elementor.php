@@ -69,6 +69,12 @@ class Form_Masks_For_Elementor {
         }
     }
 
+    private function is_field_enabled($field_key) {
+			$enabled_elements = get_option('cfkef_enabled_elements', array());
+			return in_array(sanitize_key($field_key), array_map('sanitize_key', $enabled_elements));
+		}
+
+
     public function plugin_loads(){
 
 		if(!class_exists('CPFM_Feedback_Notice')){
@@ -195,7 +201,7 @@ class Form_Masks_For_Elementor {
      */
     private function initialize_plugin() {
 
-        if(get_option('form_input_mask', true)){
+        if($this->is_field_enabled('form_input_mask')){
 
             require_once FME_PLUGIN_PATH . 'includes/class-fme-plugin.php';
             FME\Includes\FME_Plugin::instance();
