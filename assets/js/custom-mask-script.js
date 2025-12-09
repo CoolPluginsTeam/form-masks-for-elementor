@@ -368,6 +368,11 @@
     ) {
       $(document).on("blur", selector, function () {
         var input = $(this);
+        
+        if(input.hasClass("hide-fme-mask-input")){
+          return;
+        }
+
         var val = input.val();
         var errorElement = input
           .closest(".elementor-field-group")
@@ -871,10 +876,7 @@
         // when no error in mask validation
 
         if(recaptchaEvent[widgetId]){
-
-          recaptchaEvent[widgetId].forEach(fn => {
-                  submtBtnTag.one("click", fn); // use .one instead of .on
-                });
+              submtBtnTag.on("click", recaptchaEvent[widgetId]);
         }
 
         if(submitBtnEvent[widgetId]){
@@ -1017,7 +1019,7 @@
       // if maskerror found in the form widget this will remove submit button and form events to prevent submit
 
 
-      if(previousBtn.length && inputMaskFields.length && maskErrorArr[widgetId].length){
+      if(previousBtn && previousBtn.length && inputMaskFields && inputMaskFields.length && maskErrorArr[widgetId] && maskErrorArr[widgetId].length){
 
         var $subBtnTag = $submitBtn.find("button");
 
@@ -1029,37 +1031,51 @@
       const origninalclick = jQuery._data($subBtnTag[0], "events");
 
 
-      if(!recaptchaEvent[widgetId]){
+      if(origninalclick && origninalclick.click){
 
-        recaptchaEvent[widgetId]  = origninalclick && origninalclick.click ? origninalclick.click.map(h => h.handler) : [];
+            origninalclick.click.forEach((ele) => {
+            if(ele.handler.toString().trim().includes("onV3FormSubmit")){
+
+              if(!recaptchaEvent[widgetId]){
+
+                recaptchaEvent[widgetId] = ele.handler;
+
+              }
+
+            }
+          })
+
       }
-
-
-
 
       // getting form apply step events
 
       const origninalSubmit = jQuery._data($form[0], "events");
 
-      origninalSubmit.submit.forEach((ele) => {
-        if(ele.handler.toString().trim().includes("resetForm")){
+      if(origninalSubmit && origninalSubmit.submit){
 
-          if(!submitBtnEvent[widgetId]){
-
-            submitBtnEvent[widgetId] = ele.handler;
-
+        origninalSubmit.submit.forEach((ele) => {
+          if(ele.handler.toString().trim().includes("resetForm")){
+  
+            if(!submitBtnEvent[widgetId]){
+  
+              submitBtnEvent[widgetId] = ele.handler;
+  
+            }
+  
           }
+        })
+      }
 
-        }
-      })
+      if(submitBtnEvent[widgetId]){
+          // removing form apply step event
+          $form.off("submit", submitBtnEvent[widgetId]);
+      }
 
 
-
-      // removing form apply step event
-      $form.off("submit", submitBtnEvent[widgetId]);
-
-      // removing submit button click events
-      $subBtnTag.off("click");
+      if(recaptchaEvent[widgetId]){
+          // removing submit button click events
+          $subBtnTag.off("click", recaptchaEvent[widgetId]);
+      }
 
 
       }
@@ -1074,17 +1090,16 @@
 
       var $submitBtn = $(this);
 
-       var $subBtnTag = $submitBtn.find("button");
-
-
       if ($submitBtn.find('button').hasClass('cfkef-prevent-submit') || $submitBtn.find('button').hasClass('confirmation-pending')
       ) {
         return
       }
 
-      var $submitBtn = $(this);
       var $form = $submitBtn.closest("form");
 
+      const closesWidget = $form.closest(".elementor-widget-form");
+      const widgetId = closesWidget.data('id');
+      const submtBtnTag = $form.find("button[type='submit']");
 
       // Prevent double-clicks
       if ($submitBtn.data("clicked")) {
@@ -1099,58 +1114,86 @@
       // Add Elementor waiting class
       $form[0].classList.add("elementor-form-waiting");
 
-      // e.preventDefault(); // Prevent default form submission
-
       // Wait for mask errors or blur logic to complete
       setTimeout(() => {
-
-
         let hasVisibleMaskError = false;
 
         // Check for visible mask error messages
         const $errors = $form.find(".mask-error").filter(function () {
           return $(this).text().trim() !== "" && $(this).css("display") == "flex";
-        });
+      });
 
-        if ($errors.length > 0) {
-          hasVisibleMaskError = true;
-          const $firstError = $errors.first();
-          $("html, body").animate({
-            scrollTop: $firstError.offset().top - 200
-          }, 300);
-        }
+      if ($errors.length > 0) {
+        hasVisibleMaskError = true;
+        const $firstError = $errors.first();
+        $("html, body").animate({
+          scrollTop: $firstError.offset().top - 200
+        }, 300);
+      }
 
-        // ✅ Check for empty required masked fields
-        const $emptyRequiredMasked = $form.find("input[required]").filter(function () {
+      // ✅ Check for empty required masked fields
+      const $emptyRequiredMasked = $form.find("input[required]").filter(function () {
+        if(!$(this).hasClass('hide-fme-mask-input')){
           const val = $(this).val().trim();
           const isVisible = $(this).css("display") == "flex";
           return (val === "" || /^[\s_\-\(\)\.:/]+$/.test(val));
-        });
+        }
+      });
+
+      if ($emptyRequiredMasked.length > 0) {
+        hasVisibleMaskError = true;
+        const $firstEmpty = $emptyRequiredMasked.first();
+        $("html, body").animate({
+          scrollTop: $firstEmpty.offset().top - 200
+        }, 300);
+        $firstEmpty.focus();
+      }
+
+      // ❌ Validation failed
+      if (hasVisibleMaskError) {
+        // $form[0].classList.remove("elementor-form-waiting");
+        $submitBtn.data("clicked", false);
+        e.preventDefault();
+        return;
+      }
+
+      // ❌ Validation failed
+      if (hasVisibleMaskError) {
+        // $form[0].classList.remove("elementor-form-waiting");
+        $submitBtn.data("clicked", false);
+        e.preventDefault();
+        return;
+      }
+
+      if (!hasVisibleMaskError) { 
+        // ✅ All good — submit the form
 
 
-        if ($emptyRequiredMasked.length > 0) {
-          hasVisibleMaskError = true;
-          const $firstEmpty = $emptyRequiredMasked.first();
-          $("html, body").animate({
-            scrollTop: $firstEmpty.offset().top - 200
-          }, 300);
-          $firstEmpty.focus();
+        if(recaptchaEvent[widgetId]){
+          submtBtnTag.on("click", recaptchaEvent[widgetId]);
+          submtBtnTag.trigger("click");
         }
 
-        // ❌ Validation failed
-        if (hasVisibleMaskError) {
-          // $form[0].classList.remove("elementor-form-waiting");
+        if(submitBtnEvent[widgetId]){
+          $form.on("submit", submitBtnEvent[widgetId]);
+          submtBtnTag.trigger("click");
+
+        }
+
+        $form[0].classList.remove("elementor-form-waiting");
           $submitBtn.data("clicked", false);
-          e.preventDefault();
-          return;
-        }
+          if(!recaptchaEvent[widgetId]){
 
-        if (!hasVisibleMaskError) {
-          // ✅ All good — submit the form
-          $form[0].classList.remove("elementor-form-waiting");
-          $submitBtn.data("clicked", false);
-          $submitBtn.trigger("submit");
-        }
+            let error_messages = $form.find('.elementor-form-fields-wrapper').find('.elementor-message');
+
+            if(error_messages && error_messages.length == 0){
+
+              $form[0].requestSubmit();
+            }
+
+
+          }
+      }
 
       }, 500);
     });

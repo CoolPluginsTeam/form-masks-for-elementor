@@ -5,14 +5,14 @@
  * Description: Form Input Masks for Elementor Form creates a custom control in the field advanced tab for customizing your fields with masks. This plugin requires Elementor Pro (Form Widget).
  * Author: Cool Plugins
  * Author URI: https://coolplugins.net/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=author_page&utm_content=plugins_list
- * Version: 2.5.6
+ * Version: 2.5.8
  * Requires at least: 5.5
  * Requires PHP: 7.4
  * Text Domain: form-masks-for-elementor
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  * Requires Plugins: elementor
- * Elementor tested up to: 3.32.2
+ * Elementor tested up to: 3.33.2
  * Elementor Pro tested up to: 3.32.1
  */
 
@@ -22,7 +22,7 @@
 	exit();
 }
 
-define( 'FME_VERSION', '2.5.6' );
+define( 'FME_VERSION', '2.5.8' );
 define( 'FME_FILE', __FILE__ );
 define( 'FME_PLUGIN_BASE', plugin_basename( FME_FILE ) );
 define( 'FME_PHP_MINIMUM_VERSION', '7.4' );
@@ -68,6 +68,12 @@ class Form_Masks_For_Elementor {
             $this->includes();
         }
     }
+
+    private function is_field_enabled($field_key) {
+			$enabled_elements = get_option('cfkef_enabled_elements', array());
+			return in_array(sanitize_key($field_key), array_map('sanitize_key', $enabled_elements));
+		}
+
 
     public function plugin_loads(){
 
@@ -195,7 +201,7 @@ class Form_Masks_For_Elementor {
      */
     private function initialize_plugin() {
 
-        if(get_option('form_input_mask', true)){
+        if($this->is_field_enabled('form_input_mask')){
 
             require_once FME_PLUGIN_PATH . 'includes/class-fme-plugin.php';
             FME\Includes\FME_Plugin::instance();
