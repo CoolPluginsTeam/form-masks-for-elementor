@@ -3,7 +3,7 @@ Contributors: coolplugins, narinder-singh, satindersingh
 Donate link: https://donate.stripe.com/5kQdR92iBevO75WbPm6c00i
 Tags: mask, input masks, elementor form, elementor, elementor form builder
 Requires at least: 5.0
-Tested up to: 6.8.3
+Tested up to: 6.9
 Requires PHP: 7.2
 Stable tag: 2.5.8
 License: GPLv2 or later
