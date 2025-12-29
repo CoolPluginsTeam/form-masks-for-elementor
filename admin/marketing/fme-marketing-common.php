@@ -61,7 +61,8 @@ if (! class_exists('FME_Marketing_Controllers')) {
 					'conditional-fields-for-elementor-form/class-conditional-fields-for-elementor-form.php',
 					'cool-formkit-for-elementor-forms/cool-formkit-for-elementor-forms.php',
 					'conditional-fields-for-elementor-form-pro/class-conditional-fields-for-elementor-form-pro.php',
-					'mask-form-elementor/index.php'
+					'mask-form-elementor/index.php',
+					'sb-elementor-contact-form-db/sb_elementor_contact_form_db.php',
 				];
 
 				if (empty(array_intersect($required_plugins, $active_plugins))) {
