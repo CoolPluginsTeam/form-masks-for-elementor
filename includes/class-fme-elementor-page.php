@@ -49,10 +49,8 @@ class FME_Elementor_Page {
 
     private static function cfkef_current_page($slug)
     {
-        $current_page = isset($_GET['page']) ? esc_html( wp_unslash( $_GET['page'] ) ) :
-                 ( isset($_POST['page']) ? esc_html( wp_unslash( $_POST['page'] ) ) :
-                 ( isset($_GET['post_type']) ? esc_html( wp_unslash( $_GET['post_type'] ) ) :
-                 ( isset($_POST['post_type']) ? esc_html( wp_unslash( $_POST['post_type'] ) ) : '' )));
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+        $current_page = isset($_GET['page']) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) :( isset($_POST['page']) ? sanitize_text_field( wp_unslash( $_POST['page'] ) ) :( isset($_GET['post_type']) ? sanitize_text_field( wp_unslash( $_GET['post_type'] ) ) :( isset($_POST['post_type']) ? sanitize_text_field( wp_unslash( $_POST['post_type'] ) ) : '' )));
 
         $status=false;
 

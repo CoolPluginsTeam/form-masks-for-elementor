@@ -52,7 +52,6 @@ class Form_Masks_For_Elementor {
     private function __construct() {
         if ( $this->check_requirements() ) {
             $this->initialize_plugin();
-            add_action( 'init', array( $this, 'text_domain_path_set' ) );
 			add_action( 'activated_plugin', array( $this, 'fme_plugin_redirection' ) );
 
             add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'fme_pro_plugin_demo_link' ) );
@@ -94,8 +93,8 @@ class Form_Masks_For_Elementor {
 
             $notice = [
 
-                'title' => __('Elementor Form Addons by Cool Plugins', 'cool-formkit-for-elementor-forms'),
-                'message' => __('Help us make this plugin more compatible with your site by sharing non-sensitive site data.', 'cool-plugins-feedback'),
+                'title' => __('Elementor Form Addons by Cool Plugins', 'form-masks-for-elementor'),
+                'message' => __('Help us make this plugin more compatible with your site by sharing non-sensitive site data.', 'form-masks-for-elementor'),
                 'pages' => ['cool-formkit','cfkef-entries','cool-formkit&tab=recaptcha-settings'],
                 'always_show_on' => ['cool-formkit','cfkef-entries','cool-formkit&tab=recaptcha-settings'], // This enables auto-show
                 'plugin_name'=>'fme'
@@ -104,9 +103,10 @@ class Form_Masks_For_Elementor {
             \CPFM_Feedback_Notice::cpfm_register_notice('cool_forms', $notice);
 
                 if (!isset($GLOBALS['cool_plugins_feedback'])) {
+                    // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound	
                     $GLOBALS['cool_plugins_feedback'] = [];
                 }
-                
+                // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
                 $GLOBALS['cool_plugins_feedback']['cool_forms'][] = $notice;
            
             });
@@ -151,13 +151,10 @@ class Form_Masks_For_Elementor {
 		}
 
 		if ( $plugin == plugin_basename( __FILE__ ) ) {
-			exit( wp_redirect( admin_url( 'admin.php?page=cool-formkit' ) ) );
+			wp_safe_redirect( admin_url( 'admin.php?page=cool-formkit' ) );
+            exit;
 		}	
 	}
-
-    public function text_domain_path_set(){
-        load_plugin_textdomain( 'form-masks-for-elementor', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-    }
 
 	public function fme_pro_plugin_demo_link($links){
 		$get_pro_link = '<a href="https://coolformkit.com/pricing/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=plugins_list" style="font-weight: bold; color: green;" target="_blank">Get Pro</a>';
@@ -228,6 +225,7 @@ class Form_Masks_For_Elementor {
      */
     public function admin_notice_php_version_fail() {
         $message = sprintf(
+            /* translators: 1: Plugin name, 2: Minimum required PHP version */
             esc_html__( '%1$s requires PHP version %2$s or greater.', 'form-masks-for-elementor' ),
             '<strong>Form Input Masks for Elementor Form</strong>',
             FME_PHP_MINIMUM_VERSION
@@ -242,6 +240,7 @@ class Form_Masks_For_Elementor {
      */
     public function admin_notice_wp_version_fail() {
         $message = sprintf(
+            /* translators: 1: Plugin name, 2: Minimum required WordPress version */
             esc_html__( '%1$s requires WordPress version %2$s or greater.', 'form-masks-for-elementor' ),
             '<strong>Form Input Masks for Elementor Form</strong>',
             FME_WP_MINIMUM_VERSION
@@ -289,7 +288,7 @@ class Form_Masks_For_Elementor {
     public function plugin_row_meta( $plugin_meta, $plugin_file ) {
 			if ( FME_PLUGIN_BASE === $plugin_file ) {
 				$row_meta = [
-					'docs' => '<a href="https://coolplugins.net/add-input-masks-elementor-form/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=docs&utm_content=plugins_list" aria-label="' . esc_attr( esc_html__( 'Country Code Documentation', '' ) ) . '" target="_blank">' . esc_html__( 'Docs & FAQs', 'cfef' ) . '</a>'
+					'docs' => '<a href="https://coolplugins.net/add-input-masks-elementor-form/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=docs&utm_content=plugins_list" aria-label="' . esc_attr( esc_html__( 'Country Code Documentation', 'form-masks-for-elementor' ) ) . '" target="_blank">' . esc_html__( 'Docs & FAQs', 'form-masks-for-elementor' ) . '</a>'
 				];
 
 				$plugin_meta = array_merge( $plugin_meta, $row_meta );

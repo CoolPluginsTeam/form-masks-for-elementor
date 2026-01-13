@@ -1,4 +1,5 @@
 <?php
+// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedNamespaceFound	
 namespace FME\feedback;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -32,7 +33,8 @@ class cfef_feedback {
 	function enqueue_feedback_scripts() {
 		$screen = get_current_screen();
 		if ( isset( $screen ) && $screen->id == 'plugins' ) {
-			wp_enqueue_script( __NAMESPACE__ . 'feedback-script', $this->plugin_url . 'admin/feedback/js/admin-feedback.js', array( 'jquery' ), $this->plugin_version );
+			// phpcs:ignore WordPress.WP.EnqueuedResourceParameters.NotInFooter
+			wp_enqueue_script( __NAMESPACE__ . 'feedback-script', $this->plugin_url . 'admin/feedback/js/admin-feedback.js', array( 'jquery' ), $this->plugin_version);
 			wp_enqueue_style( 'cool-plugins-feedback-css', $this->plugin_url . 'admin/feedback/css/admin-feedback.css', null, $this->plugin_version );
 		}
 	}
@@ -126,7 +128,8 @@ class cfef_feedback {
         global $wpdb;
         // Server and WP environment details
         $server_info = [
-            'server_software'        => isset($_SERVER['SERVER_SOFTWARE']) ? sanitize_text_field($_SERVER['SERVER_SOFTWARE']) : 'N/A',
+            'server_software'        => isset($_SERVER['SERVER_SOFTWARE']) ? sanitize_text_field(wp_unslash($_SERVER['SERVER_SOFTWARE'])) : 'N/A',
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
             'mysql_version'          => $wpdb ? sanitize_text_field($wpdb->get_var("SELECT VERSION()")) : 'N/A',
             'php_version'            => sanitize_text_field(phpversion() ?: 'N/A'),
             'wp_version'             => sanitize_text_field(get_bloginfo('version') ?: 'N/A'),
@@ -171,10 +174,10 @@ class cfef_feedback {
 
 
 	function submit_deactivation_response() {
-		if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( $_POST['_wpnonce'] ), '_cool-plugins_deactivate_feedback_nonce' ) ) {
+		if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash($_POST['_wpnonce'])), '_cool-plugins_deactivate_feedback_nonce' ) ) {
 			wp_send_json_error();
 		} else {
-			$reason             = isset( $_POST['reason'] ) ? sanitize_text_field( $_POST['reason'] ) : '';
+			$reason             = isset( $_POST['reason'] ) ? sanitize_text_field( wp_unslash($_POST['reason']) ) : '';
 			$deactivate_reasons = array(
 				'didnt_work_as_expected'         => array(
 					'title'             => __( 'The plugin didn\'t work as expected', 'form-masks-for-elementor' ),
@@ -193,7 +196,7 @@ class cfef_feedback {
 					'input_placeholder' => '',
 				),
 				'other'                          => array(
-					'title'             => __( 'Other', 'cool-plugins' ),
+					'title'             => __( 'Other', 'form-masks-for-elementor' ),
 					'input_placeholder' => __( 'Please share the reason.', 'form-masks-for-elementor' ),
 				),
 			);
@@ -201,7 +204,7 @@ class cfef_feedback {
 			$deativation_reason = array_key_exists( $reason, $deactivate_reasons ) ? $reason : 'other';
 
 			$deativation_reason = esc_html($deativation_reason);
-			$sanitized_message = empty( $_POST['message'] ) || sanitize_text_field( $_POST['message'] ) == '' ? 'N/A' : sanitize_text_field( $_POST['message'] );
+			$sanitized_message = empty( $_POST['message'] ) || sanitize_text_field( wp_unslash($_POST['message']) ) == '' ? 'N/A' : sanitize_text_field( wp_unslash($_POST['message']) );
 			$admin_email       = sanitize_email( get_option( 'admin_email' ) );
 			$site_url          = esc_url( site_url() );
 			$feedback_url      = FME_FEEDBACK_URL.'wp-json/coolplugins-feedback/v1/feedback';
