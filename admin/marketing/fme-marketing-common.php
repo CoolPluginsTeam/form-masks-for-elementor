@@ -16,6 +16,7 @@ use Elementor\Controls_Manager;
 
 if (! class_exists('FME_Marketing_Controllers')) {
 
+// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedClassFound
 	class FME_Marketing_Controllers
 	{
 		private static $instance = null;

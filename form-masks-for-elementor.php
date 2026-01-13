@@ -22,6 +22,8 @@
 	exit();
 }
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound
+
 define( 'FME_VERSION', '2.5.8' );
 define( 'FME_FILE', __FILE__ );
 define( 'FME_PLUGIN_BASE', plugin_basename( FME_FILE ) );
@@ -39,7 +41,7 @@ register_deactivation_hook( __FILE__, array( 'Form_Masks_For_Elementor', 'fme_de
 if ( ! function_exists( 'is_plugin_active' ) ) {
     include_once ABSPATH . 'wp-admin/includes/plugin.php';
 }
-
+// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedClassFound
 class Form_Masks_For_Elementor {
     /**
      * Plugin instance.

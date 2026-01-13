@@ -23,6 +23,7 @@ if (!defined('ABSPATH')) {
  * @subpackage Cool_FormKit/admin
  */
 if(!class_exists('CFEF_Admin')) {
+// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedClassFound
 class CFEF_Admin {
 
     /**

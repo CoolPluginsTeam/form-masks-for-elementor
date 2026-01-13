@@ -5,7 +5,7 @@
 if ( ! defined( 'ABSPATH' ) ){
     exit;
 } 
-
+// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedClassFound
 class FME_Elementor_Page {
 
     protected $plugin_name;

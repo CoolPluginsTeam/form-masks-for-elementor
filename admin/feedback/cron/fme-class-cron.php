@@ -5,6 +5,7 @@ if (!defined('ABSPATH')) {
     exit();
 }
 if (!class_exists('fme_cronjob')) {
+    // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedClassFound
     class fme_cronjob
     {
 
