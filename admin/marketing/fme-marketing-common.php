@@ -340,6 +340,24 @@ if (! class_exists('FME_Marketing_Controllers')) {
 
 			$plugin_slug = sanitize_key(wp_unslash($_POST['slug']));
 
+			// Only allow installation of known marketing plugins (ignore client-manipulated slugs).
+			$allowed_slugs = array(
+				'extensions-for-elementor-form',
+				'conditional-fields-for-elementor-form',
+				'country-code-field-for-elementor-form',
+				'loop-grid-extender-for-elementor-pro',
+				'events-widgets-for-elementor-and-the-events-calendar',
+				'conditional-fields-for-elementor-form-pro',
+			);
+			if ( ! in_array( $plugin_slug, $allowed_slugs, true ) ) {
+				wp_send_json_error( array(
+					'slug' => $plugin_slug,
+					'errorCode'=> 'plugin_not_allowed',
+					// phpcs:ignore WordPress.WP.I18n.TextDomainMismatch
+					'errorMessage' => __( 'This plugin cannot be installed from here.', 'mfe' ),
+				));
+			}
+
 
 			$status = array(
 				'install' => 'plugin',

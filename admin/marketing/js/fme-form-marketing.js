@@ -35,6 +35,16 @@
         const slug = getPluginSlug(slugg);
         if (!slug) return;
 
+        const allowedSlugs = [
+            'extensions-for-elementor-form',
+            'conditional-fields-for-elementor-form',
+            'country-code-field-for-elementor-form',
+            'loop-grid-extender-for-elementor-pro',
+            'events-widgets-for-elementor-and-the-events-calendar',
+            'conditional-fields-for-elementor-form-pro',
+        ];
+        if (!slug || !allowedSlugs.includes(slug)) return;
+
         let nonce = button.data('nonce');
 
         button.text('Installing...').prop('disabled', true);
