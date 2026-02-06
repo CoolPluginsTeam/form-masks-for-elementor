@@ -194,8 +194,6 @@
                 // Call parent onRender
                 elementor.modules.controls.BaseData.prototype.onRender.apply(this, arguments);
 
-                console.log("fs");
-
                 if(!this.el) return;
                 const customNotice = this.el.querySelector('.cool-form-wrp');
 
