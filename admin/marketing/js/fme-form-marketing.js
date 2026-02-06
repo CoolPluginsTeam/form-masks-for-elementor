@@ -190,21 +190,23 @@
 
     if(typeof elementor !== 'undefined' && elementor) {
         const callbackfunction = elementor.modules.controls.BaseData.extend({
-            onRender:(data)=>{
+            onRender: function(){
+                // Call parent onRender
+                elementor.modules.controls.BaseData.prototype.onRender.apply(this, arguments);
 
                 console.log("fs");
 
-                if(!data.el) return;
-                const customNotice=data.el.querySelector('.cool-form-wrp');
+                if(!this.el) return;
+                const customNotice = this.el.querySelector('.cool-form-wrp');
 
                 if(!customNotice) return;
 
-                const installBtns=data.el.querySelectorAll('button.fme-install-plugin');
+                const installBtns = this.el.querySelectorAll('button.fme-install-plugin');
 
                 if(installBtns.length === 0) return;
 
                 installBtns.forEach(btn=>{
-                    const installSlug=btn.dataset.plugin;
+                    const installSlug = btn.dataset.plugin;
                     btn.addEventListener('click',()=>{
                         installPlugin(jQuery(btn),installSlug)
                     });
