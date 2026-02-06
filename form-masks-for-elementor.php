@@ -5,15 +5,15 @@
  * Description: Form Input Masks for Elementor Form creates a custom control in the field advanced tab for customizing your fields with masks. This plugin requires Elementor Pro (Form Widget).
  * Author: Cool Plugins
  * Author URI: https://coolplugins.net/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=author_page&utm_content=plugins_list
- * Version: 2.5.8
+ * Version: 2.5.9
  * Requires at least: 5.5
  * Requires PHP: 7.4
  * Text Domain: form-masks-for-elementor
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  * Requires Plugins: elementor
- * Elementor tested up to: 3.33.2
- * Elementor Pro tested up to: 3.32.1
+ * Elementor tested up to: 3.35.3
+ * Elementor Pro tested up to: 3.35.0
  */
 
  if ( ! defined( 'ABSPATH' ) ) {
@@ -22,7 +22,7 @@
 	exit();
 }
 
-define( 'FME_VERSION', '2.5.8' );
+define( 'FME_VERSION', '2.5.9' );
 define( 'FME_FILE', __FILE__ );
 define( 'FME_PLUGIN_BASE', plugin_basename( FME_FILE ) );
 define( 'FME_PHP_MINIMUM_VERSION', '7.4' );
