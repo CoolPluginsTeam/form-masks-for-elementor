@@ -68,7 +68,7 @@ class CFEF_Admin {
         add_action('admin_init', array($this, 'register_form_elements_settings'));
         add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_styles'));
 
-        add_action( 'wp_ajax_cfkef_plugin_install', 'wp_ajax_install_plugin' );
+        add_action( 'wp_ajax_cfkef_plugin_install', array($this,'cfkef_plugin_install') );
         add_action( 'wp_ajax_cfkef_plugin_activate', array($this,'cfkef_plugin_activate') );
 
         
@@ -89,28 +89,142 @@ class CFEF_Admin {
     }
 
 
+    /**
+     * Get allowed plugin slugs and their init files.
+     * This whitelist prevents unauthorized plugin installation.
+     *
+     * @since    1.0.0
+     * @return   array    Array of allowed plugin slugs mapped to their init files.
+     */
+    private function get_allowed_plugins() {
+        return array(
+            'conditional-fields-for-elementor-form' => 'conditional-fields-for-elementor-form/class-conditional-fields-for-elementor-form.php',
+            'country-code-field-for-elementor-form' => 'country-code-field-for-elementor-form/country-code-field-for-elementor-form.php',
+            'form-masks-for-elementor' => 'form-masks-for-elementor/form-masks-for-elementor.php',
+        );
+    }
+
+    /**
+     * Validate if a plugin slug is allowed.
+     *
+     * @since    1.0.0
+     * @param    string    $slug    Plugin slug to validate.
+     * @return   bool    True if allowed, false otherwise.
+     */
+    private function is_allowed_plugin_slug( $slug ) {
+        $allowed_plugins = $this->get_allowed_plugins();
+        return isset( $allowed_plugins[ $slug ] );
+    }
+
+    /**
+     * Validate if a plugin init file is allowed.
+     *
+     * @since    1.0.0
+     * @param    string    $init_file    Plugin init file to validate.
+     * @return   bool    True if allowed, false otherwise.
+     */
+    private function is_allowed_plugin_init_file( $init_file ) {
+        $allowed_plugins = $this->get_allowed_plugins();
+        return in_array( $init_file, $allowed_plugins, true );
+    }
+
+    /**
+     * Secure plugin installation handler with whitelist validation.
+     *
+     * @since    1.0.0
+     */
+    public function cfkef_plugin_install() {
+        check_ajax_referer( 'updates', '_ajax_nonce' );
+        
+        if ( ! current_user_can( 'install_plugins' ) ) {
+            wp_send_json_error( array( 'message' => 'Permission denied' ) );
+        }
+
+        if ( empty( $_POST['slug'] ) ) {
+            wp_send_json_error( array( 'message' => 'Plugin slug missing' ) );
+        }
+
+        $plugin_slug = sanitize_text_field( wp_unslash( $_POST['slug'] ) );
+
+        // Security: Validate slug against whitelist
+        if ( ! $this->is_allowed_plugin_slug( $plugin_slug ) ) {
+            wp_send_json_error( array( 'message' => 'Unauthorized plugin. Only approved plugins can be installed.' ) );
+        }
+
+        // Include required WordPress files
+        require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+        require_once ABSPATH . 'wp-admin/includes/file.php';
+        require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+        require_once ABSPATH . 'wp-admin/includes/class-plugin-upgrader.php';
+
+        $api = plugins_api( 'plugin_information', array(
+            'slug'   => $plugin_slug,
+            'fields' => array(
+                'sections' => false,
+            ),
+        ) );
+
+        if ( is_wp_error( $api ) ) {
+            wp_send_json_error( array( 'message' => $api->get_error_message() ) );
+        }
+
+        // Double-check: Verify the API returned slug matches our whitelist
+        if ( ! $this->is_allowed_plugin_slug( $api->slug ) ) {
+            wp_send_json_error( array( 'message' => 'Unauthorized plugin. Only approved plugins can be installed.' ) );
+        }
+
+        $skin     = new \WP_Ajax_Upgrader_Skin();
+        $upgrader = new \Plugin_Upgrader( $skin );
+        $result   = $upgrader->install( $api->download_link );
+
+        if ( is_wp_error( $result ) ) {
+            wp_send_json_error( array( 'message' => $result->get_error_message() ) );
+        }
+
+        if ( is_wp_error( $skin->result ) ) {
+            wp_send_json_error( array( 'message' => $skin->result->get_error_message() ) );
+        }
+
+        if ( $skin->get_errors()->has_errors() ) {
+            wp_send_json_error( array( 'message' => $skin->get_error_messages() ) );
+        }
+
+        wp_send_json_success( array( 'message' => 'Plugin installed successfully' ) );
+    }
+
+    /**
+     * Secure plugin activation handler with whitelist validation.
+     *
+     * @since    1.0.0
+     */
     public function cfkef_plugin_activate(){
         check_ajax_referer( 'cfkef_plugin_nonce', 'security' );
+        
         if ( ! current_user_can( 'activate_plugins' ) ) {
-            wp_send_json_error( [ 'message' => 'Permission denied' ] );
+            wp_send_json_error( array( 'message' => 'Permission denied' ) );
         }
 
         if ( empty( $_POST['init'] ) ) {
-            wp_send_json_error( [ 'message' => 'Plugin init file missing' ] );
+            wp_send_json_error( array( 'message' => 'Plugin init file missing' ) );
         }
 
         include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
-        $init_file = sanitize_text_field( $_POST['init'] );
+        $init_file = sanitize_text_field( wp_unslash( $_POST['init'] ) );
+
+        // Security: Validate init file against whitelist
+        if ( ! $this->is_allowed_plugin_init_file( $init_file ) ) {
+            wp_send_json_error( array( 'message' => 'Unauthorized plugin. Only approved plugins can be activated.' ) );
+        }
 
         $activate = activate_plugin( $init_file );
 
         if ( is_wp_error( $activate ) ) {
-            wp_send_json_error( [ 'message' => $activate->get_error_message() ] );
+            wp_send_json_error( array( 'message' => $activate->get_error_message() ) );
         }
 
-        wp_send_json_success( [ 'message' => 'Plugin activated successfully' ] );
-    } 
+        wp_send_json_success( array( 'message' => 'Plugin activated successfully' ) );
+    }  
 
     /**
      * Add a menu item under Settings.

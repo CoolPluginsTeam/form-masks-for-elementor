@@ -1,4 +1,4 @@
-jQuery(document).ready(function($) {
+(function ($) {
 
     $(document).on('click', '.fme-dismiss-notice, .fme-dismiss-cross, .fme-tec-notice .notice-dismiss', function(e) {
         e.preventDefault();
@@ -26,17 +26,24 @@ jQuery(document).ready(function($) {
         });
     });
 
-    $(document).on('click', '.fme-install-plugin', function(e) {
-        e.preventDefault();
+    function installPlugin(btn, slugg) {
 
-        var $form = $(this);
-        var $wrapper = $form.closest('.cool-form-wrp');
-        let button = $(this);
-        let plugin = button.data('plugin');
+        let button = $(btn);
+        var $wrapper = button.closest('.cool-form-wrp');
         button.next('.fme-error-message').remove();
 
-        const slug = getPluginSlug(plugin);
+        const slug = getPluginSlug(slugg);
         if (!slug) return;
+
+        const allowedSlugs = [
+            'extensions-for-elementor-form',
+            'conditional-fields-for-elementor-form',
+            'country-code-field-for-elementor-form',
+            'loop-grid-extender-for-elementor-pro',
+            'events-widgets-for-elementor-and-the-events-calendar',
+            'conditional-fields-for-elementor-form-pro',
+        ];
+        if (!slug || !allowedSlugs.includes(slug)) return;
 
         let nonce = button.data('nonce');
 
@@ -82,7 +89,7 @@ jQuery(document).ready(function($) {
                 }
             }
         );
-    });
+    }
 
     // function for activation success
     function handlePluginActivation(button, slug, $wrapper) {
@@ -181,4 +188,59 @@ jQuery(document).ready(function($) {
         });
     }
 
-});
+    if(typeof elementor !== 'undefined' && elementor) {
+        const callbackfunction = elementor.modules.controls.BaseData.extend({
+            onRender: function(){
+                // Call parent onRender
+                elementor.modules.controls.BaseData.prototype.onRender.apply(this, arguments);
+
+                if(!this.el) return;
+                const customNotice = this.el.querySelector('.cool-form-wrp');
+
+                if(!customNotice) return;
+
+                const installBtns = this.el.querySelectorAll('button.fme-install-plugin');
+
+                if(installBtns.length === 0) return;
+
+                installBtns.forEach(btn=>{
+                    const installSlug = btn.dataset.plugin;
+                    btn.addEventListener('click',()=>{
+                        installPlugin(jQuery(btn),installSlug)
+                    });
+                });
+            },
+        });
+
+        // Initialize when Elementor is ready
+        $(window).on('elementor:init', function () { 
+            elementor.addControlView('raw_html', callbackfunction);
+        });
+    }else{
+
+
+        $(document).ready(function ($) {
+
+            const customNotice = $('.cool-form-wrp, .fme-tec-notice');
+
+            if(customNotice.length === 0) return;
+
+            const installBtns = customNotice.find('button.fme-install-plugin, a.fme-install-plugin');
+
+            if(installBtns.length === 0) return;  
+            
+
+            installBtns.each(function(){
+                const btn = this;
+                const installSlug = btn.dataset.plugin;
+
+                $(btn).on('click', function(){
+                    if(installSlug) {
+                        installPlugin($(btn), installSlug);
+                    }
+                });
+            });
+        })
+    }
+
+})(jQuery);

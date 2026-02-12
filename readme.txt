@@ -5,11 +5,11 @@ Tags: mask, input masks, elementor form, elementor, elementor form builder
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.2
-Stable tag: 2.5.8
+Stable tag: 2.5.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Elementor tested up to: 3.33.2
-Elementor Pro tested up to: 3.33.1
+Elementor tested up to: 3.35.3
+Elementor Pro tested up to: 3.35.0
 
 Add input masks to Elementor Pro or Hello Plus form fields - phone, date, time, credit card, CPF, CNPJ, CEP & more for accurate entries.
 
@@ -104,6 +104,8 @@ Cool Plugins develops many addons that enhance Elementor and WordPress functiona
 * **[LocoAI – Auto Translate for Loco Translate](https://locoaddon.com/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=other_addons)**  
  Instantly translate any plugin or theme strings with AI. One-click automatic translation inside the Loco Translate interface.  
 
+**Use of 3rd Party Services:** This plugin connects to the Cool Plugins feedback server only for optional usage data sharing and voluntary feedback submission (for example, during plugin deactivation). Data is transmitted solely after explicit user consent. No hidden tracking is performed, and no frontend visitor or site user data is collected.  For more details, please review our [Data Usage Policy](https://my.coolplugins.net/terms/usage-tracking/), [TOS](https://my.coolplugins.net/terms/), and [Privacy Policy](https://my.coolplugins.net/terms/privacy-policy/).
+
 **DISCLAIMER:** This plugin is not affiliated with or developed by the official Elementor team. Some of the links in this content may be affiliate links, meaning we may earn a commission at no extra cost to you if you make a purchase through these links.
 
 ---
@@ -190,6 +192,10 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 - [Live Demo of Elementor Form Input Masks](https://coolplugins.net/add-input-masks-elementor-form/?utm_source=fim_plugin&utm_medium=readme&utm_campaign=demo&utm_content=installation)  
 
 == Changelog ==
+
+= 2.5.9 - Feb 06, 2026 =
+- Improved: - Code improvements.
+* Tested up to: Elementor 3.35.3 and Elementor Pro 3.35.0.
 
 = 2.5.8 - Nov 28, 2025 =
 - Fixed: - Setting ID mismatch causing updates to not reflect in all versions.
