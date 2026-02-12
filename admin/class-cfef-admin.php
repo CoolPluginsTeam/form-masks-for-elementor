@@ -190,13 +190,13 @@ class CFEF_Admin {
         }
 
         if($plugin_slug == 'country-code-field-for-elementor-form') {
-            update_option( 'country_code_install_by', 'cfef_plugin' );
+            update_option( 'country_code_install_by', 'fim_plugin' );
         }
         else if($plugin_slug == 'form-masks-for-elementor') {
-            update_option( 'form_masks_install_by', 'cfef_plugin' );
+            update_option( 'form_masks_install_by', 'fim_plugin' );
         }
         else if($plugin_slug == 'conditional-fields-for-elementor-form') {
-            update_option( 'conditional_fields_install_by', 'cfef_plugin' );
+            update_option( 'conditional_fields_install_by', 'fim_plugin' );
         }
 
         wp_send_json_success( array( 'message' => 'Plugin installed successfully' ) );
