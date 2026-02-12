@@ -420,7 +420,7 @@ if (! class_exists('FME_Marketing_Controllers')) {
 						$pagenow        = isset($_POST['pagenow']) ? sanitize_key($_POST['pagenow']) : '';
 
 						if (current_user_can('activate_plugin', $install_status['file'])) {
-
+							$this->fme_set_install_by_option( $plugin_slug );
 							$network_wide = (is_multisite() && 'import' !== $pagenow);
 							$activation_result = activate_plugin($install_status['file'], '', $network_wide);
 							if (is_wp_error($activation_result)) {
@@ -461,6 +461,8 @@ if (! class_exists('FME_Marketing_Controllers')) {
 				$install_status = install_plugin_install_status($api);
 				$pagenow        = isset($_POST['pagenow']) ? sanitize_key($_POST['pagenow']) : '';
 
+				$this->fme_set_install_by_option( $plugin_slug );
+
 				// 🔄 Auto-activate the plugin right after successful install
 				if (current_user_can('activate_plugin', $install_status['file']) && is_plugin_inactive($install_status['file'])) {
 
@@ -475,24 +477,21 @@ if (! class_exists('FME_Marketing_Controllers')) {
 						$status['activated'] = true;
 					}
 				}
-
-				if($plugin_slug == 'country-code-field-for-elementor-form') {
-					update_option( 'country_code_install_by', 'fim_plugin' );
-				}
-				else if($plugin_slug == 'form-masks-for-elementor') {
-					update_option( 'form_masks_install_by', 'fim_plugin' );
-				}
-				else if($plugin_slug == 'sb-elementor-contact-form-db') {
-					update_option( 'formdb_install_by', 'fim_plugin' );
-				}
-				else if($plugin_slug == 'extensions-for-elementor-form') {
-					update_option( 'cool_form_install_by', 'fim_plugin' );
-				}
-				else if($plugin_slug == 'conditional-fields-for-elementor-form') {
-					update_option( 'conditional_fields_install_by', 'fim_plugin' );
-				}
-
 				wp_send_json_success($status);
+			}
+		}
+
+		private function fme_set_install_by_option( $plugin_slug ) {
+			if ( $plugin_slug === 'country-code-field-for-elementor-form' ) {
+				update_option( 'country_code_install_by', 'fim_plugin' );
+			} elseif ( $plugin_slug === 'form-masks-for-elementor' ) {
+				update_option( 'form_masks_install_by', 'fim_plugin' );
+			} elseif ( $plugin_slug === 'sb-elementor-contact-form-db' ) {
+				update_option( 'formdb_install_by', 'fim_plugin' );
+			} elseif ( $plugin_slug === 'extensions-for-elementor-form' ) {
+				update_option( 'cool_form_install_by', 'fim_plugin' );
+			} elseif ( $plugin_slug === 'conditional-fields-for-elementor-form' ) {
+				update_option( 'conditional_fields_install_by', 'fim_plugin' );
 			}
 		}
 
