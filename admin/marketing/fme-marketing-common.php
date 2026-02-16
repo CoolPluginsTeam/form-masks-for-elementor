@@ -482,17 +482,9 @@ if (! class_exists('FME_Marketing_Controllers')) {
 		}
 
 		private function fme_set_install_by_option( $plugin_slug ) {
-			if ( $plugin_slug === 'country-code-field-for-elementor-form' ) {
-				update_option( 'country_code_install_by', 'fim_plugin' );
-			} elseif ( $plugin_slug === 'form-masks-for-elementor' ) {
-				update_option( 'form_masks_install_by', 'fim_plugin' );
-			} elseif ( $plugin_slug === 'sb-elementor-contact-form-db' ) {
-				update_option( 'formdb_install_by', 'fim_plugin' );
-			} elseif ( $plugin_slug === 'extensions-for-elementor-form' ) {
-				update_option( 'cool_form_install_by', 'fim_plugin' );
-			} elseif ( $plugin_slug === 'conditional-fields-for-elementor-form' ) {
-				update_option( 'conditional_fields_install_by', 'fim_plugin' );
-			}
+			$parts = explode('-', $plugin_slug);
+			$two_parts_plugin_slug = implode('-', array_slice($parts, 0, 2));
+			update_option( $two_parts_plugin_slug . '-install-by', 'fim_plugin' );
 		}
 
 

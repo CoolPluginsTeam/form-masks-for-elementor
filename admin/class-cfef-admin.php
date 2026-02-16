@@ -189,15 +189,9 @@ class CFEF_Admin {
             wp_send_json_error( array( 'message' => $skin->get_error_messages() ) );
         }
 
-        if($plugin_slug == 'country-code-field-for-elementor-form') {
-            update_option( 'country_code_install_by', 'fim_plugin' );
-        }
-        else if($plugin_slug == 'form-masks-for-elementor') {
-            update_option( 'form_masks_install_by', 'fim_plugin' );
-        }
-        else if($plugin_slug == 'conditional-fields-for-elementor-form') {
-            update_option( 'conditional_fields_install_by', 'fim_plugin' );
-        }
+        $parts = explode('-', $plugin_slug);
+		$two_parts_plugin_slug = implode('-', array_slice($parts, 0, 2));
+		update_option( $two_parts_plugin_slug . '-install-by', 'fim_plugin' );
 
         wp_send_json_success( array( 'message' => 'Plugin installed successfully' ) );
     }
@@ -276,7 +270,7 @@ class CFEF_Admin {
 
         $plugins_dates = array_filter( $plugins_dates );
 
-        $install_by_plugin = get_option( 'form_masks_install_by' );
+        $install_by_plugin = get_option( 'form-masks-install-by' );
 
         if ( ! empty( $install_by_plugin ) ) {
             $first_plugin = $install_by_plugin;
