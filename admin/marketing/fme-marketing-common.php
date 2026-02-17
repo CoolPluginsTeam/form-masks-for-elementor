@@ -15,7 +15,7 @@ use Elementor\Controls_Manager;
  */
 
 if (! class_exists('FME_Marketing_Controllers')) {
-
+	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedClassFound
 	class FME_Marketing_Controllers
 	{
 		private static $instance = null;
@@ -92,8 +92,8 @@ if (! class_exists('FME_Marketing_Controllers')) {
 				wp_send_json_error(['message' => 'Permission denied']);
 			}
 
-			$type  = sanitize_text_field($_POST['notice_type'] ?? '');
-			$nonce = isset($_POST['nonce']) ? $_POST['nonce'] : '';
+			$type  = sanitize_text_field(wp_unslash($_POST['notice_type'] ?? ''));
+			$nonce = isset($_POST['nonce']) ? sanitize_text_field(wp_unslash($_POST['nonce'])) : '';
 
 			if (empty($nonce) || empty($type) || ! wp_verify_nonce($nonce, "fme_dismiss_nonce_{$type}")) {
 				wp_send_json_error(['message' => 'Invalid nonce']);
@@ -116,11 +116,11 @@ if (! class_exists('FME_Marketing_Controllers')) {
 			$element->add_control(
 				'lgefep_taxonomy_dropdown',
 				[
-					'label' => __('Enable Smart Filters', 'loop-grid-extender-for-elementor-pro'),
+					'label' => __('Enable Smart Filters', 'form-masks-for-elementor'),
 					'type' => \Elementor\Controls_Manager::SWITCHER,
 					'default' => 'no',
-					'label_on' => __('Yes', 'loop-grid-extender-for-elementor-pro'),
-					'label_off' => __('No', 'loop-grid-extender-for-elementor-pro'),
+					'label_on' => __('Yes', 'form-masks-for-elementor'),
+					'label_off' => __('No', 'form-masks-for-elementor'),
 					'return_value' => 'yes',
 					'condition' => [
 						'selected_element!' => '',
@@ -167,7 +167,7 @@ if (! class_exists('FME_Marketing_Controllers')) {
 				return;
 			}
 			else{
-
+				// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound
 				define( 'EVENT_WIDGET_NOTICE_SHOWN', true );
 
 				$active_plugins = get_option('active_plugins', []);
@@ -191,13 +191,16 @@ if (! class_exists('FME_Marketing_Controllers')) {
 
 
 			// Check if it's tribe_events post type or tec settings page
+			//phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$is_tribe_post    = isset($_GET['post_type']) && sanitize_key($_GET['post_type']) === 'tribe_events';
+			//phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$is_tec_settings  = isset($_GET['page']) && sanitize_key($_GET['page']) === 'tec-events-settings';
-
 			// Only show notice if not on taxonomy screens
+			//phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			if ( ($is_tribe_post || $is_tec_settings) && !isset($_GET['taxonomy']) ) {
 
 				// If we're on tribe post and page param is set, require tec settings page specifically
+				//phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				if ($is_tribe_post && isset($_GET['page']) && sanitize_key($_GET['page']) !== 'tec-events-settings') {
 					return;
 				} 
@@ -250,10 +253,10 @@ if (! class_exists('FME_Marketing_Controllers')) {
 				array(
 					'name'            => 'cfme_mkt_country_notice',
 					'type'            => \Elementor\Controls_Manager::SWITCHER,
-					'label'        => esc_html__('Use ACF Repeater', 'country-code-for-elementor-form-telephone-field'),
+					'label'        => esc_html__('Use ACF Repeater', 'form-masks-for-elementor'),
 					'type'         => \Elementor\Controls_Manager::SWITCHER,
-					'label_on'     => esc_html__('Yes', 'country-code-for-elementor-form-telephone-field'),
-					'label_off'    => esc_html__('No', 'country-code-for-elementor-form-telephone-field'),
+					'label_on'     => esc_html__('Yes', 'form-masks-for-elementor'),
+					'label_off'    => esc_html__('No', 'form-masks-for-elementor'),
 
 				),
 			);
@@ -321,7 +324,7 @@ if (! class_exists('FME_Marketing_Controllers')) {
 		{
 
 			if (! current_user_can('install_plugins')) {
-				$status['errorMessage'] = __('Sorry, you are not allowed to install plugins on this site.');
+				$status['errorMessage'] = __('Sorry, you are not allowed to install plugins on this site.', 'form-masks-for-elementor');
 				wp_send_json_error($status);
 			}
 
@@ -331,7 +334,7 @@ if (! class_exists('FME_Marketing_Controllers')) {
 				wp_send_json_error(array(
 					'slug'         => '',
 					'errorCode'    => 'no_plugin_specified',
-					'errorMessage' => __('No plugin specified.'),
+					'errorMessage' => __('No plugin specified.', 'form-masks-for-elementor'),
 				));
 			}
 
@@ -449,7 +452,7 @@ if (! class_exists('FME_Marketing_Controllers')) {
 					global $wp_filesystem;
 
 					$status['errorCode']    = 'unable_to_connect_to_filesystem';
-					$status['errorMessage'] = __('Unable to connect to the filesystem. Please confirm your credentials.');
+					$status['errorMessage'] = __('Unable to connect to the filesystem. Please confirm your credentials.', 'form-masks-for-elementor');
 
 					if ($wp_filesystem instanceof WP_Filesystem_Base && is_wp_error($wp_filesystem->errors) && $wp_filesystem->errors->has_errors()) {
 						$status['errorMessage'] = esc_html($wp_filesystem->errors->get_error_message());
@@ -542,10 +545,10 @@ if (! class_exists('FME_Marketing_Controllers')) {
 
 				'cfme-mkt-country-conditions' => array(
 					'name'         => 'cfme-mkt-country-conditions',
-					'label'        => esc_html__('Enable Country Code', 'country-code-for-elementor-form-telephone-field'),
+					'label'        => esc_html__('Enable Country Code', 'form-masks-for-elementor'),
 					'type'         => \Elementor\Controls_Manager::SWITCHER,
-					'label_on'     => esc_html__('Yes', 'country-code-for-elementor-form-telephone-field'),
-					'label_off'    => esc_html__('No', 'country-code-for-elementor-form-telephone-field'),
+					'label_on'     => esc_html__('Yes', 'form-masks-for-elementor'),
+					'label_off'    => esc_html__('No', 'form-masks-for-elementor'),
 					'condition'    => array(
 						'field_type' => array('tel', 'ehp-tel'),
 					),
@@ -609,10 +612,10 @@ if (! class_exists('FME_Marketing_Controllers')) {
 
 				'cfme-mkt-conditional-conditions' => array(
 					'name'         => 'cfme-mkt-conditional-conditions',
-					'label'        => esc_html__('Enable Conditions', 'conditional-fields-for-elementor-form'),
+					'label'        => esc_html__('Enable Conditions', 'form-masks-for-elementor'),
 					'type'         => \Elementor\Controls_Manager::SWITCHER,
-					'label_on'     => esc_html__('Yes', 'conditional-fields-for-elementor-form'),
-					'label_off'    => esc_html__('No', 'conditional-fields-for-elementor-form'),
+					'label_on'     => esc_html__('Yes', 'form-masks-for-elementor'),
+					'label_off'    => esc_html__('No', 'form-masks-for-elementor'),
 					'condition'    => array(
 						'field_type' => array('text', 'email', 'textarea', 'number', 'select', 'radio', 'checkbox', 'tel'),
 					),

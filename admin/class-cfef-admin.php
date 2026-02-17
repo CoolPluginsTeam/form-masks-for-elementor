@@ -23,6 +23,7 @@ if (!defined('ABSPATH')) {
  * @subpackage Cool_FormKit/admin
  */
 if(!class_exists('CFEF_Admin')) {
+//phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedClassFound
 class CFEF_Admin {
 
     /**
@@ -238,8 +239,8 @@ class CFEF_Admin {
     public function add_plugin_admin_menu() {
         add_submenu_page(
             'elementor',
-            __('Cool FormKit', 'cool-formkit'),
-            __('Cool FormKit', 'cool-formkit'),
+            __('Cool FormKit', 'form-masks-for-elementor'),
+            __('Cool FormKit', 'form-masks-for-elementor'),
             'manage_options',
             'cool-formkit',
             array($this, 'display_plugin_admin_page')
@@ -290,7 +291,8 @@ class CFEF_Admin {
         }
 
 
-        $tab = isset($_GET['tab']) ? esc_attr($_GET['tab']) : 'form-elements';
+        //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        $tab = isset($_GET['tab']) ? sanitize_text_field(wp_unslash($_GET['tab'])) : 'form-elements';
         ?>
         <div class="cfkef-wrapper">
             <div class="cfk-header">
@@ -302,7 +304,7 @@ class CFEF_Admin {
                     <span>Lite</span>
                     <a class="button button-primary upgrade-pro-btn" target="_blank" href="https://coolformkit.com/pricing/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=get_pro&utm_content=dashboard">
                         <img class="crown-diamond-pro" src="<?php echo esc_url(FME_PLUGIN_URL . 'assets/images/crown-diamond-pro.png'); ?>" alt="Cool FormKit Logo">
-                        <?php esc_html_e('Upgrade To Pro', 'cool-formkit'); ?>
+                        <?php esc_html_e('Upgrade To Pro', 'form-masks-for-elementor'); ?>
                     </a>
                 </div>
                 <div class="cfk-buttons">
@@ -311,9 +313,9 @@ class CFEF_Admin {
                 </div>
             </div>
             <h2 class="nav-tab-wrapper">
-                <a href="?page=cool-formkit&tab=form-elements" class="nav-tab <?php echo esc_attr($tab) == 'form-elements' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e('Form Elements', 'cool-formkit'); ?></a>
-                <a href="?page=cool-formkit&tab=settings" class="nav-tab <?php echo esc_attr($tab) == 'settings' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e('Settings', 'cool-formkit'); ?></a>
-                <a href="?page=cool-formkit&tab=license" class="nav-tab <?php echo esc_attr($tab) == 'license' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e('License', 'cool-formkit'); ?></a>
+                <a href="?page=cool-formkit&tab=form-elements" class="nav-tab <?php echo esc_attr($tab) == 'form-elements' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e('Form Elements', 'form-masks-for-elementor'); ?></a>
+                <a href="?page=cool-formkit&tab=settings" class="nav-tab <?php echo esc_attr($tab) == 'settings' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e('Settings', 'form-masks-for-elementor'); ?></a>
+                <a href="?page=cool-formkit&tab=license" class="nav-tab <?php echo esc_attr($tab) == 'license' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e('License', 'form-masks-for-elementor'); ?></a>
             </h2>
             <div class="tab-content">
                 <?php
@@ -352,14 +354,19 @@ class CFEF_Admin {
             'sanitize_callback' => array($this, 'sanitize_form_elements'),
             'default' => array()
         ));
+        //phpcs:ignore PluginCheck.CodeAnalysis.SettingSanitization.register_settingMissing
         register_setting( 'cfkef_form_elements_group', 'cfkef_toggle_all' );
+        //phpcs:ignore PluginCheck.CodeAnalysis.SettingSanitization.register_settingMissing
         register_setting( 'cfkef_form_elements_group', 'country_code' );
+        //phpcs:ignore PluginCheck.CodeAnalysis.SettingSanitization.register_settingMissing
         register_setting( 'cfkef_form_elements_group', 'conditional_logic' );
+        //phpcs:ignore PluginCheck.CodeAnalysis.SettingSanitization.register_settingMissing
         register_setting( 'cfkef_form_elements_group', 'form_input_mask' );
+        //phpcs:ignore PluginCheck.CodeAnalysis.SettingSanitization.register_settingMissing
         register_setting( 'cfkef_form_elements_group', 'input_mask' );
 
 
-
+        //phpcs:ignore PluginCheck.CodeAnalysis.SettingSanitization.register_settingMissing
         register_setting( 'cfkef_form_elements_group', 'cfkef_enable_elementor_pro_form' );
 
         if ( ! get_option( 'ccfef_plugin_initialized' ) ) {
@@ -464,7 +471,9 @@ class CFEF_Admin {
 
         wp_enqueue_style('cfkef-admin-global-style', FME_PLUGIN_URL . 'assets/css/global-admin-style.css', array(), $this->version, 'all');
 
+        //phpcs:ignore WordPress.Security.NonceVerification.Recommended
         if (isset($_GET['page']) &&(strpos(sanitize_key(wp_unslash($_GET['page'])), 'cool-formkit') !== false || strpos(sanitize_key( wp_unslash($_GET['page'])), 'cfkef-entries') !== false)){
+            //phpcs:ignore WordPress.Security.NonceVerification.Recommended
             wp_enqueue_style('cfkef-admin-style', FME_PLUGIN_URL . 'assets/css/admin-style.css', array(), $this->version, 'all');
 
             wp_enqueue_style('cfkef-temp-style', FME_PLUGIN_URL . 'assets/css/dashboard-style.css', array(), '1.0', 'all');

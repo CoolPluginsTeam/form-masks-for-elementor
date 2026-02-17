@@ -1,5 +1,6 @@
 <?php
 // Ensure the file is being accessed through the WordPress admin area
+//phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound	
 if (!defined('ABSPATH')) {
     die;
 }
@@ -62,6 +63,7 @@ function cfkef_block_sql_patterns($input) {
 
 
 
+//phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound
 function cfef_handle_unchecked_checkbox() {
         $choice  = get_option('cpfm_opt_in_choice_cool_forms');
         $options = get_option('cfef_usage_share_data');
@@ -192,6 +194,7 @@ function cfef_handle_unchecked_checkbox() {
 
 
 
+//phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound
 function handle_form_submit() {
 
     // Security check
@@ -207,7 +210,7 @@ function handle_form_submit() {
 if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ( ! current_user_can( 'manage_options' ) ) {
-        echo '<div class="notice notice-error is-dismissible"><p>' . esc_html__( 'You do not have permission to perform this action.', 'cool-formkit' ) . '</p></div>';
+        echo '<div class="notice notice-error is-dismissible"><p>' . esc_html__( 'You do not have permission to perform this action.', 'form-masks-for-elementor' ) . '</p></div>';
         return;
     }
 
@@ -215,18 +218,20 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
     check_admin_referer('cool_formkit_save_api_keys', 'cool_formkit_nonce');
 
     if(handle_form_submit() == false){
-        echo '<div class="notice notice-error is-dismissible"><p>' . esc_html__('Invalid Input.', 'cool-formkit') . '</p></div>';
+        echo '<div class="notice notice-error is-dismissible"><p>' . esc_html__('Invalid Input.', 'form-masks-for-elementor') . '</p></div>';
 
     }else{
 
-    $cfef_usage_share_data = isset($_POST['cfef_usage_share_data']) ? sanitize_text_field($_POST['cfef_usage_share_data']) : '';
+    //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+    $cfef_usage_share_data = isset($_POST['cfef_usage_share_data']) ? sanitize_text_field(wp_unslash($_POST['cfef_usage_share_data'])) : '';
+    //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
     update_option( "cfef_usage_share_data",  $cfef_usage_share_data);
 
 
     cfef_handle_unchecked_checkbox();
     
-    echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__('Settings saved.', 'cool-formkit') . '</p></div>';
+    echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__('Settings saved.', 'form-masks-for-elementor') . '</p></div>';
 
     }
 
@@ -256,20 +261,20 @@ $cdn_image = get_option('cfefp_cdn_image', '');
             <div class="wrapper-header">
                 <div class="cfkef-save-all">
                     <div class="cfkef-title-desc">
-                        <h2><?php esc_html_e('Cool FormKit Settings', 'cool-formkit'); ?></h2>
+                        <h2><?php esc_html_e('Cool FormKit Settings', 'form-masks-for-elementor'); ?></h2>
                     </div>
                     <div class="cfkef-save-controls">
-                        <button type="submit" class="button button-primary"><?php esc_html_e('Save Changes', 'cool-formkit'); ?></button>
+                        <button type="submit" class="button button-primary"><?php esc_html_e('Save Changes', 'form-masks-for-elementor'); ?></button>
                     </div>
                 </div>
             </div>
             <div class="wrapper-body">
 
-            <p class="cool-formkit-description highlight-description"><?php esc_html_e('Configure the settings for conditional fields\' action after submit.', 'cool-formkit'); ?></p>
+            <p class="cool-formkit-description highlight-description"><?php esc_html_e('Configure the settings for conditional fields\' action after submit.', 'form-masks-for-elementor'); ?></p>
                 <table class="form-table cool-formkit-table">
                     <tr>
                         <th scope="row" class="cool-formkit-table-th">
-                            <label for="cfefp_email_conditionally" class="cool-formkit-label"><?php esc_html_e('Number of Conditional Emails', 'cool-formkit'); ?>
+                            <label for="cfefp_email_conditionally" class="cool-formkit-label"><?php esc_html_e('Number of Conditional Emails', 'form-masks-for-elementor'); ?>
                                 <span class="cfkef-pro-feature">
                                     <a href="https://coolformkit.com/pricing/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=get_pro&utm_content=settings_dashboard" target="_blank">
                                     (Pro)
@@ -280,12 +285,12 @@ $cdn_image = get_option('cfefp_cdn_image', '');
                         <td class="cool-formkit-table-td">
                             <input type="number" id="cfefp_email_conditionally" name="cfefp_email_conditionally" min="4" value="<?php echo esc_attr($email_conditionally); ?>" class="regular-text cool-formkit-input" 
                             disabled="disabled"/>
-                            <p class="description cool-formkit-description"><?php esc_html_e('Set the no. of conditional emails for the Elementor form.', 'cool-formkit'); ?></p>
+                            <p class="description cool-formkit-description"><?php esc_html_e('Set the no. of conditional emails for the Elementor form.', 'form-masks-for-elementor'); ?></p>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row" class="cool-formkit-table-th">
-                            <label for="cfefp_redirect_conditionally" class="cool-formkit-label"><?php esc_html_e('Number of Conditional Redirections', 'cool-formkit'); ?>
+                            <label for="cfefp_redirect_conditionally" class="cool-formkit-label"><?php esc_html_e('Number of Conditional Redirections', 'form-masks-for-elementor'); ?>
                                 <span class="cfkef-pro-feature">
                                     <a href="https://coolformkit.com/pricing/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=get_pro&utm_content=settings_dashboard" target="_blank">
                                     (Pro)
@@ -295,20 +300,20 @@ $cdn_image = get_option('cfefp_cdn_image', '');
                         </th>
                         <td class="cool-formkit-table-td">
                             <input type="number" id="cfefp_redirect_conditionally" name="cfefp_redirect_conditionally" min="4" value="<?php echo esc_attr($redirect_conditionally); ?>" class="regular-text cool-formkit-input" disabled="disabled"/>
-                            <p class="description cool-formkit-description"><?php esc_html_e('Set the no. of conditional redirects for the Elementor form.', 'cool-formkit'); ?></p>
+                            <p class="description cool-formkit-description"><?php esc_html_e('Set the no. of conditional redirects for the Elementor form.', 'form-masks-for-elementor'); ?></p>
                         </td>
                     </tr>
                 </table>
 
                 <hr>
 
-                <p class="cool-formkit-description highlight-description"><?php esc_html_e('Configure the settings for country code and country field.', 'cool-formkit'); ?></p>
+                <p class="cool-formkit-description highlight-description"><?php esc_html_e('Configure the settings for country code and country field.', 'form-masks-for-elementor'); ?></p>
                 <?php wp_nonce_field('cool_formkit_save_api_keys', 'cool_formkit_nonce'); ?>
                 <table class="form-table cool-formkit-table">
         
                     <tr id="api-selector">
                         <th scope="row" class="cool-formkit-table-th">
-                            <label for="cfkef_geo_provider" class="cool-formkit-label"><?php esc_html_e('Geo-IP Provider', 'cool-formkit'); ?>
+                            <label for="cfkef_geo_provider" class="cool-formkit-label"><?php esc_html_e('Geo-IP Provider', 'form-masks-for-elementor'); ?>
                                 <span class="cfkef-pro-feature">
                                     <a href="https://coolformkit.com/pricing/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=get_pro&utm_content=settings_dashboard" target="_blank">
                                     (Pro)
@@ -324,13 +329,13 @@ $cdn_image = get_option('cfefp_cdn_image', '');
                                 <option value="geojs"  <?php selected($geo_provider, 'geojs');  ?>>geojs.io</option>
                                 <option value="ip-api"  <?php selected($geo_provider, 'ip-api');  ?>>ip-api.com</option>
                             </select>
-                            <p class="description cool-formkit-description"><?php esc_html_e('Choose the Geo-IP service to use for auto-detecting country by IP.', 'cool-formkit'); ?></p>
+                            <p class="description cool-formkit-description"><?php esc_html_e('Choose the Geo-IP service to use for auto-detecting country by IP.', 'form-masks-for-elementor'); ?></p>
                         </td>
                     </tr>
         
                     <tr id="ipapi-row">
                         <th scope="row" class="cool-formkit-table-th">
-                            <label for="cfkef_country_code_api_key" class="cool-formkit-label"><?php esc_html_e('Enter ipapi.co API Key', 'cool-formkit'); ?>
+                            <label for="cfkef_country_code_api_key" class="cool-formkit-label"><?php esc_html_e('Enter ipapi.co API Key', 'form-masks-for-elementor'); ?>
                                 <span class="cfkef-pro-feature">
                                     <a href="https://coolformkit.com/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=get_pro&utm_content=settings_dashboard" target="_blank">
                                     (Pro)
@@ -340,13 +345,22 @@ $cdn_image = get_option('cfefp_cdn_image', '');
                         </th>
                         <td class="cool-formkit-table-td">
                                 <input type="text" id="cfkef_country_code_api_key" name="cfkef_country_code_api_key" value="<?php echo esc_attr($api_key_one); ?>" class="regular-text cool-formkit-input" disabled="disabled"/>
-                                <p class="description cool-formkit-description"><?php esc_html_e('Auto-detect country code in the Tel field via IP address.', 'cool-formkit'); ?></p>
-                                <p class="description cool-formkit-description"><?php _e('We use <a href="https://ipapi.co/" target="_blank">ipapi.co</a> to auto-detect the country code in the telephone field using the IP address. It offers 1000 free IP lookups per day. No API key is needed for low requests or if you are not using the auto-detect feature. However, please add an API key if you have a lot of users or purchase a premium plan.', 'cool-formkit'); ?></p>
+                                <p class="description cool-formkit-description"><?php esc_html_e('Auto-detect country code in the Tel field via IP address.', 'form-masks-for-elementor'); ?></p>
+                                <p class="description cool-formkit-description">
+                                    <?php
+                                        echo wp_kses_post(
+                                            __(
+                                                'We use <a href="https://ipapi.co/" target="_blank">ipapi.co</a> to auto-detect the country code in the telephone field using the IP address. It offers 1000 free IP lookups per day. No API key is needed for low requests or if you are not using the auto-detect feature. However, please add an API key if you have a lot of users or purchase a premium plan.',
+                                                'form-masks-for-elementor'
+                                            )
+                                        );
+                                    ?>
+                                </p>
                         </td>
                     </tr>
                     <tr id="other-api-row">
                         <th scope="row" class="cool-formkit-table-th">
-                            <label for="cfkef_country_code_non_ipapi_api_key" class="cool-formkit-label"><?php esc_html_e('Enter Geo API Key', 'cool-formkit'); ?>
+                            <label for="cfkef_country_code_non_ipapi_api_key" class="cool-formkit-label"><?php esc_html_e('Enter Geo API Key', 'form-masks-for-elementor'); ?>
                                 <span class="cfkef-pro-feature">
                                     <a href="https://coolformkit.com/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=get_pro&utm_content=settings_dashboard" target="_blank">
                                     (Pro)
@@ -356,12 +370,15 @@ $cdn_image = get_option('cfefp_cdn_image', '');
                         </th>
                         <td class="cool-formkit-table-td">
                                 <input type="text" id="cfkef_country_code_non_ipapi_api_key" name="cfkef_country_code_non_ipapi_api_key" value="<?php echo esc_attr($non_ipapi_api_key); ?>" class="regular-text cool-formkit-input" disabled="disabled"/>
-                                <p class="description cool-formkit-description"><a href="" target="_blank" class="api-infromation"><?php _e('Read More')?></a> <?php _e('About API')?></p>
+                                <p class="description cool-formkit-description">
+                                    <a href="" target="_blank" class="api-infromation"><?php esc_html_e('Read More', 'form-masks-for-elementor'); ?></a>
+                                    <?php esc_html_e('About API', 'form-masks-for-elementor'); ?>
+                                </p>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row" class="cool-formkit-table-th">
-                            <label class="cool-formkit-label"><?php esc_html_e('CDN Image', 'cool-formkit'); ?>
+                            <label class="cool-formkit-label"><?php esc_html_e('CDN Image', 'form-masks-for-elementor'); ?>
                                     <span class="cfkef-pro-feature">
                                         <a href="https://coolformkit.com/pricing/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=get_pro&utm_content=settings_dashboard" target="_blank">
                                         (Pro)
@@ -376,20 +393,31 @@ $cdn_image = get_option('cfefp_cdn_image', '');
                             <span class="cfkef-slider round"></span>
                         
                         </label>
-                        <p class="description cool-formkit-description"><?php _e("In case the flags appear blurry, enable the option to load flag images directly from the CDN.", 'cool-formkit'); ?></p>
+                        <p class="description cool-formkit-description">
+                            <?php esc_html_e('In case the flags appear blurry, enable the option to load flag images directly from the CDN.', 'form-masks-for-elementor'); ?>
+                        </p>
                         </td>
                     </tr>
                 </table>
                 
                 
                 <hr>
-                <h3><?php esc_html_e('Cloudflare Turnstile Settings', 'cool-formkit'); ?></h3>
-                <p class="description cool-formkit-description"><?php _e('You can get your site key and secret key from here: <a href="https://www.cloudflare.com/en-au/application-services/products/turnstile/" target="_blank">https://www.cloudflare.com/en-au/application-services/products/turnstile/</a>', 'cool-formkit'); ?></p>
+                <h3><?php esc_html_e('Cloudflare Turnstile Settings', 'form-masks-for-elementor'); ?></h3>
+                <p class="description cool-formkit-description">
+                    <?php
+                        echo wp_kses_post(
+                            __(
+                                'You can get your site key and secret key from here: <a href="https://www.cloudflare.com/en-au/application-services/products/turnstile/" target="_blank">https://www.cloudflare.com/en-au/application-services/products/turnstile/</a>',
+                                'form-masks-for-elementor'
+                            )
+                        );
+                    ?>
+                </p>
 
                 <table class="form-table cool-formkit-table">
                     <tr>
                         <th scope="row" class="cool-formkit-table-th">
-                            <label for="cfefp_cloudflare_site_key" class="cool-formkit-label"><?php esc_html_e('Site Key', 'cool-formkit'); ?>
+                            <label for="cfefp_cloudflare_site_key" class="cool-formkit-label"><?php esc_html_e('Site Key', 'form-masks-for-elementor'); ?>
                                 <span class="cfkef-pro-feature">
                                     <a href="https://coolformkit.com/pricing/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=get_pro&utm_content=settings_dashboard" target="_blank">
                                     (Pro)
@@ -406,7 +434,7 @@ $cdn_image = get_option('cfefp_cdn_image', '');
                     </tr>
                     <tr>
                         <th scope="row" class="cool-formkit-table-th">
-                            <label for="cfefp_cloudflare_secret_key" class="cool-formkit-label"><?php esc_html_e('Secret Key', 'cool-formkit'); ?>
+                            <label for="cfefp_cloudflare_secret_key" class="cool-formkit-label"><?php esc_html_e('Secret Key', 'form-masks-for-elementor'); ?>
                                 <span class="cfkef-pro-feature">
                                     <a href="https://coolformkit.com/pricing/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=get_pro&utm_content=settings_dashboard" target="_blank">
                                     (Pro)
@@ -423,13 +451,22 @@ $cdn_image = get_option('cfefp_cdn_image', '');
                     </tr>
                 </table>
                 <hr>
-                <h3><?php esc_html_e('hCAPTCHA Settings', 'cool-formkit'); ?></h3>
-                <p class="description cool-formkit-description"><?php _e('To use <a href="https://www.hcaptcha.com/" target="_blank">hCaptcha</a>, please register <a href="https://www.hcaptcha.com/signup-interstitial" target="_blank">here</a> to get your site and secret keys.', 'cool-formkit'); ?></p>
+                <h3><?php esc_html_e('hCAPTCHA Settings', 'form-masks-for-elementor'); ?></h3>
+                <p class="description cool-formkit-description">
+                    <?php
+                        echo wp_kses_post(
+                            __(
+                                'To use <a href="https://www.hcaptcha.com/" target="_blank">hCaptcha</a>, please register <a href="https://www.hcaptcha.com/signup-interstitial" target="_blank">here</a> to get your site and secret keys.',
+                                'form-masks-for-elementor'
+                            )
+                        );
+                    ?>
+                </p>
 
                 <table class="form-table cool-formkit-table">
                     <tr>
                         <th scope="row" class="cool-formkit-table-th">
-                            <label for="cfefp_h_site_key" class="cool-formkit-label"><?php esc_html_e('Site Key', 'cool-formkit'); ?>
+                            <label for="cfefp_h_site_key" class="cool-formkit-label"><?php esc_html_e('Site Key', 'form-masks-for-elementor'); ?>
                                 <span class="cfkef-pro-feature">
                                     <a href="https://coolformkit.com/pricing/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=get_pro&utm_content=settings_dashboard" target="_blank">
                                     (Pro)
@@ -447,7 +484,7 @@ $cdn_image = get_option('cfefp_cdn_image', '');
                     </tr>
                     <tr>
                         <th scope="row" class="cool-formkit-table-th">
-                            <label for="cfefp_h_secret_key" class="cool-formkit-label"><?php esc_html_e('Secret Key', 'cool-formkit'); ?>
+                            <label for="cfefp_h_secret_key" class="cool-formkit-label"><?php esc_html_e('Secret Key', 'form-masks-for-elementor'); ?>
                                 <span class="cfkef-pro-feature">
                                     <a href="https://coolformkit.com/pricing/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=get_pro&utm_content=settings_dashboard" target="_blank">
                                     (Pro)
@@ -482,24 +519,24 @@ $cdn_image = get_option('cfefp_cdn_image', '');
                                     
                                     <tr>
                                         <th scope="row" class="cool-formkit-table-th">
-                                            <label for="cfef_usage_share_data" class="usage-share-data-label"><?php esc_html_e('Usage Share Data', 'cool-formkit'); ?></label>
+                                            <label for="cfef_usage_share_data" class="usage-share-data-label"><?php esc_html_e('Usage Share Data', 'form-masks-for-elementor'); ?></label>
                                         </th>
                                         <td class="cool-formkit-table-td usage-share-data">
                                             <input type="checkbox" id="cfef_usage_share_data" name="cfef_usage_share_data" value="on" <?php echo esc_attr($checked) ?>  class="regular-text cool-formkit-input"  />
                                             <div class="description cool-formkit-description">
-                                            <?php esc_html_e('Help us make this plugin more compatible with your site by sharing non-sensitive site data.', 'ccpw'); ?>
-                                            <a href="#" class="ccpw-see-terms">[<?php esc_html_e('See terms', 'ccpw'); ?>]</a>
+                                            <?php esc_html_e('Help us make this plugin more compatible with your site by sharing non-sensitive site data.', 'form-masks-for-elementor'); ?>
+                                            <a href="#" class="ccpw-see-terms">[<?php esc_html_e('See terms', 'form-masks-for-elementor'); ?>]</a>
         
                                             <div id="termsBox" style="display: none; padding-left: 20px; margin-top: 10px; font-size: 12px; color: #999;">
                                                 <p>
-                                                    <?php esc_html_e('Opt in to receive email updates about security improvements, new features, helpful tutorials, and occasional special offers. We\'ll collect:', 'ccpw'); ?>
+                                                    <?php esc_html_e('Opt in to receive email updates about security improvements, new features, helpful tutorials, and occasional special offers. We\'ll collect:', 'form-masks-for-elementor'); ?>
                                                     <a href="https://my.coolplugins.net/terms/usage-tracking/" target="_blank">Click Here</a>
 
 
                                                 </p>
                                                 <ul style="list-style-type: auto;">
-                                                    <li><?php esc_html_e('Your website home URL and WordPress admin email.', 'ccpw'); ?></li>
-                                                    <li><?php esc_html_e('To check plugin compatibility, we will collect the following: list of active plugins and themes, server type, MySQL version, WordPress version, memory limit, site language and database prefix.', 'ccpw'); ?></li>
+                                                    <li><?php esc_html_e('Your website home URL and WordPress admin email.', 'form-masks-for-elementor'); ?></li>
+                                                    <li><?php esc_html_e('To check plugin compatibility, we will collect the following: list of active plugins and themes, server type, MySQL version, WordPress version, memory limit, site language and database prefix.', 'form-masks-for-elementor'); ?></li>
                                                 </ul>
                                             </div>
                                         </div>
