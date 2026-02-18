@@ -191,6 +191,14 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 == Changelog ==
 
+= 2.6.0 - Feb 18, 2026 =
+* Improved: Other plugin recommendations for Elementor users.
+* Fixed: Fixed issues reported by “Plugin Check” plugin.
+
+= 2.5.9 - Feb 06, 2026 =
+- Improved: - Code improvements.
+* Tested up to: Elementor 3.35.3 and Elementor Pro 3.35.0.
+
 = 2.5.8 - Nov 28, 2025 =
 - Fixed: - Setting ID mismatch causing updates to not reflect in all versions.
 
