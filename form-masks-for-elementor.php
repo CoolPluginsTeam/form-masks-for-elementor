@@ -204,17 +204,17 @@ class Form_Masks_For_Elementor {
 
             require_once FME_PLUGIN_PATH . 'includes/class-fme-plugin.php';
             FME\Includes\FME_Plugin::instance();
+
+            if(!is_plugin_active( 'mask-form-elementor/index.php' )){
+                require_once FME_PLUGIN_PATH . '/includes/atomic-form-addon-loader.php';
+                new FME\Includes\Atomic_Form_Addon_Loader();
+            }
         }
 
 
         if(!is_plugin_active( 'extensions-for-elementor-form/extensions-for-elementor-form.php' )){
             require_once FME_PLUGIN_PATH . '/includes/class-fme-elementor-page.php';
             new FME_Elementor_Page();
-        }
-
-        if(!is_plugin_active( 'mask-form-elementor/index.php' )){
-            require_once FME_PLUGIN_PATH . '/includes/atomic-form-addon-loader.php';
-            new FME\Includes\Atomic_Form_Addon_Loader();
         }
 
 
