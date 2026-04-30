@@ -208,14 +208,15 @@ class Form_Masks_For_Elementor {
 
 
         if(!is_plugin_active( 'extensions-for-elementor-form/extensions-for-elementor-form.php' )){
-
-
-                require_once FME_PLUGIN_PATH . '/includes/class-fme-elementor-page.php';
-                new FME_Elementor_Page();
-                
-
-
+            require_once FME_PLUGIN_PATH . '/includes/class-fme-elementor-page.php';
+            new FME_Elementor_Page();
         }
+
+        if(!is_plugin_active( 'mask-form-elementor/index.php' )){
+            require_once FME_PLUGIN_PATH . '/includes/atomic-form-addon-loader.php';
+            new FME\Includes\Atomic_Form_Addon_Loader();
+        }
+
 
 		if ( is_admin() ) {
 			require_once FME_PLUGIN_PATH . 'admin/feedback/admin-feedback-form.php';
