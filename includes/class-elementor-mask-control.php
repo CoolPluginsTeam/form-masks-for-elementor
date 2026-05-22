@@ -1,5 +1,5 @@
 <?php
-
+//phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedNamespaceFound	
 namespace FME\Includes;
 
 use \Elementor\Plugin as ElementorPlugin;
@@ -73,8 +73,8 @@ class FME_Elementor_Forms_Mask {
 				'tabs_wrapper' => 'form_fields_tabs',
 				'inner_tab' => 'form_fields_advanced_tab',
 				'default' => '',
-				'label_on' => esc_html__( 'On', 'textdomain' ),
-				'label_off' => esc_html__( 'Off', 'textdomain' ),
+				'label_on' => esc_html__( 'On', 'form-masks-for-elementor' ),
+				'label_off' => esc_html__( 'Off', 'form-masks-for-elementor' ),
 				'conditions' => [
 					'terms' => [
 						[
@@ -315,7 +315,7 @@ class FME_Elementor_Forms_Mask {
 				$url          = admin_url( 'admin-ajax.php' );
 				$html         = '<div class="cfef_elementor_review_wrapper">';
 				$html        .= '<div id="cfef_elementor_review_dismiss" data-url="' . esc_url( $url ) . '" data-nonce="' . esc_attr( $review_nonce ) . '">Close Notice X</div>
-								<div class="cfef_elementor_review_msg">' . __( 'Hope this addon solved your problem!', 'cfef' ) . '<br><a href="https://wordpress.org/support/plugin/form-masks-for-elementor/reviews/#new-post" target="_blank"">Share the love with a ⭐⭐⭐⭐⭐ rating.</a><br><br></div>
+								<div class="cfef_elementor_review_msg">' . __( 'Hope this addon solved your problem!', 'form-masks-for-elementor' ) . '<br><a href="https://wordpress.org/support/plugin/form-masks-for-elementor/reviews/#new-post" target="_blank"">Share the love with a ⭐⭐⭐⭐⭐ rating.</a><br><br></div>
 								<div class="cfef_elementor_demo_btn"><a href="https://wordpress.org/support/plugin/form-masks-for-elementor/reviews/#new-post" target="_blank">Submit Review</a></div>
 								</div>';
 
@@ -352,6 +352,7 @@ class FME_Elementor_Forms_Mask {
 		 *
 		 * @since 1.5
 		 */
+		//phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 		$controls_to_register = apply_filters( 'fme_after_mask_control_created', $controls_to_register );
 
 		$controls_repeater = new ElementorRepeater();
@@ -444,6 +445,7 @@ class FME_Elementor_Forms_Mask {
 		 *
 		 * @since 1.5.2
 		 */
+		//phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 		do_action( 'fme_after_mask_attribute_added', $field, $field_index, $form_widget );
 	
 		return $field;

@@ -1,5 +1,5 @@
 <?php
-
+//phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedNamespaceFound	
 namespace FME\Includes;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -134,6 +134,7 @@ final class FME_Plugin {
 	 * @access public
 	 */
 	public function enqueue_plugin_js() {
+		//phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 		do_action( 'fme_after_enqueue_scripts' );
 	}
 
@@ -152,11 +153,11 @@ final class FME_Plugin {
 
 	public function fme_elementor_review_notice() {
 		if ( ! check_ajax_referer( 'cfef_elementor_review', 'nonce', false ) ) {
-			wp_send_json_error( __( 'Invalid security token sent.', 'cfef' ) );
+			wp_send_json_error( __( 'Invalid security token sent.', 'form-masks-for-elementor' ) );
 			wp_die( '0', 400 );
 		}
 
-		if ( isset( $_POST['cfef_notice_dismiss'] ) && 'true' === sanitize_text_field($_POST['cfef_notice_dismiss']) ) {
+		if ( isset( $_POST['cfef_notice_dismiss'] ) && 'true' === sanitize_text_field(wp_unslash($_POST['cfef_notice_dismiss'])) ) {
 			update_option( 'fme_elementor_notice_dismiss', 'yes' );
 		}
 		exit;
