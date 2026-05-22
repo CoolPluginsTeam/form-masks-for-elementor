@@ -1259,7 +1259,7 @@ a.button-primary.upgrade-pro-btn {
   box-shadow: 0 0 0 transparent;
   border-radius: 4px;
   border: 1px solid rgba(220, 220, 222, 0.75);
-  background-color: #fff;
+  background-color: #f0f0f0;
   color: #2c3338;
 
   display: flex;

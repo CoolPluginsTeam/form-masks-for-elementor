@@ -206,8 +206,16 @@ class Form_Masks_For_Elementor {
             FME\Includes\FME_Plugin::instance();
 
             if(!is_plugin_active( 'mask-form-elementor/index.php' )){
-                require_once FME_PLUGIN_PATH . '/includes/atomic-form-addon-loader.php';
-                new FME\Includes\Atomic_Form_Addon_Loader();
+
+
+                if ( is_plugin_active( 'elementor-pro/elementor-pro.php' ) || is_plugin_active( 'pro-elements/pro-elements.php' ) ) {
+					// After `elementor/init`, core services (e.g. experiments) are initialized; on `elementor/loaded` they are often still null.
+					if ( did_action( 'elementor/init' ) ) {
+						$this->load_atomic_form_addon();
+					} else {
+						add_action( 'elementor/init', array( $this, 'load_atomic_form_addon' ), 20 );
+					}
+				}
             }
         }
 
@@ -221,6 +229,38 @@ class Form_Masks_For_Elementor {
 		if ( is_admin() ) {
 			require_once FME_PLUGIN_PATH . 'admin/feedback/admin-feedback-form.php';
 		}
+    }
+
+    public function load_atomic_form_addon() {
+        if ( ! is_plugin_active( 'elementor-pro/elementor-pro.php' ) && ! is_plugin_active( 'pro-elements/pro-elements.php' ) ) {
+            return;
+        }
+
+        if ( ! did_action( 'elementor/init' ) || ! class_exists( '\Elementor\Plugin' ) ) {
+            return;
+        }
+
+        $elementor = \Elementor\Plugin::$instance;
+        if ( ! $elementor ) {
+            return;
+        }
+
+        $experiments = isset( $elementor->experiments ) ? $elementor->experiments : null;
+        if ( ! self::are_elementor_atomic_form_experiments_active( $experiments ) ) {
+            return;
+        }
+
+        require_once FME_PLUGIN_PATH . '/includes/atomic-form-addon-loader.php';
+        new FME\Includes\Atomic_Form_Addon_Loader();
+    }
+
+    private static function are_elementor_atomic_form_experiments_active( $experiments ): bool {
+        if ( ! $experiments || ! is_object( $experiments ) || ! method_exists( $experiments, 'is_feature_active' ) ) {
+            return false;
+        }
+
+        return $experiments->is_feature_active( 'e_atomic_elements' )
+            && $experiments->is_feature_active( 'e_pro_atomic_form' );
     }
 
     /**

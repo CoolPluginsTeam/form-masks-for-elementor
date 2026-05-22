@@ -22,9 +22,28 @@ class Atomic_Form_Addon_Loader {
 
     public function __construct() {
 
+        if ( ! $this->are_atomic_form_experiments_active() ) {
+            return;
+        }
+
         $this->version = FME_VERSION;
         add_filter('elementor/widgets/register', [$this, 'register_widgets'], 999);
         add_action('elementor/frontend/before_enqueue_scripts', [$this, 'enqueue_frontend_scripts']);
+    }
+
+    /**
+     * Core Atomic Widgets (`e_atomic_elements`) plus Pro Atomic Form (`e_pro_atomic_form`) must both be active.
+     *
+     * @see \Elementor\Modules\AtomicWidgets\Module::EXPERIMENT_NAME
+     */
+    private function are_atomic_form_experiments_active(): bool {
+        $experiments = Elementor_Plugin::$instance->experiments ?? null;
+        if ( ! $experiments || ! method_exists( $experiments, 'is_feature_active' ) ) {
+            return false;
+        }
+
+        return $experiments->is_feature_active( 'e_atomic_elements' )
+            && $experiments->is_feature_active( 'e_pro_atomic_form' );
     }
 
     private function is_field_enabled($field_key) {
@@ -33,6 +52,10 @@ class Atomic_Form_Addon_Loader {
     }
 
     public function register_widgets( Widgets_Manager $widgets_manager ) {
+
+        if ( ! $this->are_atomic_form_experiments_active() ) {
+            return;
+        }
 
         if($this->is_field_enabled('form_input_mask')){
 
@@ -117,6 +140,11 @@ class Atomic_Form_Addon_Loader {
 
 
     public function enqueue_frontend_scripts() {
+
+        if ( ! $this->are_atomic_form_experiments_active() ) {
+            return;
+        }
+        
         if($this->is_field_enabled('form_input_mask')){
             $this->ensure_fme_mask_assets_registered();
         }
