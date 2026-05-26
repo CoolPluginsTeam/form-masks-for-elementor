@@ -11,3 +11,5 @@ node_modules/
 composer.lock
 package-lock.json
 style.bundle.js
+fix-issues-files.txt
+fix-issues.csv
