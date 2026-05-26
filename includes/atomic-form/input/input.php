@@ -1,5 +1,6 @@
 <?php
 
+//phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedNamespaceFound	
 namespace FME\Includes\AtomicForm\Input;
 
 use Elementor\Modules\AtomicWidgets\Controls\Section;
@@ -31,7 +32,7 @@ class Input extends AtomicFormInput
     }
 
     public function get_title(): string {
-		return esc_html__( 'Input', 'elementor-pro' );
+		return esc_html__( 'Input', 'form-masks-for-elementor' );
 	}
 
     public function get_icon(): string {
@@ -72,45 +73,45 @@ class Input extends AtomicFormInput
 			[
 				Text_Control::bind_to( 'placeholder' )
 					->set_placeholder( 'Enter placeholder text' )
-					->set_label( __( 'Input placeholder', 'elementor-pro' ) ),
+					->set_label( __( 'Input placeholder', 'form-masks-for-elementor' ) ),
 				Select_Control::bind_to( 'type' )
-					->set_label( __( 'Type', 'elementor-pro' ) )
+					->set_label( __( 'Type', 'form-masks-for-elementor' ) )
 					->set_options( [
 						[
-							'label' => __( 'Text', 'elementor-pro' ),
+							'label' => __( 'Text', 'form-masks-for-elementor' ),
 							'value' => 'text',
 						],
 						[
-							'label' => __( 'Email', 'elementor-pro' ),
+							'label' => __( 'Email', 'form-masks-for-elementor' ),
 							'value' => 'email',
 						],
 						[
-							'label' => __( 'Number', 'elementor-pro' ),
+							'label' => __( 'Number', 'form-masks-for-elementor' ),
 							'value' => 'number',
 						],
 						[
-							'label' => __( 'Tel', 'elementor-pro' ),
+							'label' => __( 'Tel', 'form-masks-for-elementor' ),
 							'value' => 'tel',
 						],
 						[
-							'label' => __( 'Password', 'elementor-pro' ),
+							'label' => __( 'Password', 'form-masks-for-elementor' ),
 							'value' => 'password',
 						],
 					] ),
 				Switch_Control::bind_to( 'required' )
-					->set_label( __( 'Required', 'elementor-pro' ) ),
+					->set_label( __( 'Required', 'form-masks-for-elementor' ) ),
 				Switch_Control::bind_to( 'readonly' )
-					->set_label( __( 'Read only', 'elementor-pro' ) ),
+					->set_label( __( 'Read only', 'form-masks-for-elementor' ) ),
 			],
 			self::is_cfkef_element_enabled( 'form_input_mask' ) ? Mask_Input_Definition::content_controls() : []
 		);
 
 		$sections = [
 			Section::make()
-				->set_label( __( 'Content', 'elementor-pro' ) )
+				->set_label( __( 'Content', 'form-masks-for-elementor' ) )
 				->set_items( $content_items ),
 			Section::make()
-				->set_label( __( 'Settings', 'elementor-pro' ) )
+				->set_label( __( 'Settings', 'form-masks-for-elementor' ) )
 				->set_id( 'settings' )
 				->set_items( $this->get_settings_controls() ),
 		];

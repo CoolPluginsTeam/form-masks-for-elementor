@@ -267,8 +267,8 @@ class Form_Masks_For_Elementor {
      * Admin notice for PHP version failure.
      */
     public function admin_notice_php_version_fail() {
-        // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
         $message = sprintf(
+            /* translators: %1$s: Plugin name. %2$s: Minimum PHP version. */
             esc_html__( '%1$s requires PHP version %2$s or greater.', 'form-masks-for-elementor' ),
             '<strong>Form Input Masks for Elementor Form</strong>',
             FME_PHP_MINIMUM_VERSION
@@ -282,8 +282,8 @@ class Form_Masks_For_Elementor {
      * Admin notice for WordPress version failure.
      */
     public function admin_notice_wp_version_fail() {
-        // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
         $message = sprintf(
+            /* translators: %1$s: Plugin name. %2$s: Minimum WordPress version. */
             esc_html__( '%1$s requires WordPress version %2$s or greater.', 'form-masks-for-elementor' ),
             '<strong>Form Input Masks for Elementor Form</strong>',
             FME_WP_MINIMUM_VERSION
