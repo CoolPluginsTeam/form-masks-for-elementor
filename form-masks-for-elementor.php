@@ -166,7 +166,7 @@ class Form_Masks_For_Elementor {
 
     public function fme_plugin_settings_link($links){
 
-        $settings_link = '<a href="' . admin_url( 'admin.php?page=cool-formkit' ) . '">Settings</a>';
+        $settings_link = '<a href="' . esc_url( admin_url( 'admin.php?page=cool-formkit' ) ) . '">Settings</a>';
 		array_unshift( $links, $settings_link );
 		return $links;
 

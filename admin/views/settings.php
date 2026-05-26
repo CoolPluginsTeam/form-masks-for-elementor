@@ -207,7 +207,7 @@ function handle_form_submit() {
 }
 
 // Save API keys when the form is submitted
-if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
+if (isset($_SERVER['REQUEST_METHOD']) && sanitize_text_field(wp_unslash($_SERVER['REQUEST_METHOD'])) === 'POST') {
 
     if ( ! current_user_can( 'manage_options' ) ) {
         echo '<div class="notice notice-error is-dismissible"><p>' . esc_html__( 'You do not have permission to perform this action.', 'form-masks-for-elementor' ) . '</p></div>';

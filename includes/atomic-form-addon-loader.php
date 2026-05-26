@@ -5,6 +5,8 @@ use FME\Includes\AtomicForm\Input\Input;
 use Elementor\Widgets_Manager;
 use Elementor\Plugin as Elementor_Plugin;
 
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+
 class Atomic_Form_Addon_Loader {
 
 

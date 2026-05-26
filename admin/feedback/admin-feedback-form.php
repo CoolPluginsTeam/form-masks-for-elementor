@@ -129,7 +129,7 @@ class cfef_feedback {
         // Server and WP environment details
         $server_info = [
 			//phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash
-            'server_software'        => isset($_SERVER['SERVER_SOFTWARE']) ? sanitize_text_field($_SERVER['SERVER_SOFTWARE']) : 'N/A',
+            'server_software'        => isset($_SERVER['SERVER_SOFTWARE']) ? sanitize_text_field(wp_unslash($_SERVER['SERVER_SOFTWARE'])) : 'N/A',
 			//phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
             'mysql_version'          => $wpdb ? sanitize_text_field($wpdb->get_var("SELECT VERSION()")) : 'N/A',
             'php_version'            => sanitize_text_field(phpversion() ?: 'N/A'),
@@ -175,8 +175,13 @@ class cfef_feedback {
 
 
 	function submit_deactivation_response() {
+
+		if ( ! current_user_can( 'activate_plugins' ) ) {
+			wp_send_json_error();
+		}
+
 		//phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash
-		if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( $_POST['_wpnonce'] ), '_cool-plugins_deactivate_feedback_nonce' ) ) {
+		if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ), '_cool-plugins_deactivate_feedback_nonce' ) ) {
 			wp_send_json_error();
 		} else {
 			//phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash
@@ -220,8 +225,8 @@ class cfef_feedback {
 				array(
 					'timeout' => 30,
 					'body'    => array(
-						'server_info' => serialize($this->cfef_get_user_info()['server_info']),
-                        'extra_details' => serialize($this->cfef_get_user_info()['extra_details']),
+						'server_info' => wp_json_encode($this->cfef_get_user_info()['server_info']),
+                        'extra_details' => wp_json_encode($this->cfef_get_user_info()['extra_details']),
                         'plugin_initial'  => isset($plugin_initial) ? sanitize_text_field($plugin_initial) : 'N/A',
 						'plugin_version' => sanitize_text_field( $this->plugin_version),
 						'plugin_name'    => sanitize_text_field($this->plugin_name),

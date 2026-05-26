@@ -51,13 +51,13 @@ class FME_Elementor_Page {
     private static function cfkef_current_page($slug)
     {
         //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Recommended
-        $current_page = isset($_GET['page']) ? esc_html( wp_unslash( $_GET['page'] ) ) :
+        $current_page = isset($_GET['page']) ? sanitize_key( wp_unslash( $_GET['page'] ) ) :
                  //phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-                 ( isset($_POST['page']) ? esc_html( wp_unslash( $_POST['page'] ) ) :
+                 ( isset($_POST['page']) ? sanitize_key( wp_unslash( $_POST['page'] ) ) :
                  //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Recommended
-                 ( isset($_GET['post_type']) ? esc_html( wp_unslash( $_GET['post_type'] ) ) :
+                 ( isset($_GET['post_type']) ? sanitize_key( wp_unslash( $_GET['post_type'] ) ) :
                  //phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-                 ( isset($_POST['post_type']) ? esc_html( wp_unslash( $_POST['post_type'] ) ) : '' )));
+                 ( isset($_POST['post_type']) ? sanitize_key( wp_unslash( $_POST['post_type'] ) ) : '' )));
 
         //phpcs:ignore WordPress.Security.NonceVerification.Recommended
         $status=false;
