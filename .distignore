@@ -19,3 +19,7 @@ src/*
 ruleset.xml
 webpack.config.js
 style.bundle.js
+.github/
+.claude/
+.cursor/
+.codex/

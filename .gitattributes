@@ -1,0 +1,4 @@
+.github/ export-ignore
+.claude/ export-ignore
+.cursor/ export-ignore
+.codex/ export-ignore
