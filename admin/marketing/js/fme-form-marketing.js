@@ -188,14 +188,6 @@
         });
     }
 
-    function isRawHtmlControlExists() {
-        return !!(typeof elementor !== 'undefined' && 
-                 elementor && 
-                 typeof elementor.getControlView === 'function' && 
-                 elementor.getControlView('raw_html'));
-    }
-    
-
     if (typeof elementor !== 'undefined' && elementor) {
         // Check if getControlView method exists
         if (typeof elementor.getControlView !== 'function') {

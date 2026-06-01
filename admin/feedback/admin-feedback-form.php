@@ -177,8 +177,7 @@ class cfef_feedback {
 	function submit_deactivation_response() {
 
 		if ( ! current_user_can( 'activate_plugins' ) ) {
-			wp_send_json_error( __( 'You are not authorized to access this page.', 'form-masks-for-elementor' ), 403 );
-			wp_die( '0', 403 );
+			return wp_send_json_error( __( 'You are not authorized to access this page.', 'form-masks-for-elementor' ), 403 );
 		}
 
 		//phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash

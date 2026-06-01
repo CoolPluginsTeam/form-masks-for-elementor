@@ -44,6 +44,7 @@
     class="{{ classes }} {{ country_enabled ? 'ccfef-phone-input' : '' }}{% if mask_enabled %} fme-mask-input mask_control_@{{ mask_control }} money_mask_format_@{{ settings.fme_money_mask_format|default('dot') }} mask_prefix_@{{ settings.fme_money_mask_prefix|default('') }} mask_decimal_places_@{{ settings.fme_money_mask_decimal_places|default('2') }} mask_time_mask_format_@{{ settings.fme_time_mask_format|default('one') }} fme_phone_format_@{{ settings.fme_phone_format|default('phone_usa') }} credit_card_options_@{{ settings.fme_credit_card_options|default('hyphen') }} mask_auto_placeholder_@{{ mask_auto_ph }} fme_brazilian_formats_@{{ settings.fme_brazilian_formats|default('fme_cpf') }}{% endif %}"
     type="{{ settings.type }}"
     data-interaction-id="{{ interaction_id | default(id) }}"
+    {# |raw: settings.attributes is pre-built HTML from Elementor's Attributes_Prop_Type (sanitized before render). Matches Elementor Pro's atomic input pattern; do not pipe unsanitized user input here. #}
     {{ settings.attributes | raw }} 
     {{ interactions_attribute }}
     {{ placeholder_attribute | raw }}
