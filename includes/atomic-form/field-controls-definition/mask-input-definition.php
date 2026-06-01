@@ -154,7 +154,7 @@ final class Mask_Input_Definition {
 				'value' => 'ev-phone',
 			],
 			[
-				'label' => esc_html__( 'Date & Time', 'form-masks-for-elementor' ),
+				'label' => __( 'Date & Time', 'form-masks-for-elementor' ),
 				'value' => 'ev-time',
 			],
 			[
