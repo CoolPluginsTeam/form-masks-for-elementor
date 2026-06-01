@@ -18,7 +18,7 @@ class Atomic_Form_Addon_Loader {
     protected $error_map;
 
     public static function get_instance() {
-        if (null == self::$instance) {
+        if (null === self::$instance) {
             self::$instance = new self();
         }
         return self::$instance;

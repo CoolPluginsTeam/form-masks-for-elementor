@@ -182,7 +182,7 @@ class cfef_feedback {
 
 		//phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash
 		if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ), '_cool-plugins_deactivate_feedback_nonce' ) ) {
-			wp_send_json_error();
+			return wp_send_json_error( __( 'Invalid security token sent.', 'form-masks-for-elementor' ), 400 );
 		} else {
 			//phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash
 			$reason             = isset( $_POST['reason'] ) ? sanitize_text_field( wp_unslash( $_POST['reason'] ) ) : '';
