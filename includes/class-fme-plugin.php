@@ -154,12 +154,12 @@ final class FME_Plugin {
 	public function fme_elementor_review_notice() {
 
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( __( 'You are not authorized to access this page.', 'form-masks-for-elementor' ) );
+			wp_send_json_error( __( 'You are not authorized to access this page.', 'form-masks-for-elementor' ), 403 );
 			wp_die( '0', 403 );
 		}
 
 		if ( ! check_ajax_referer( 'cfef_elementor_review', 'nonce', false ) ) {
-			wp_send_json_error( __( 'Invalid security token sent.', 'form-masks-for-elementor' ) );
+			wp_send_json_error( __( 'Invalid security token sent.', 'form-masks-for-elementor' ), 400 );
 			wp_die( '0', 400 );
 		}
 
