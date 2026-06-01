@@ -5,15 +5,15 @@
  * Description: Form Input Masks for Elementor Form creates a custom control in the field advanced tab for customizing your fields with masks. This plugin requires Elementor Pro (Form Widget).
  * Author: Cool Plugins
  * Author URI: https://coolplugins.net/?utm_source=fim_plugin&utm_medium=inside&utm_campaign=author_page&utm_content=plugins_list
- * Version: 2.6.2
+ * Version: 2.7.0
  * Requires at least: 5.5
  * Requires PHP: 7.4
  * Text Domain: form-masks-for-elementor
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  * Requires Plugins: elementor
- * Elementor tested up to: 4.0.0
- * Elementor Pro tested up to: 4.0.0
+ * Elementor tested up to: 4.1.1
+ * Elementor Pro tested up to: 4.1.0
  */
 
 //phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound
@@ -23,7 +23,7 @@
 	exit();
 }
 
-define( 'FME_VERSION', '2.6.2' );
+define( 'FME_VERSION', '2.7.0' );
 define( 'FME_FILE', __FILE__ );
 define( 'FME_PLUGIN_BASE', plugin_basename( FME_FILE ) );
 define( 'FME_PHP_MINIMUM_VERSION', '7.4' );
@@ -166,7 +166,7 @@ class Form_Masks_For_Elementor {
 
     public function fme_plugin_settings_link($links){
 
-        $settings_link = '<a href="' . admin_url( 'admin.php?page=cool-formkit' ) . '">Settings</a>';
+        $settings_link = '<a href="' . esc_url( admin_url( 'admin.php?page=cool-formkit' ) ) . '">Settings</a>';
 		array_unshift( $links, $settings_link );
 		return $links;
 
@@ -204,30 +204,71 @@ class Form_Masks_For_Elementor {
 
             require_once FME_PLUGIN_PATH . 'includes/class-fme-plugin.php';
             FME\Includes\FME_Plugin::instance();
+
+            if(!is_plugin_active( 'mask-form-elementor/index.php' )){
+
+
+                if ( is_plugin_active( 'elementor-pro/elementor-pro.php' ) || is_plugin_active( 'pro-elements/pro-elements.php' ) ) {
+					// After `elementor/init`, core services (e.g. experiments) are initialized; on `elementor/loaded` they are often still null.
+					if ( did_action( 'elementor/init' ) ) {
+						$this->load_atomic_form_addon();
+					} else {
+						add_action( 'elementor/init', array( $this, 'load_atomic_form_addon' ), 20 );
+					}
+				}
+            }
         }
 
 
         if(!is_plugin_active( 'extensions-for-elementor-form/extensions-for-elementor-form.php' )){
-
-
-                require_once FME_PLUGIN_PATH . '/includes/class-fme-elementor-page.php';
-                new FME_Elementor_Page();
-                
-
-
+            require_once FME_PLUGIN_PATH . '/includes/class-fme-elementor-page.php';
+            new FME_Elementor_Page();
         }
+
 
 		if ( is_admin() ) {
 			require_once FME_PLUGIN_PATH . 'admin/feedback/admin-feedback-form.php';
 		}
     }
 
+    public function load_atomic_form_addon() {
+        if ( ! is_plugin_active( 'elementor-pro/elementor-pro.php' ) && ! is_plugin_active( 'pro-elements/pro-elements.php' ) ) {
+            return;
+        }
+
+        if ( ! did_action( 'elementor/init' ) || ! class_exists( '\Elementor\Plugin' ) ) {
+            return;
+        }
+
+        $elementor = \Elementor\Plugin::$instance;
+        if ( ! $elementor ) {
+            return;
+        }
+
+        $experiments = isset( $elementor->experiments ) ? $elementor->experiments : null;
+        if ( ! self::are_elementor_atomic_form_experiments_active( $experiments ) ) {
+            return;
+        }
+
+        require_once FME_PLUGIN_PATH . '/includes/atomic-form-addon-loader.php';
+        new FME\Includes\Atomic_Form_Addon_Loader();
+    }
+
+    private static function are_elementor_atomic_form_experiments_active( $experiments ): bool {
+        if ( ! $experiments || ! is_object( $experiments ) || ! method_exists( $experiments, 'is_feature_active' ) ) {
+            return false;
+        }
+
+        return $experiments->is_feature_active( 'e_atomic_elements' )
+            && $experiments->is_feature_active( 'e_pro_atomic_form' );
+    }
+
     /**
      * Admin notice for PHP version failure.
      */
     public function admin_notice_php_version_fail() {
-        // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
         $message = sprintf(
+            /* translators: %1$s: Plugin name. %2$s: Minimum PHP version. */
             esc_html__( '%1$s requires PHP version %2$s or greater.', 'form-masks-for-elementor' ),
             '<strong>Form Input Masks for Elementor Form</strong>',
             FME_PHP_MINIMUM_VERSION
@@ -241,8 +282,8 @@ class Form_Masks_For_Elementor {
      * Admin notice for WordPress version failure.
      */
     public function admin_notice_wp_version_fail() {
-        // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
         $message = sprintf(
+            /* translators: %1$s: Plugin name. %2$s: Minimum WordPress version. */
             esc_html__( '%1$s requires WordPress version %2$s or greater.', 'form-masks-for-elementor' ),
             '<strong>Form Input Masks for Elementor Form</strong>',
             FME_WP_MINIMUM_VERSION

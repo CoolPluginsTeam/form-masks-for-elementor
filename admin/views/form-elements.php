@@ -56,7 +56,7 @@ if ( ! empty( $install_by_plugin ) ) {
 }
 
 //phpcs:ignore WordPress.Security.NonceVerification.Recommended
-$tab = isset($_GET['tab']) ? sanitize_key($_GET['tab']) : 'form-elements';
+$tab = isset($_GET['tab']) ? sanitize_key(wp_unslash($_GET['tab'])) : 'form-elements';
 
 
 

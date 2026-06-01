@@ -192,9 +192,9 @@ if (! class_exists('FME_Marketing_Controllers')) {
 
 			// Check if it's tribe_events post type or tec settings page
 			//phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$is_tribe_post    = isset($_GET['post_type']) && sanitize_key($_GET['post_type']) === 'tribe_events';
+			$is_tribe_post    = isset($_GET['post_type']) && sanitize_key(wp_unslash($_GET['post_type'])) === 'tribe_events';
 			//phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$is_tec_settings  = isset($_GET['page']) && sanitize_key($_GET['page']) === 'tec-events-settings';
+			$is_tec_settings  = isset($_GET['page']) && sanitize_key(wp_unslash($_GET['page'])) === 'tec-events-settings';
 			// Only show notice if not on taxonomy screens
 			//phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			if ( ($is_tribe_post || $is_tec_settings) && !isset($_GET['taxonomy']) ) {
@@ -377,7 +377,7 @@ if (! class_exists('FME_Marketing_Controllers')) {
 
 				$conditional_pro_plugin_file = 'conditional-fields-for-elementor-form-pro/class-conditional-fields-for-elementor-form-pro.php';
 
-				$pagenow        = isset($_POST['pagenow']) ? sanitize_key($_POST['pagenow']) : '';
+				$pagenow        = isset($_POST['pagenow']) ? sanitize_key(wp_unslash($_POST['pagenow'])) : '';
 				$network_wide = (is_multisite() && 'import' !== $pagenow);
 				$activation_result = activate_plugin($conditional_pro_plugin_file, '', $network_wide);
 
@@ -420,7 +420,7 @@ if (! class_exists('FME_Marketing_Controllers')) {
 					if ($skin->result->get_error_message() === 'Destination folder already exists.') {
 
 						$install_status = install_plugin_install_status($api);
-						$pagenow        = isset($_POST['pagenow']) ? sanitize_key($_POST['pagenow']) : '';
+						$pagenow        = isset($_POST['pagenow']) ? sanitize_key(wp_unslash($_POST['pagenow'])) : '';
 
 						if (current_user_can('activate_plugin', $install_status['file'])) {
 							$this->fme_set_install_by_option( $plugin_slug );
@@ -462,7 +462,7 @@ if (! class_exists('FME_Marketing_Controllers')) {
 				}
 
 				$install_status = install_plugin_install_status($api);
-				$pagenow        = isset($_POST['pagenow']) ? sanitize_key($_POST['pagenow']) : '';
+				$pagenow        = isset($_POST['pagenow']) ? sanitize_key(wp_unslash($_POST['pagenow'])) : '';
 
 				$this->fme_set_install_by_option( $plugin_slug );
 

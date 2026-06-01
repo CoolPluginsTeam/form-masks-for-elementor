@@ -188,34 +188,78 @@
         });
     }
 
-    if(typeof elementor !== 'undefined' && elementor) {
-        const callbackfunction = elementor.modules.controls.BaseData.extend({
-            onRender: function(){
-                // Call parent onRender
-                elementor.modules.controls.BaseData.prototype.onRender.apply(this, arguments);
-
-                if(!this.el) return;
+    if (typeof elementor !== 'undefined' && elementor) {
+        // Check if getControlView method exists
+        if (typeof elementor.getControlView !== 'function') {
+            console.warn('elementor.getControlView is not available');
+            return;
+        }
+        
+        const RawHtmlControl = elementor.getControlView('raw_html');
+        
+        // Check if RawHtmlControl exists
+        if (!RawHtmlControl) {
+            console.warn('raw_html control view not found');
+            return;
+        }
+        
+        const CfefRawHtmlControl = RawHtmlControl.extend({
+            onRender() {
+                // Check if parent method exists before calling
+                if (RawHtmlControl.prototype.onRender) {
+                    RawHtmlControl.prototype.onRender.apply(this, arguments);
+                }
+    
+                // Check if el exists
+                if (!this.el) {
+                    return;
+                }
+    
                 const customNotice = this.el.querySelector('.cool-form-wrp');
-
-                if(!customNotice) return;
-
+    
+                if (!customNotice) {
+                    return;
+                }
+    
                 const installBtns = this.el.querySelectorAll('button.fme-install-plugin');
-
-                if(installBtns.length === 0) return;
-
-                installBtns.forEach(btn=>{
+    
+                if (!installBtns || installBtns.length === 0) {
+                    return;
+                }
+    
+                installBtns.forEach((btn) => {
+                    // Check if btn and dataset exist
+                    if (!btn || !btn.dataset) {
+                        return;
+                    }
+                    
                     const installSlug = btn.dataset.plugin;
-                    btn.addEventListener('click',()=>{
-                        installPlugin(jQuery(btn),installSlug)
-                    });
+                    
+                    // Check if installSlug exists and jQuery is available
+                    if (installSlug && typeof jQuery !== 'undefined' && typeof installPlugin === 'function') {
+                        btn.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            installPlugin(jQuery(btn), installSlug);
+                        });
+                    } else if (installSlug && typeof installPlugin === 'function') {
+                        // Alternative without jQuery
+                        btn.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            installPlugin(btn, installSlug);
+                        });
+                    } else {
+                        console.warn('installPlugin function not available');
+                    }
                 });
             },
         });
-
-        // Initialize when Elementor is ready
-        $(window).on('elementor:init', function () { 
-            elementor.addControlView('raw_html', callbackfunction);
-        });
+    
+        // Check if addControlView method exists
+        if (typeof elementor.addControlView === 'function') {
+            elementor.addControlView('raw_html', CfefRawHtmlControl);
+        } else {
+            console.warn('elementor.addControlView is not available');
+        }
     }else{
 
 
