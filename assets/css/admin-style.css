@@ -1150,13 +1150,6 @@ span.cfkef-pro-feature a {
   gap: 15px;
 }
 
-a.button-primary.upgrade-pro-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-}
-
 
 .cfk-wrapper * {
   box-sizing: border-box;

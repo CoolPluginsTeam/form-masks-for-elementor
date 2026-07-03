@@ -191,7 +191,6 @@
     if (typeof elementor !== 'undefined' && elementor) {
         // Check if getControlView method exists
         if (typeof elementor.getControlView !== 'function') {
-            console.warn('elementor.getControlView is not available');
             return;
         }
         
@@ -199,7 +198,6 @@
         
         // Check if RawHtmlControl exists
         if (!RawHtmlControl) {
-            console.warn('raw_html control view not found');
             return;
         }
         
@@ -247,8 +245,6 @@
                             e.preventDefault();
                             installPlugin(btn, installSlug);
                         });
-                    } else {
-                        console.warn('installPlugin function not available');
                     }
                 });
             },
@@ -257,8 +253,6 @@
         // Check if addControlView method exists
         if (typeof elementor.addControlView === 'function') {
             elementor.addControlView('raw_html', CfefRawHtmlControl);
-        } else {
-            console.warn('elementor.addControlView is not available');
         }
     }else{
 

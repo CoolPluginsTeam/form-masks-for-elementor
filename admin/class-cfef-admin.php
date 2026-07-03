@@ -89,6 +89,43 @@ class CFEF_Admin {
         return self::$instance;
     }
 
+    /**
+     * Resolve the UTM source slug for the first-installed Cool FormKit plugin.
+     *
+     * @return string Plugin slug used for marketing attribution (e.g. fim_plugin).
+     */
+    public static function get_first_plugin_slug() {
+        $plugins_dates = array(
+            'fim_plugin'   => get_option( 'fme-installDate' ),
+            'cfef_plugin'  => get_option( 'cfef-installDate' ),
+            'cfefp_plugin' => get_option( 'cfefp-installDate' ),
+            'ccfef_plugin' => get_option( 'ccfef-installDate' ),
+        );
+
+        $plugins_dates = array_filter( $plugins_dates );
+
+        $install_by_plugin = get_option( 'form-masks-install-by' );
+        if ( ! empty( $install_by_plugin ) ) {
+            return $install_by_plugin;
+        }
+
+        $stored_oldest_plugin = get_option( 'oldest_plugin' );
+        if ( ! empty( $stored_oldest_plugin ) ) {
+            return $stored_oldest_plugin;
+        }
+
+        if ( ! empty( $plugins_dates ) ) {
+            asort( $plugins_dates );
+            $first_plugin = key( $plugins_dates );
+        } else {
+            $first_plugin = 'fim_plugin';
+        }
+
+        update_option( 'oldest_plugin', $first_plugin );
+
+        return $first_plugin;
+    }
+
 
     /**
      * Get allowed plugin slugs and their init files.
@@ -253,43 +290,7 @@ class CFEF_Admin {
      */
     public function display_plugin_admin_page() {
 
-
-        $form_mask_installed_date = get_option( 'fme-installDate' );
-        $conditional_fields_installed_date = get_option( 'cfef-installDate' );
-        $conditional_fields_pro_installed_date = get_option( 'cfefp-installDate' );
-        $country_code_installed_date = get_option( 'ccfef-installDate' );
-
-        // New: read stored oldest plugin (set once)
-        $stored_oldest_plugin = get_option( 'oldest_plugin' );
-
-        $plugins_dates = [
-            'fim_plugin'  => $form_mask_installed_date,
-            'cfef_plugin' => $conditional_fields_installed_date,
-            'cfefp_plugin' => $conditional_fields_pro_installed_date,
-            'ccfef_plugin' => $country_code_installed_date,
-        ];
-
-        $plugins_dates = array_filter( $plugins_dates );
-
-        $install_by_plugin = get_option( 'form-masks-install-by' );
-
-        if ( ! empty( $install_by_plugin ) ) {
-            $first_plugin = $install_by_plugin;
-        } else if ( ! empty( $stored_oldest_plugin ) ) {
-            $first_plugin = $stored_oldest_plugin;
-        } else {
-
-            if ( ! empty( $plugins_dates ) ) {
-                asort( $plugins_dates );
-                $first_plugin = key( $plugins_dates );
-            } else {
-                $first_plugin = 'fim_plugin';
-            }
-
-            // Store it so it never changes on re-install
-            update_option( 'oldest_plugin', $first_plugin );
-        }
-
+        $first_plugin = self::get_first_plugin_slug();
 
         //phpcs:ignore WordPress.Security.NonceVerification.Recommended
         $tab = isset($_GET['tab']) ? sanitize_text_field(wp_unslash($_GET['tab'])) : 'form-elements';

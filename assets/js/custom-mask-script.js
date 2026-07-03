@@ -776,7 +776,6 @@
 
     let maskErrorArr = {};
     let nextBtnOriginalClicks = {};
-    let clickStatus={};
     let recaptchaEvent = {};
     let submitBtnEvent = {};
 
@@ -1161,15 +1160,7 @@
         return;
       }
 
-      // ❌ Validation failed
-      if (hasVisibleMaskError) {
-        // $form[0].classList.remove("elementor-form-waiting");
-        $submitBtn.data("clicked", false);
-        e.preventDefault();
-        return;
-      }
-
-      if (!hasVisibleMaskError) { 
+      if (!hasVisibleMaskError) {
         // ✅ All good — submit the form
 
 

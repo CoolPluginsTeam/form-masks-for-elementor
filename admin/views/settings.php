@@ -5,60 +5,7 @@ if (!defined('ABSPATH')) {
     die;
 }
 
-
-$form_mask_installed_date = get_option('fme-installDate');
-$conditional_fields_installed_date = get_option('cfef-installDate');
-$conditional_fields_pro_installed_date = get_option('cfefp-installDate');
-$country_code_installed_date = get_option('ccfef-installDate');
-
-// New: read stored oldest plugin (set once)
-$stored_oldest_plugin = get_option('oldest_plugin');
-
-$plugins_dates = [
-    'fim_plugin'  => $form_mask_installed_date,
-    'cfef_plugin' => $conditional_fields_installed_date,
-    'cfefp_plugin' => $conditional_fields_pro_installed_date,
-    'ccfef_plugin' => $country_code_installed_date,
-];
-
-$plugins_dates = array_filter($plugins_dates);
-
-$install_by_plugin = get_option('form-masks-install-by');
-
-if(! empty( $install_by_plugin )){
-    $first_plugin = $install_by_plugin;
-}
-else if ( ! empty( $stored_oldest_plugin ) ) {
-    $first_plugin = $stored_oldest_plugin;
-} else {
-
-    if (!empty($plugins_dates)) {
-        asort($plugins_dates);
-        $first_plugin = key($plugins_dates);
-    } else {
-        $first_plugin = 'fim_plugin';
-    }
-
-    // Store it so it never changes on re-install
-    update_option('oldest_plugin', $first_plugin);
-}
-
-
-
-
-function cfkef_block_sql_patterns($input) {
-    $sql_keywords = [
-        'SELECT', 'INSERT', 'UPDATE', 'DELETE', 'DROP', 'UNION', 'OUTFILE', 'OR ', 'AND ', '--', '#', '/*', '*/'
-    ];
-
-    foreach ($sql_keywords as $keyword) {
-        if (stripos($input, $keyword) !== false) {
-            return ''; // If SQL pattern is detected, return an empty string
-        }
-    }
-
-    return $input;
-}
+$first_plugin = CFEF_Admin::get_first_plugin_slug();
 
 
 
@@ -194,18 +141,6 @@ function cfef_handle_unchecked_checkbox() {
 
 
 
-//phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound
-function handle_form_submit() {
-
-    // Security check
-    $pattern = "/(<script|<\/script>|onerror=|onload=|eval\(|javascript:|SELECT |INSERT |DELETE |DROP |UPDATE |UNION )/i";
-
-
-    return true;
-
-
-}
-
 // Save API keys when the form is submitted
 if (isset($_SERVER['REQUEST_METHOD']) && sanitize_text_field(wp_unslash($_SERVER['REQUEST_METHOD'])) === 'POST') {
 
@@ -214,13 +149,7 @@ if (isset($_SERVER['REQUEST_METHOD']) && sanitize_text_field(wp_unslash($_SERVER
         return;
     }
 
-
     check_admin_referer('cool_formkit_save_api_keys', 'cool_formkit_nonce');
-
-    if(handle_form_submit() == false){
-        echo '<div class="notice notice-error is-dismissible"><p>' . esc_html__('Invalid Input.', 'form-masks-for-elementor') . '</p></div>';
-
-    }else{
 
     //phpcs:ignore WordPress.Security.NonceVerification.Recommended
     $cfef_usage_share_data = isset($_POST['cfef_usage_share_data']) ? sanitize_text_field(wp_unslash($_POST['cfef_usage_share_data'])) : '';
@@ -228,13 +157,9 @@ if (isset($_SERVER['REQUEST_METHOD']) && sanitize_text_field(wp_unslash($_SERVER
 
     update_option( "cfef_usage_share_data",  $cfef_usage_share_data);
 
-
     cfef_handle_unchecked_checkbox();
-    
+
     echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__('Settings saved.', 'form-masks-for-elementor') . '</p></div>';
-
-    }
-
 }
 
 // Get the current API key values
