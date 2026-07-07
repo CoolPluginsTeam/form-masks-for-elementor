@@ -195,6 +195,7 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 = 2.7.3 - Jul 08, 2026 =
 * Improved: Code improvements.
+* Added: Support for the new alphanumeric CNPJ format.
 
 = 2.7.2 - Jun 16, 2026 =
 * Fixed: Bug fixes.
