@@ -252,11 +252,10 @@ if (! class_exists('FME_Marketing_Controllers')) {
 				'lgefep_mkt_country_notice',
 				array(
 					'name'            => 'cfme_mkt_country_notice',
+					'label'           => esc_html__('Use ACF Repeater', 'form-masks-for-elementor'),
 					'type'            => \Elementor\Controls_Manager::SWITCHER,
-					'label'        => esc_html__('Use ACF Repeater', 'form-masks-for-elementor'),
-					'type'         => \Elementor\Controls_Manager::SWITCHER,
-					'label_on'     => esc_html__('Yes', 'form-masks-for-elementor'),
-					'label_off'    => esc_html__('No', 'form-masks-for-elementor'),
+					'label_on'        => esc_html__('Yes', 'form-masks-for-elementor'),
+					'label_off'       => esc_html__('No', 'form-masks-for-elementor'),
 
 				),
 			);

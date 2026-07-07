@@ -1,15 +1,6 @@
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    const elementToggles = document.querySelectorAll('.cfkef-element-toggle');
-
-
-    elementToggles.forEach(function (toggle) {
-
-
-            isChecked = toggle.checked;
-    });
-        
 
     const apiSelector = document.querySelector('#api-selector select');
     const ipapiRow    = document.getElementById('ipapi-row');
@@ -70,72 +61,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function buttonShakeEffectHandler() {
-	const wrappers = document.querySelectorAll('.cfk-plugins');
+	const shakeInputValues = [
+		'conditional_logic',
+		'country_code',
+		'form_input_mask',
+		'input_mask',
+	];
 
+	document.querySelectorAll('.cfk-plugins .cfkef-element-toggle').forEach(input => {
+		input.addEventListener('change', function () {
+			if (!shakeInputValues.includes(input.value)) {
+				return;
+			}
 
-	wrappers.forEach(wrapper => {
-		const headerButton = wrapper.querySelector('.cfk-buttons .button-primary');
-		const bodyInputs = wrapper.querySelectorAll('.wrapper-body input[type="checkbox"]');
+			const section = input.closest('.cfk-box') || input.closest('.wrapper-body');
+			if (!section) {
+				return;
+			}
 
-
-
-		if (!headerButton || bodyInputs.length === 0) return;
-
-		const input1 = wrapper.querySelector('input[value="conditional_logic"]');
-		const input2 = wrapper.querySelector('input[value="country_code"]');
-		const input3 = wrapper.querySelector('input[value="form_input_mask"]');
-		const input4 = wrapper.querySelector('input[value="input_mask"]');
-
-
-
-
-
-		function triggerShake() {
-			headerButton.classList.add('shake-effect');
-		}
-
-		
-
-		bodyInputs.forEach(input => {
-
-			input.addEventListener('change', function () {
-
-
-				if (input1 && input.value === 'conditional_logic') {
-
-
-					if(input1.checked || !input1.checked){
-
-						jQuery('input[value="conditional_logic"]').parent().parent().parent().parent().parent().find(".button-primary").addClass('shake-effect');
-					}
-				}
-				
-				else if (input2 && input.value === 'country_code') {
-
-					if(input2.checked || !input2.checked){
-
-						jQuery('input[value="country_code"]').parent().parent().parent().parent().parent().find(".button-primary").addClass('shake-effect');
-					}
-				}
-
-				else if (input3 && input.value === 'form_input_mask') {
-
-					if(input3.checked || !input3.checked){
-
-						jQuery('input[value="form_input_mask"]').parent().parent().parent().parent().parent().find(".button-primary").addClass('shake-effect');
-					}
-				}
-
-				else if (input4 && input.value === 'input_mask') {
-
-					if(input4.checked || !input4.checked){
-
-						jQuery('input[value="input_mask"]').parent().parent().parent().parent().parent().find(".button-primary").addClass('shake-effect');
-					}
-				}
-
-				
-			});
+			const saveButton = section.querySelector('.cfk-buttons .button-primary');
+			if (saveButton) {
+				saveButton.classList.add('shake-effect');
+			}
 		});
 	});
 }
