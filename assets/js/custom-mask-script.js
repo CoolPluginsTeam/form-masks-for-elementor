@@ -273,7 +273,7 @@
     }
     function getDigitIndexFromCaret(formattedStr, caretPos, alphanumeric) {
       var count = 0;
-      var pattern = alphanumeric ? /[A-Z0-9]/ : /\d/;
+      var pattern = alphanumeric ? /[A-Za-z0-9]/ : /\d/;
       for (var i = 0; i < caretPos; i++) {
         if (pattern.test(formattedStr.charAt(i))) {
           count++;
@@ -283,7 +283,7 @@
     }
     function mapDigitIndexToCaret(formattedStr, digitIndex, alphanumeric) {
       var count = 0;
-      var pattern = alphanumeric ? /[A-Z0-9]/ : /\d/;
+      var pattern = alphanumeric ? /[A-Za-z0-9]/ : /\d/;
       for (var i = 0; i < formattedStr.length; i++) {
         if (pattern.test(formattedStr.charAt(i))) {
           if (count === digitIndex) {
