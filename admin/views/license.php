@@ -5,41 +5,8 @@
 if (!defined('ABSPATH')) {
     die;
 }
-$form_mask_installed_date = get_option('fme-installDate');
-$conditional_fields_installed_date = get_option('cfef-installDate');
-$conditional_fields_pro_installed_date = get_option('cfefp-installDate');
-$country_code_installed_date = get_option('ccfef-installDate');
 
-// New: read stored oldest plugin (set once)
-$stored_oldest_plugin = get_option('oldest_plugin');
-
-$plugins_dates = [
-    'fim_plugin'  => $form_mask_installed_date,
-    'cfef_plugin' => $conditional_fields_installed_date,
-    'cfefp_plugin' => $conditional_fields_pro_installed_date,
-    'ccfef_plugin' => $country_code_installed_date,
-];
-
-$plugins_dates = array_filter($plugins_dates);
-
-$install_by_plugin = get_option('form-masks-install-by');
-
-if ( ! empty( $install_by_plugin ) ) {
-    $first_plugin = $install_by_plugin;
-} else if ( ! empty( $stored_oldest_plugin ) ) {
-    $first_plugin = $stored_oldest_plugin;
-} else {
-
-    if (!empty($plugins_dates)) {
-        asort($plugins_dates);
-        $first_plugin = key($plugins_dates);
-    } else {
-        $first_plugin = 'fim_plugin';
-    }
-
-    // Store it so it never changes on re-install
-    update_option('oldest_plugin', $first_plugin);
-}
+$first_plugin = CFEF_Admin::get_first_plugin_slug();
 
 
 

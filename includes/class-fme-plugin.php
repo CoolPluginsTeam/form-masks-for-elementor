@@ -120,22 +120,7 @@ final class FME_Plugin {
 		require_once FME_PLUGIN_PATH . '/includes/class-elementor-mask-control.php';
 		new FME_Elementor_Forms_Mask();
 
-		// add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_plugin_js' ] );
 		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'register_editor_scripts') );
-	}
-
-	/**
-	 * Enqueue JS
-	 *
-	 * Register and enqueue JS scripts.
-	 *
-	 * @since 1.4
-	 *
-	 * @access public
-	 */
-	public function enqueue_plugin_js() {
-		//phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
-		do_action( 'fme_after_enqueue_scripts' );
 	}
 
 	/**
@@ -152,9 +137,14 @@ final class FME_Plugin {
 	}
 
 	public function fme_elementor_review_notice() {
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return wp_send_json_error( __( 'You are not authorized to access this page.', 'form-masks-for-elementor' ), 403 );
+		}
+
 		if ( ! check_ajax_referer( 'cfef_elementor_review', 'nonce', false ) ) {
-			wp_send_json_error( __( 'Invalid security token sent.', 'form-masks-for-elementor' ) );
-			wp_die( '0', 400 );
+
+			return wp_send_json_error( __( 'Invalid security token sent.', 'form-masks-for-elementor' ), 400 );
 		}
 
 		if ( isset( $_POST['cfef_notice_dismiss'] ) && 'true' === sanitize_text_field(wp_unslash($_POST['cfef_notice_dismiss'])) ) {

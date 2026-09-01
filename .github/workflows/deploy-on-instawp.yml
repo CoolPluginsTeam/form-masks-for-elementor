@@ -1,0 +1,43 @@
+name: Call Instawp Webhook
+on:
+  push:
+    branches:
+      - instawp  # Trigger only on push to the instawp branch
+
+jobs:
+  trigger-webhook:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        webhook_name:
+          - INSTAWP_SITE_WEBHOOK
+
+    steps:
+      - name: Check if the secret exists
+        id: check_secret
+        run: |
+          if [[ -z "${{ secrets[matrix.webhook_name] }}" ]]; then
+            exit 1;  # Exit with a non-zero status to indicate failure
+          fi
+
+      - name: Send webhook request for ${{ matrix.webhook_name }}
+        if: success()  # This ensures the step only runs if the secret check passed
+        uses: fjogeleit/http-request-action@v1.4.0
+        with:
+          url: ${{ secrets[matrix.webhook_name] }}
+          method: POST
+          contentType: application/json
+          data: |
+            {
+              "ref": "${{ github.ref }}",
+              "repository": {
+                "name": "${{ github.repository }}",
+                "full_name": "${{ github.repository }}",
+                "owner": {
+                  "login": "${{ github.actor }}"
+                }
+              },
+              "pusher": {
+                "name": "${{ github.actor }}"
+              }
+            }
